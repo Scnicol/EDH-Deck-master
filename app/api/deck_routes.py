@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Task, User
 from app.models import User, db, Deck
 from app.forms import CreateDeckForm
 from datetime import datetime
@@ -9,6 +8,12 @@ from flask_login import login_required, current_user
 
 deck_routes = Blueprint('decks', __name__)
 
+@deck_routes.route('/', methods=['GET'])
+def get_all_decks():
+    decks = Deck.query.all()
+    return jsonify({'Decks': [deck.to_dict() for deck in decks]})
+
+
 @deck_routes.route('/', methods=['POST'])
 @login_required
 def create_deck():
@@ -17,10 +22,9 @@ def create_deck():
 
     if form.validate_on_submit():
         data = form.data
-        deckId = data['creatorId']
 
         newDeck = Deck(
-            creatorId=data["creatorId"],
+            creatorId=current_user.id,
             name=data["name"],
             description=data["description"]
         )
