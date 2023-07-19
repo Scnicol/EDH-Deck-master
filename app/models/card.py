@@ -29,6 +29,6 @@ class Card(db.Model, UserMixin):
             'count': self.count,
             'name': self.name,
             'imageUrl': self.imageUrl,
-            'createdAt': self.created_at,
-            'updatedAt': self.updated_at
+            'createdAt': self.created_at.isoformat(),
+            'updatedAt': self.updated_at.isoformat()
         }
