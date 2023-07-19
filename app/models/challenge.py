@@ -18,7 +18,9 @@ class Challenge(db.Model, UserMixin):
 
     # Relationships _____________________
 
-
+    challenger = db.relationship('User', foreign_keys='Challenge.challengerId', back_populates='challenges')
+    challenged = db.relationship('User', foreign_keys='Challenge.challengedId', back_populates='challenges')
+    
     # Methods _________________________
 
     def to_dict(self):

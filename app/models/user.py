@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from wishlist import wishlist_association_table
 
 
 class User(db.Model, UserMixin):
@@ -13,6 +14,14 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    # Relationships _____________________
+
+    decks = db.relationship('Deck', foreign_keys='Deck.creatorId', back_populates='creator', cascade='all, delete-orphan')
+    reviews = db.relationship('Review', foreign_keys='Review.reviewerId', back_populates='reviewer', cascade='all, delete-orphan')
+    wishlist_decks = db.relationship('Deck', secondary=wishlist_association_table, back_populates='wishlist_users')
+
+    # Methods _________________________
 
     @property
     def password(self):

@@ -19,6 +19,7 @@ class Card(db.Model, UserMixin):
 
     # Relationships _____________________
 
+    deck = db.relationship('Deck', foreign_keys='Card.deckId', back_populates='cards')
 
     # Methods _________________________
 
