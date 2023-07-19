@@ -17,7 +17,7 @@ class Review(db.Model, UserMixin):
     # Relationships _____________________
 
     deck = db.relationship('Deck', foreign_keys='Review.deckId', back_populates='reviews')
-    reviewer = db.relationship('User', foreign_keys='Review.reviewerId', back_populates='')
+    reviewer = db.relationship('User', foreign_keys='Review.reviewerId', back_populates='reviews')
 
     # Methods _________________________
 

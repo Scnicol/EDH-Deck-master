@@ -19,6 +19,7 @@ class Deck(db.Model, UserMixin):
     # Relationships _____________________
 
     creator = db.relationship('User', foreign_keys='Deck.creatorId', back_populates='decks')
+    
     cards = db.relationship('Card', foreign_keys='Card.deckId', back_populates='deck', cascade='all, delete-orphan')
     reviews = db.relationship('Review', foreign_keys='Review.reviewerId', back_populates='deck', cascade='all, delete-orphan')
     wishlist_users = db.relationship('User', secondary=wishlist_association_table, back_populates='wishlist_decks')

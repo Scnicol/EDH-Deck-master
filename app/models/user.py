@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
     decks = db.relationship('Deck', foreign_keys='Deck.creatorId', back_populates='creator', cascade='all, delete-orphan')
     reviews = db.relationship('Review', foreign_keys='Review.reviewerId', back_populates='reviewer', cascade='all, delete-orphan')
     
+
     challengerChallenges = db.relationship('Challenge', foreign_keys="Challenge.challengerId", back_populates="challenger", cascade='all, delete-orphan')
     challengedChallenges = db.relationship('Challenge', foreign_keys="Challenge.challengedId", back_populates="challenged", cascade='all, delete-orphan')
 
