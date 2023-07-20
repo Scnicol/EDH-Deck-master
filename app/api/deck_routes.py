@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Deck
-from app.forms import CreateDeckForm
+from app.forms.deck_form import CreateDeckForm
 from datetime import datetime
 from sqlalchemy import and_
 from .auth_routes import validation_errors_to_error_messages

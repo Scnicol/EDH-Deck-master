@@ -10,7 +10,7 @@ class Card(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    deckId = db.Column(db.Integer, db.ForeingKey(add_prefix_for_prod('decks.id')))
+    deckId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('decks.id')))
     count = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(50), nullable=False)
     imageUrl = db.Column(db.String(600), nullable=False)

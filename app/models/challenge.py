@@ -19,7 +19,7 @@ class Challenge(db.Model, UserMixin):
     # Relationships _____________________
 
     challenger = db.relationship('User', foreign_keys='Challenge.challengerId', back_populates='challengerChallenges')
-    challenged = db.relationship('User', foreign_keys='Challenge.challengedId', back_populates='challenges')
+    challenged = db.relationship('User', foreign_keys='Challenge.challengedId', back_populates='challengedChallenges')
 
     # Methods _________________________
 
