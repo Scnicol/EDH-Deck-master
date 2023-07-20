@@ -24,3 +24,7 @@ Steps:
 9. paste the PR to group chat
     - check/test for everyone’s approval
     - then click on merge to merge feature branch to dev.
+
+Render Schema drop commands:
+    \dn to list schema names
+    DROP SCHEMA edh_deck_master CASCADE;
