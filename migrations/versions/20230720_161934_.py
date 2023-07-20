@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8a15da65c532
-Revises: 
-Create Date: 2023-07-20 15:36:45.781650
+Revision ID: af6109d3b2f2
+Revises:
+Create Date: 2023-07-20 16:19:34.310172
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8a15da65c532'
+revision = 'af6109d3b2f2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -69,13 +69,13 @@ def upgrade():
     sa.ForeignKeyConstraint(['reviewerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('wishlists',
-    sa.Column('userId', sa.Integer(), nullable=False),
-    sa.Column('deckId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['deckId'], ['decks.id'], ),
-    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('userId', 'deckId')
-    )
+    # op.create_table('wishlists',
+    # sa.Column('userId', sa.Integer(), nullable=False),
+    # sa.Column('deckId', sa.Integer(), nullable=False),
+    # sa.ForeignKeyConstraint(['deckId'], ['decks.id'], ),
+    # sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
+    # sa.PrimaryKeyConstraint('userId')
+    # )
     # ### end Alembic commands ###
 
 
