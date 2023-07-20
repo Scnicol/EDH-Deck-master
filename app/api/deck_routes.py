@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Deck
+from app.models import User, db, Deck, Review
 from app.forms.deck_form import CreateDeckForm
 from datetime import datetime
 from sqlalchemy import and_
@@ -11,7 +11,19 @@ deck_routes = Blueprint('decks', __name__)
 @deck_routes.route('/', methods=['GET'])
 def get_all_decks():
     decks = Deck.query.all()
-    return jsonify({'Decks': [deck.to_dict() for deck in decks]})
+    return jsonify({'Decks': [deck.to_dict_full() for deck in decks]})
+
+@deck_routes.route('/current', methods=['GET'])
+@login_required
+def get_user_deck():
+    currentUserId = current_user.get_id()
+    user = User.query.get(currentUserId)
+
+    if user is None:
+        return jsonify({'error': 'User not found'}), 404
+
+    usersDecks = Deck.query.filter(Deck.creatorId == currentUserId)
+    return {'Decks': [deck.to_dict() for deck in usersDecks]}
 
 
 @deck_routes.route('/', methods=['POST'])
