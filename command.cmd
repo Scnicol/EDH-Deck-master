@@ -27,4 +27,6 @@ Steps:
 
 Render Schema drop commands:
     \dn to list schema names
+    SELECT * FROM "edh_deck_master"."users"; - lists all entries in a specific table
+
     DROP SCHEMA edh_deck_master CASCADE;
