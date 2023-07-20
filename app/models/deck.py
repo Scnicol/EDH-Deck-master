@@ -35,3 +35,14 @@ class Deck(db.Model, UserMixin):
             'createdAt': self.created_at.isoformat(),
             'updatedAt': self.updated_at.isoformat()
         }
+
+    def to_dict_full(self):
+        return {
+            'id': self.id,
+            'creatorId': self.creatorId,
+            'name': self.name,
+            'description': self.description,
+            'createdAt': self.created_at.isoformat(),
+            'updatedAt': self.updated_at.isoformat(),
+            'reviews': [review.to_dict() for review in self.reviews]
+        }
