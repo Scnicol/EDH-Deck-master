@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .decks import seed_decks, undo_decks
+from .challenges import seed_challenges, undo_challenges
 
 from app.models.db import db, environment, SCHEMA
 
@@ -20,6 +21,7 @@ def seed():
         undo_users()
     seed_users()
     seed_decks()
+    seed_challenges()
     # Add other seed functions here
 
 
@@ -28,4 +30,5 @@ def seed():
 def undo():
     undo_users()
     undo_decks()
+    undo_challenges()
     # Add other undo functions here

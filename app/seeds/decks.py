@@ -21,7 +21,7 @@ def seed_decks():
     )
 
     deck4 = Deck(
-        creatorId=1,
+        creatorId=5,
         name="shootin all my lasers",
         description="U/R control ping for 1 damage to get commander to shoot things for 2 more, cantrip spellslinger"
     )
