@@ -4,14 +4,14 @@ from .decks import deck2, deck1, deck3, deck4
 from .users import demo, marnie, bobbie, aaron, scot
 
 def seed_wishlists():
-    demo.wishlist_decks.append(deck2)
-    demo.wishlist_decks.append(deck3)
-    marnie.wishlist_decks.append(deck1)
-    bobbie.wishlist_decks.append(deck1)
-    aaron.wishlist_decks.append(deck1)
-    aaron.wishlist_decks.append(deck2)
-    aaron.wishlist_decks.append(deck4)
-    scot.wishlist_decks.append(deck3)
+    demo.wishlistDecks.append(deck2)
+    demo.wishlistDecks.append(deck3)
+    marnie.wishlistDecks.append(deck1)
+    bobbie.wishlistDecks.append(deck1)
+    aaron.wishlistDecks.append(deck1)
+    aaron.wishlistDecks.append(deck2)
+    aaron.wishlistDecks.append(deck4)
+    scot.wishlistDecks.append(deck3)
 
     db.session.commit()
 

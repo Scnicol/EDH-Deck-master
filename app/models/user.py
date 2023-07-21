@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .wishlist import wishlist_association_table
+from .wishlist import wishlistAssociationTable
 
 
 class User(db.Model, UserMixin):
@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     challengerChallenges = db.relationship('Challenge', foreign_keys="Challenge.challengerId", back_populates="challenger", cascade='all, delete-orphan')
     challengedChallenges = db.relationship('Challenge', foreign_keys="Challenge.challengedId", back_populates="challenged", cascade='all, delete-orphan')
 
-    wishlist_decks = db.relationship('Deck', secondary=wishlist_association_table, back_populates='wishlist_users')
+    wishlistDecks = db.relationship('Deck', secondary=wishlistAssociationTable, back_populates='wishlist_users')
     # Methods _________________________
 
     @property
@@ -51,5 +51,5 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'decks': [deck.to_dict() for deck in self.decks],
-            'wishlist': [deck.to_dict() for deck in self.wishlist_decks]
+            'wishlist': [deck.to_dict() for deck in self.wishlistDecks]
         }
