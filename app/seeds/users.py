@@ -14,7 +14,7 @@ def seed_users():
         username='A_A_RON', email='AAron@aa.io', password='password'
     )
     Scot = User(
-        username='scottypotty', email='scotypotty@aa.io', password='abcdefgh'
+        username='scotty', email='scotty@aa.io', password='abcdefgh'
     )
 
     db.session.add(demo)

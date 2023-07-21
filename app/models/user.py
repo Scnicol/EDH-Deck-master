@@ -50,5 +50,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'Decks': [deck.to_dict() for deck in self.decks]
+            'decks': [deck.to_dict() for deck in self.decks],
+            'wishlist': [deck.to_dict() for deck in self.wishlist_decks]
         }
