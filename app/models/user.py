@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     challengerChallenges = db.relationship('Challenge', foreign_keys="Challenge.challengerId", back_populates="challenger", cascade='all, delete-orphan')
     challengedChallenges = db.relationship('Challenge', foreign_keys="Challenge.challengedId", back_populates="challenged", cascade='all, delete-orphan')
 
-    wishlistDecks = db.relationship('Deck', secondary=wishlistAssociationTable, back_populates='wishlist_users')
+    wishlistDecks = db.relationship('Deck', secondary=wishlistAssociationTable, back_populates='wishlistUsers')
     # Methods _________________________
 
     @property
