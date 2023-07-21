@@ -28,7 +28,7 @@ def seed_reviews():
         deckId=2
     )
     review5 = Review(
-        description="could probably use a bit more safety measuers, but still decent",
+        description="could probably use a bit more safety measures, but still decent",
         rating=3,
         reviewerId=2,
         deckId=3

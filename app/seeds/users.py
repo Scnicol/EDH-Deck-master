@@ -1,29 +1,28 @@
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
 
+demo = User(
+    username='Demo', email='demo@aa.io', password='password')
+marnie = User(
+    username='marnie', email='marnie@aa.io', password='password')
+bobbie = User(
+    username='bobbie', email='bobbie@aa.io', password='password')
+aaron = User(
+    username='A_A_RON', email='AAron@aa.io', password='password'
+)
+scot = User(
+    username='scotty', email='scotty@aa.io', password='abcdefgh'
+)
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
-    Aaron = User(
-        username='A_A_RON', email='AAron@aa.io', password='password'
-    )
-    Scot = User(
-        username='scotty', email='scotty@aa.io', password='abcdefgh'
-    )
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
-    db.session.add(Aaron)
-    db.session.add(Scot)
+    db.session.add(aaron)
+    db.session.add(scot)
     db.session.commit()
-
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE
