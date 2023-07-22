@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Deck, Review, Card
 from app.forms.deck_form import CreateDeckForm
+from app.forms.card_form import CreateCardForm
 from datetime import datetime
 from sqlalchemy import and_
 from .auth_routes import validation_errors_to_error_messages
@@ -41,38 +42,46 @@ def get_deck_byId(deckId):
 @deck_routes.route('/', methods=['POST'])
 @login_required
 def create_deck():
-    form = CreateDeckForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+    deckForm = CreateDeckForm()
+    deckForm['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
-        data = form.data
+    cardForm = CreateCardForm()
+    cardForm['csrf_token'].data = request.cookies['csrf_token']
+
+    if deckForm.validate_on_submit():
         deckData = request.get_json()
 
         newDeck = Deck(
             creatorId = current_user.id,
-            name = data["name"],
-            description = data["description"]
+            name = deckForm.data["name"],
+            description = deckForm.data["description"]
         )
 
-        for cardData in deckData["cards"]:
-            card = Card(
-                count = cardData["count"],
-                name = cardData["name"],
-                imageUrl = cardData["imageUrl"]
-            )
+        if cardForm.validate_on_submit():
 
-            newDeck.cards.append(card)
+            for cardData in deckData["cards"]:
+                card = Card(
+                    count = cardData["count"],
+                    name = cardData["name"],
+                    imageUrl = cardData["imageUrl"]
+                )
+
+                newDeck.cards.append(card)
 
         db.session.add(newDeck)
         db.session.commit()
         return newDeck.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'deck errors': validation_errors_to_error_messages(deckForm.errors),
+            'card errors': validation_errors_to_error_messages(cardForm.errors)}, 401
 
 # PUT edit a deck by deckId
 ### ask if we can add and remove cards here ###
 @deck_routes.route('/<int:deckId>', methods=['PUT'])
 @login_required
 def update_deck(deckId):
+    form = CreateDeckForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
     deck = Deck.query.get(deckId)
 
     if deck is None:
@@ -81,12 +90,17 @@ def update_deck(deckId):
     if deck.creatorId != current_user.id:
         return {'error': 'User is not authorized'}, 401
 
-    deck.name = request.json['name']
-    deck.description = request.json['description']
+    if form.validate_on_submit():
+        data = form.data
+        deckData = request.get_json()
 
-    db.session.commit()
+        deck.name = form.data['name']
+        deck.description = form.data['description']
 
-    return deck.to_dict()
+        db.session.commit()
+
+        return deck.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # DELETE remove a deck by deckId
 @deck_routes.route('/<int:deckId>', methods=['DELETE'])
