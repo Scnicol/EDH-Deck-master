@@ -8,11 +8,13 @@ from flask_login import login_required, current_user
 
 deck_routes = Blueprint('decks', __name__)
 
+# GET all decks
 @deck_routes.route('/', methods=['GET'])
 def get_all_decks():
     decks = Deck.query.all()
     return {'decks': [deck.to_dict_full() for deck in decks]}
 
+# GET all decks created by the current user
 @deck_routes.route('/current', methods=['GET'])
 @login_required
 def get_user_decks():
@@ -25,6 +27,11 @@ def get_user_decks():
     return {'Decks': [deck.to_dict() for deck in user.decks]}
 
 # GET one deck specified by id
+@deck_routes.route('/<int:deckId>', methods=['GET'])
+def get_deck_byId(deckId):
+    deck = Deck.query.get(deckId)
+
+    return deck.to_dict_full()
 
 
 @deck_routes.route('/', methods=['POST'])
