@@ -37,7 +37,7 @@ def seed_challenges():
 
     challenge5 = Challenge(
         name="Let's gooooooooooooo",
-        descriptiong="just out to have fun and I love your deck designs",
+        description="just out to have fun and I love your deck designs",
         challengeDate=date(2023, 8, 12),
         challengerId=3,
         challengedId=1

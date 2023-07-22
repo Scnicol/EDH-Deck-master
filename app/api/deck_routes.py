@@ -2,8 +2,6 @@ from flask import Blueprint, jsonify, session, request
 from app.models import User, db, Deck, Review, Card
 from app.forms.deck_form import CreateDeckForm
 from app.forms.card_form import CreateCardForm
-from datetime import datetime
-from sqlalchemy import and_
 from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required, current_user
 
@@ -15,7 +13,7 @@ def get_all_decks():
     decks = Deck.query.all()
     return {'decks': [deck.to_dict_full() for deck in decks]}
 
-# GET all decks created by the current user
+# GET all decks created for the current user
 @deck_routes.route('/current', methods=['GET'])
 @login_required
 def get_user_decks():
