@@ -5,5 +5,4 @@ from wtforms.validators import DataRequired
 class CreateReviewForm(FlaskForm):
     description = StringField('description', validators=[DataRequired()])
     rating = IntegerField('rating', validators=[DataRequired()])
-    reviewerId = IntegerField('reviewerId', validators=[DataRequired()])
-    deckId = IntegerField('deckId', validators=[DataRequired()])
+    

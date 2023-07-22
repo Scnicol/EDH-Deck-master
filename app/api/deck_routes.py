@@ -37,7 +37,7 @@ def get_deck_byId(deckId):
     return deck.to_dict_full()
 
 # POST create a deck with a list of cards
-@deck_routes.route('/', methods=['POST'])
+@deck_routes.route('', methods=['POST'])
 @login_required
 def create_deck():
     deckForm = CreateDeckForm()
