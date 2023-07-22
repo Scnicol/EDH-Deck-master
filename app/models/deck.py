@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from flask_login import UserMixin
 from datetime import datetime
-from .wishlist import wishlist_association_table
+from .wishlist import wishlistAssociationTable
 
 class Deck(db.Model, UserMixin):
     __tablename__ = 'decks'
@@ -22,7 +22,7 @@ class Deck(db.Model, UserMixin):
 
     cards = db.relationship('Card', foreign_keys='Card.deckId', back_populates='deck', cascade='all, delete-orphan')
     reviews = db.relationship('Review', back_populates='deck', cascade='all, delete-orphan')
-    wishlist_users = db.relationship('User', secondary=wishlist_association_table, back_populates='wishlist_decks')
+    wishlistUsers = db.relationship('User', secondary=wishlistAssociationTable, back_populates='wishlistDecks')
 
     # Methods _________________________
 
