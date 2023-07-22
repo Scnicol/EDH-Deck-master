@@ -11,11 +11,11 @@ deck_routes = Blueprint('decks', __name__)
 @deck_routes.route('/', methods=['GET'])
 def get_all_decks():
     decks = Deck.query.all()
-    return {'Decks': [deck.to_dict_full() for deck in decks]}
+    return {'decks': [deck.to_dict_full() for deck in decks]}
 
 @deck_routes.route('/current', methods=['GET'])
 @login_required
-def get_user_deck():
+def get_user_decks():
     currentUserId = current_user.get_id()
     user = User.query.get(currentUserId)
 
@@ -23,6 +23,8 @@ def get_user_deck():
         return {'error': 'User not found'}, 404
 
     return {'Decks': [deck.to_dict() for deck in user.decks]}
+
+# GET one deck specified by id
 
 
 @deck_routes.route('/', methods=['POST'])
