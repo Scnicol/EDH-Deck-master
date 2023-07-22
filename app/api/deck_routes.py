@@ -9,7 +9,7 @@ from flask_login import login_required, current_user
 deck_routes = Blueprint('decks', __name__)
 
 # GET all decks
-@deck_routes.route('/', methods=['GET'])
+@deck_routes.route('', methods=['GET'])
 def get_all_decks():
     decks = Deck.query.all()
     return {'decks': [deck.to_dict_full() for deck in decks]}
@@ -29,11 +29,15 @@ def get_user_decks():
 # GET one deck specified by id
 @deck_routes.route('/<int:deckId>', methods=['GET'])
 def get_deck_byId(deckId):
+
     deck = Deck.query.get(deckId)
+
+    if deck is None:
+        return {'error': 'deck not found'}, 404
 
     return deck.to_dict_full()
 
-
+# POST create a deck with a list of cards
 @deck_routes.route('/', methods=['POST'])
 @login_required
 def create_deck():
@@ -64,6 +68,8 @@ def create_deck():
         return newDeck.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+# PUT edit a deck by deckId
+### ask if we can add and remove cards here ###
 @deck_routes.route('/<int:deckId>', methods=['PUT'])
 @login_required
 def update_deck(deckId):
@@ -82,6 +88,7 @@ def update_deck(deckId):
 
     return {'deck': deck.to_dict()}
 
+# DELETE remove a deck by deckId
 @deck_routes.route('/<int:deckId>', methods=['DELETE'])
 @login_required
 def delete_deck(deckId):

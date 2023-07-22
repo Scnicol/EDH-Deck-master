@@ -7,4 +7,4 @@ class CreateChallengeForm(FlaskForm):
     description = StringField('description', validators=[DataRequired()])
     challengeDate = DateField('challengeDate', validators=[DataRequired()])
     challengerId = IntegerField('challengerId', validators=[DataRequired()])
-    challenedId = IntegerField('challengedId', validators=[DataRequired()])
+    challengedId = IntegerField('challengedId', validators=[DataRequired()])
