@@ -90,7 +90,7 @@ def update_challenge_byId(challengeId):
         challengesDate = form.data['challengeDate']
         if challengesDate < datetime.now().date():
             return {'errors': 'Cannot schedule challenge in the past'}, 400
-        
+
         challenge.name = form.data['name']
         challenge.description = form.data['description']
         challenge.challengeDate = form.data['challengeDate']
@@ -99,3 +99,19 @@ def update_challenge_byId(challengeId):
 
         return challenge.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# DELETE remove a challenge by challengeId
+@challenge_routes.route('/<int:challengeId>', methods=['DELETE'])
+@login_required
+def delete_challenge(challengeId):
+    challenge = Challenge.query.get(challengeId)
+
+    if challenge is None:
+        return {"error": "Challenge could not be found"}, 404
+
+    if challenge.challengerId != current_user.id:
+        return {'error': 'User is not authorized'}, 401
+
+    db.session.delete(challenge)
+    db.session.commit()
+    return {"message": "Challenge successfully deleted"}
