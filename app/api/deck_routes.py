@@ -86,7 +86,7 @@ def update_deck(deckId):
 
     db.session.commit()
 
-    return {'deck': deck.to_dict()}
+    return deck.to_dict()
 
 # DELETE remove a deck by deckId
 @deck_routes.route('/<int:deckId>', methods=['DELETE'])

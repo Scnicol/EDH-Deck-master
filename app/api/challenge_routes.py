@@ -46,7 +46,6 @@ def create_challenge():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     currentUserId = current_user.get_id()
-    print(currentUserId, '_________CurrentUserId__________')
     user = User.query.get(currentUserId)
 
     if user is None:
@@ -54,6 +53,10 @@ def create_challenge():
 
     if form.validate_on_submit():
         data = form.data
+        challengesDate = form.data['challengeDate']
+
+        if challengesDate < datetime.now().date():
+            return {'errors': 'Cannot schedule challenge in the past'}, 400
 
         newChallenge = Challenge(
             name = data['name'],
@@ -68,3 +71,31 @@ def create_challenge():
         return newChallenge.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+# PUT edit a challenge by id
+@challenge_routes.route('/<int:challengeId>', methods=['PUT'])
+@login_required
+def update_challenge_byId(challengeId):
+    form = CreateChallengeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    challenge = Challenge.query.get(challengeId)
+
+    if challenge is None:
+        return {"error": "Deck could not be found"}, 404
+
+    if challenge.challengerId != current_user.id:
+        return {'error': 'User is not authorized'}, 401
+
+    if form.validate_on_submit():
+        challengesDate = form.data['challengeDate']
+        if challengesDate < datetime.now().date():
+            return {'errors': 'Cannot schedule challenge in the past'}, 400
+        
+        challenge.name = form.data['name']
+        challenge.description = form.data['description']
+        challenge.challengeDate = form.data['challengeDate']
+
+        db.session.commit()
+
+        return challenge.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
