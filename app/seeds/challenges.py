@@ -35,10 +35,19 @@ def seed_challenges():
         challengedId=5
     )
 
+    challenge5 = Challenge(
+        name="Let's gooooooooooooo",
+        descriptiong="just out to have fun and I love your deck designs",
+        challengeDate=date(2023, 8, 12),
+        challengerId=3,
+        challengedId=1
+    )
+
     db.session.add(challenge1)
     db.session.add(challenge2)
     db.session.add(challenge3)
     db.session.add(challenge4)
+    db.session.add(challenge5)
     db.session.commit()
 
 def undo_challenges():
