@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db, Deck, Review
+from app.models import User, db, Deck, Review, Card
 from app.forms.deck_form import CreateDeckForm
 from datetime import datetime
 from sqlalchemy import and_
@@ -33,12 +33,22 @@ def create_deck():
 
     if form.validate_on_submit():
         data = form.data
+        deckData = request.get_json()
 
         newDeck = Deck(
-            creatorId=current_user.id,
-            name=data["name"],
-            description=data["description"]
+            creatorId = current_user.id,
+            name = data["name"],
+            description = data["description"]
         )
+
+        for cardData in deckData["cards"]:
+            card = Card(
+                count = cardData["count"],
+                name = cardData["name"],
+                imageUrl = cardData["imageUrl"]
+            )
+
+            newDeck.cards.append(card)
 
         db.session.add(newDeck)
         db.session.commit()
@@ -51,10 +61,10 @@ def update_deck(deckId):
     deck = Deck.query.get(deckId)
 
     if deck is None:
-        return {"Error": "deck could not be found"}, 404
+        return {"error": "Deck could not be found"}, 404
 
     if deck.creatorId != current_user.id:
-        return {'Error': 'User is not authorized'}, 401
+        return {'error': 'User is not authorized'}, 401
 
     deck.name = request.json['name']
     deck.description = request.json['description']
@@ -62,3 +72,18 @@ def update_deck(deckId):
     db.session.commit()
 
     return {'deck': deck.to_dict()}
+
+@deck_routes.route('/<int:deckId>', methods=['DELETE'])
+@login_required
+def delete_deck(deckId):
+    deck = Deck.query.get(deckId)
+
+    if deck is None:
+        return {"error": "Deck could not be found"}, 404
+
+    if deck.creatorId != current_user.id:
+        return {'error': 'User is not authorized'}, 401
+
+    db.session.delete(deck)
+    db.session.commit()
+    return {"message": "Deck successfully deleted"}
