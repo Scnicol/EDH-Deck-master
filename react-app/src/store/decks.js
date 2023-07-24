@@ -13,7 +13,7 @@ export const getDecks = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(loadDecks(data.Decks))
+        dispatch(loadDecks(data.decks))
     }
 }
 
@@ -26,10 +26,12 @@ const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_DECKS:
             action.decks.forEach(deck => {
-                newState[deck.id] = tasker;
+                newState[deck.id] = deck;
             })
             return newState
         default:
             return state;
     }
 }
+
+export default decksReducer;
