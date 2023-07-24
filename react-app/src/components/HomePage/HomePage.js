@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Link, Route, useParams } from 'react-router-dom';
-import { getDecks } from '../../store/decks';
+import { getDecks, getUsersDecks } from '../../store/decks';
 
 const HomePage = () => {
 
@@ -12,6 +12,7 @@ const HomePage = () => {
 
     useEffect(() => {
         dispatch(getDecks());
+        dispatch(getUsersDecks());
     }, [dispatch]);
 
     return (

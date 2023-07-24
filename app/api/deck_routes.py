@@ -23,7 +23,7 @@ def get_user_decks():
     if user is None:
         return {'error': 'User not found'}, 404
 
-    return {'Decks': [deck.to_dict_full() for deck in user.decks]}
+    return {'decks': [deck.to_dict_full() for deck in user.decks]}
 
 # GET one deck specified by id
 @deck_routes.route('/<int:deckId>', methods=['GET'])
