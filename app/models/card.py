@@ -13,7 +13,8 @@ class Card(db.Model, UserMixin):
     deckId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('decks.id')))
     count = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(50), nullable=False)
-    imageUrl = db.Column(db.String(600), nullable=False)
+    imageUrl = db.Column(db.String(600))
+    mtgId = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
