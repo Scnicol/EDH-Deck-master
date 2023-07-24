@@ -44,5 +44,7 @@ class Deck(db.Model, UserMixin):
             'description': self.description,
             'createdAt': self.created_at.isoformat(),
             'updatedAt': self.updated_at.isoformat(),
-            'reviews': [review.to_dict() for review in self.reviews]
+            'reviews': [review.to_dict() for review in self.reviews],
+            'cards': [card.to_dict() for card in self.cards]
         }
+

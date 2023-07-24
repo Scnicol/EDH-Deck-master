@@ -23,7 +23,7 @@ def get_user_decks():
     if user is None:
         return {'error': 'User not found'}, 404
 
-    return {'Decks': [deck.to_dict() for deck in user.decks]}
+    return {'Decks': [deck.to_dict_full() for deck in user.decks]}
 
 # GET one deck specified by id
 @deck_routes.route('/<int:deckId>', methods=['GET'])
@@ -37,14 +37,12 @@ def get_deck_byId(deckId):
     return deck.to_dict_full()
 
 # POST create a deck with a list of cards
+# Ask how we can pass the cardData object into our cardForm
 @deck_routes.route('', methods=['POST'])
 @login_required
 def create_deck():
     deckForm = CreateDeckForm()
     deckForm['csrf_token'].data = request.cookies['csrf_token']
-
-    cardForm = CreateCardForm()
-    cardForm['csrf_token'].data = request.cookies['csrf_token']
 
     if deckForm.validate_on_submit():
         deckData = request.get_json()
@@ -55,12 +53,15 @@ def create_deck():
             description = deckForm.data["description"]
         )
 
-        if cardForm.validate_on_submit():
+        for cardData in deckData["cards"]:
+            # cardForm = CreateCardForm(obj=cardData)
+            # cardForm['csrf_token'].data = request.cookies['csrf_token']
+            # if cardForm.validate_on_submit():
 
-            for cardData in deckData["cards"]:
                 card = Card(
                     count = cardData["count"],
                     name = cardData["name"],
+                    mtgId = cardData["mtgId"],
                     imageUrl = cardData["imageUrl"]
                 )
 
@@ -68,17 +69,18 @@ def create_deck():
 
         db.session.add(newDeck)
         db.session.commit()
-        return newDeck.to_dict()
-    return {'deck errors': validation_errors_to_error_messages(deckForm.errors),
-            'card errors': validation_errors_to_error_messages(cardForm.errors)}, 401
+        return newDeck.to_dict_full()
+    return {'deck errors': validation_errors_to_error_messages(deckForm.errors)}, 401
 
 # PUT edit a deck by deckId
-### ask if we can add and remove cards here ###
 @deck_routes.route('/<int:deckId>', methods=['PUT'])
 @login_required
 def update_deck(deckId):
-    form = CreateDeckForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+    deckForm = CreateDeckForm()
+    deckForm['csrf_token'].data = request.cookies['csrf_token']
+
+    # cardForm = CreateCardForm()
+    # cardForm['csrf_token'].data = request.cookies['csrf_token']
 
     deck = Deck.query.get(deckId)
 
@@ -88,17 +90,34 @@ def update_deck(deckId):
     if deck.creatorId != current_user.id:
         return {'error': 'User is not authorized'}, 401
 
-    if form.validate_on_submit():
-        data = form.data
+    if deckForm.validate_on_submit():
+        data = deckForm.data
         deckData = request.get_json()
 
-        deck.name = form.data['name']
-        deck.description = form.data['description']
+        deck.name = deckForm.data['name']
+        deck.description = deckForm.data['description']
 
+        # if cardForm.validate_on_submit():
+
+        # for card in deck.cards:
+        #     deck.cards.remove(card)
+
+        cardsArr = []
+        for cardData in deckData["cards"]:
+            card = Card(
+                deckId = deckId,
+                count = cardData["count"],
+                name = cardData["name"],
+                mtgId = cardData["mtgId"],
+                imageUrl = cardData["imageUrl"]
+            )
+
+            cardsArr.append(card)
+        deck.cards = cardsArr
         db.session.commit()
 
-        return deck.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return deck.to_dict_full()
+    return {'deck errors': validation_errors_to_error_messages(deckForm.errors)}, 401
 
 # DELETE remove a deck by deckId
 @deck_routes.route('/<int:deckId>', methods=['DELETE'])
