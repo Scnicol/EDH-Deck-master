@@ -96,7 +96,7 @@ export const updateDeck = (deck) => async dispatch => {
 }
 
 export const deleteDeck = (deckId) => async dispatch => {
-    const response = await csrfFetch(`/api/decks/${deckId}`, {
+    const response = await fetch(`/api/decks/${deckId}`, {
         method: 'DELETE',
     });
 
