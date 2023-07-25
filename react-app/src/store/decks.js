@@ -67,7 +67,7 @@ export const getDeckById = (deckId) => async dispatch => {
 }
 
 export const createDeck = (deck) => async dispatch => {
-    const response = await fetch(`api/decks`, {
+    const response = await fetch(`/api/decks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(deck)
@@ -120,7 +120,7 @@ const decksReducer = (state = initialState, action) => {
             })
             return {
                 ...state,
-                decks: decksState
+                ...decksState
             }
 
         case LOAD_USERS_DECKS:
@@ -130,31 +130,24 @@ const decksReducer = (state = initialState, action) => {
             })
             return {
                 ...state,
-                usersDecks: userDecksState
+                ...userDecksState
             }
         case GET_DECK_BY_ID:
             return {
                 ...state,
-                decks: {
-                    ...state.decks,
-                    [action.deck.id]: action.deck
-                }
+                [action.deck.id]: action.deck
+
             }
         case CREATE_DECK:
             return {
                 ...state,
-                decks: {
-                    ...state.decks,
-                    [action.deck.id]: action.deck
-                }
+                [action.deck.id]: action.deck
+
             }
         case UPDATE_DECK:
             return {
                 ...state,
-                decks: {
-                    ...state.decks,
-                    [action.deck.id]: { ...state[action.deck.id], ...action.deck}
-                }
+                [action.deck.id]: { ...state[action.deck.id], ...action.deck }
             }
         case DELETE_DECK:
             newState = { ...state };

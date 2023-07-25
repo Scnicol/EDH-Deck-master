@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Link, Route, useParams } from 'react-router-dom';
 import { getDecks, getUsersDecks } from '../../store/decks';
+import { loadAllChallenges } from '../../store/challenges';
 
 const HomePage = () => {
 
@@ -13,6 +14,8 @@ const HomePage = () => {
     useEffect(() => {
         dispatch(getDecks());
         dispatch(getUsersDecks());
+        dispatch(loadAllChallenges());
+        // dispatch()
     }, [dispatch]);
 
     return (
