@@ -10,3 +10,4 @@ Pipfile
 Pipfile.lock
 .Pipfile.lock
 .Pipfile
+node_modules

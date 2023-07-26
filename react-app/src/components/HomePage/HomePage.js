@@ -4,6 +4,7 @@ import { NavLink, Link, Route, useParams } from 'react-router-dom';
 import { getDecks, getUsersDecks } from '../../store/decks';
 import { loadAllChallenges } from '../../store/challenges';
 import { imageDisplay } from '../../helperFunctions';
+import CardSearch from '../CardSearch/CardSearch';
 
 const HomePage = () => {
 
@@ -26,6 +27,9 @@ const HomePage = () => {
         <main>
             <div>
                 EDH DECK MASTER!
+            </div>
+            <div>
+                <CardSearch/>
             </div>
             <div>
                 Decks
