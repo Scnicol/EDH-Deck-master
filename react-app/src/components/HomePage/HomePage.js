@@ -15,7 +15,6 @@ const HomePage = () => {
         dispatch(getDecks());
         dispatch(getUsersDecks());
         dispatch(loadAllChallenges());
-        // dispatch()
     }, [dispatch]);
 
     return (

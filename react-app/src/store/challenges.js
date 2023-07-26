@@ -17,9 +17,9 @@ const actionGetChallenges = (challenges) => ({
     challenges
 })
 
-const actionGetChallengeById = (challenge) => ({
+const actionGetChallengeById = (challengeId) => ({
     type: GET_CHALLENGE_BY_ID,
-    challenge
+    challengeId
 })
 
 const actionCreateChallenge = (challenge) => ({
@@ -61,7 +61,7 @@ export const getChallengeById = (challengeId) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(actionGetChallengeById(data.challenge))
+        dispatch(actionGetChallengeById(data.challengeId))
     }
 }
 
