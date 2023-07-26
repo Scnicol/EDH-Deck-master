@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage/HomePage";
 import DeckDetails from "./components/Decks/DeckDetails";
+import DeckList from "./components/Decks/DeckList";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path={`/decks/current`}>
+            <DeckList/>
           </Route>
           <Route exact path={`/decks/:deckId`}>
             <DeckDetails/>

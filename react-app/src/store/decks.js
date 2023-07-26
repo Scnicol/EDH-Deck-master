@@ -52,8 +52,8 @@ export const getUsersDecks = () => async dispatch => {
     const response = await fetch(`/api/decks/current`)
 
     if (response.ok) {
-        const decks = await response.json();
-        dispatch(loadUsersDecks(decks))
+        const data = await response.json();
+        dispatch(loadUsersDecks(data.decks))
     }
 }
 
