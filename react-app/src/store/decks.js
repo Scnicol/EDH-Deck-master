@@ -52,8 +52,8 @@ export const getUsersDecks = () => async dispatch => {
     const response = await fetch(`/api/decks/current`)
 
     if (response.ok) {
-        const data = await response.json();
-        dispatch(loadUsersDecks(data.decks))
+        const decks = await response.json();
+        dispatch(loadUsersDecks(decks))
     }
 }
 
@@ -61,8 +61,8 @@ export const getDeckById = (deckId) => async dispatch => {
     const response = await fetch(`/api/decks/${deckId}`)
 
     if (response.ok) {
-        const data = await response.json();
-        dispatch(loadDeckById(data.deck))
+        const deck = await response.json();
+        dispatch(loadDeckById(deck))
     }
 }
 
