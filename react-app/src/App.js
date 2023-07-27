@@ -11,6 +11,7 @@ import DeckList from "./components/Decks/DeckList";
 import UserReviews from "./components/Reviews/UserReviews";
 import CreateReviewForm from "./components/Reviews/CreateReviewForm";
 import CreateDeckForm from "./components/Decks/CreateDeckForm";
+import UpdateReviewForm from "./components/Reviews/UpdateReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,11 +43,14 @@ function App() {
           <Route exact path={`/decks/:deckId`}>
             <DeckDetails/>
           </Route>
-          <Route path={`/reviews/current`}>
+          <Route exact path={`/reviews/current`}>
             <UserReviews/>
           </Route>
-          <Route path={`/reviews/current/:deckId`}>
+          <Route exact path={`/reviews/current/:deckId`}>
             <CreateReviewForm/>
+          </Route>
+          <Route path={`/reviews/current/:deckId/edit/:reviewId`}>
+            <UpdateReviewForm/>
           </Route>
 
         </Switch>

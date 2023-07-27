@@ -35,7 +35,7 @@ function UserReviews() {
                         <div>
                             description: {review.description}
                         </div>
-                        <NavLink to={`/reviews/current/${review.deckId}/edit`}>
+                        <NavLink to={`/reviews/current/${review.deckId}/edit/${review.id}`}>
                             Edit Review
                         </NavLink>
                     </div>

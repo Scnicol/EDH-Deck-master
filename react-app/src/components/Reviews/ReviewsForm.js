@@ -5,12 +5,14 @@ import { loadAllReviews } from '../../store/reviews';
 import { getDeckById } from '../../store/decks';
 
 
-function ReviewForm({review, deckId, submitAction, formSubmit}) {
+function ReviewForm({review, deckId, submitAction, formSubmit, formTitle}) {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    console.log(review, "Review---------")
+
     const [rating, setRating] = useState(review.rating);
-    const [description, setDescription] = useState('');
+    const [description, setDescription] = useState(review.description);
 
     // ________VALIDATION_ERRORS_STATE____________
     const [errors, setErrors] = useState({ rating: [], description: [] })
@@ -19,8 +21,7 @@ function ReviewForm({review, deckId, submitAction, formSubmit}) {
     const updateDescription = (e) => setDescription(e.target.value);
 
     const deck = useSelector(state => state.decks[deckId])
-    // const deck = Object.values(decks).filter(deck => deck.id == deckId)
-    console.log(deck, "deck for create a review")
+
     useEffect(() => {
         dispatch(loadAllReviews())
         dispatch(getDeckById(deckId))
@@ -44,7 +45,7 @@ function ReviewForm({review, deckId, submitAction, formSubmit}) {
         }
     };
 
-    if (!deck) {
+    if (!deck || !review) {
         return (
             <h1>Loading...</h1>
         )
@@ -52,7 +53,7 @@ function ReviewForm({review, deckId, submitAction, formSubmit}) {
 
     return (
         <div>
-            <h1>Create your review for {deck.name}</h1>
+            <h1>{formTitle} your review for {deck.name}</h1>
             <form onSubmit={handleSubmit}>
                 <p>Description</p>
                 <input

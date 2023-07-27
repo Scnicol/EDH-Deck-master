@@ -24,6 +24,17 @@ def get_user_reviews():
 
     return {'reviews': [review.to_dict() for review in user.reviews]}
 
+# GET a review by id
+@review_routes.route('/<int:reviewId>', methods=["GET"])
+@login_required
+def get_review_by_id(reviewId):
+    review = Review.query.get(reviewId)
+
+    if review is None:
+        return {'error': 'Review not found'}, 404
+
+    return review.to_dict()
+
 # POST create a review for a deck
 @review_routes.route('', methods=['POST'])
 @login_required
