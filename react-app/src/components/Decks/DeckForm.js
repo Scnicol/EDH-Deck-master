@@ -50,6 +50,15 @@ function DeckForm({ }) {
         })
     }
 
+    const handleUpdateCardCount = (card, count) => {
+        setCards(function (prevCards) {
+            return {
+                ...prevCards,
+                [card.id]: { ...card, count: count }
+            }
+        })
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const deck = {
@@ -60,25 +69,30 @@ function DeckForm({ }) {
     }
 
     // ____VALIDATION_ERROR_CHECK___________
-
+    // TODO add fields for name and description
     return (
         <div>
-            <div>
-                {sortedCards.map((card) => (
-                    <div key={card.id}>
-                        <input
-                            type="number"
-                            min="1"
+            <form onSubmit={handleSubmit}>
+                <div>
+                    {sortedCards.map((card) => (
+                        <div key={card.id}>
+                            <input
+                                type="number"
+                                min="1"
+                                value={card.count}
+                                onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
+                            />
+                            {card.count}x {card.name}
+                            {/* <img src={(card?.imageUrl)} /> */}
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <CardSearch onAddCard={handleAddCard} />
+                </div>
+                <button type="submit">create deck</button>
+            </form>
 
-                        />
-                        {card.count}x {card.name}
-                        {/* <img src={(card?.imageUrl)} /> */}
-                    </div>
-                ))}
-            </div>
-            <div>
-                <CardSearch onAddCard={handleAddCard} />
-            </div>
         </div>
     )
 
