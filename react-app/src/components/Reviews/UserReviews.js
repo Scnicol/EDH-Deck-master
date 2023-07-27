@@ -2,16 +2,19 @@ import { useState, useEffect } from 'react';
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadAllReviews } from '../../store/reviews';
+import { getUsersDecks } from '../../store/decks';
 
 
-function UserReviews({ deckReviews }) {
+function UserReviews() {
     const dispatch = useDispatch();
     const reviews = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
+    const decks = useSelector(state => state.decks)
     const userReviews = Object.values(reviews).filter(review => review.reviewerId == user.id)
 
     useEffect(() => {
         dispatch(loadAllReviews())
+        dispatch(getUsersDecks())
     }, [dispatch])
 
     if (!reviews) {
@@ -25,15 +28,16 @@ function UserReviews({ deckReviews }) {
             <h1>Reviews</h1>
             <div>
                 {userReviews.map((review) => (
-                    <div>
-                        <div key={review.id}>
-                            <div>
-                                rating: {review.rating}
-                            </div>
-                            <div>
-                                description: {review.description}
-                            </div>
+                    <div key={review.id}>
+                        <div>
+                            rating: {review.rating}
                         </div>
+                        <div>
+                            description: {review.description}
+                        </div>
+                        <NavLink to={`/reviews/current/${review.deckId}/edit`}>
+                            Edit Review
+                        </NavLink>
                     </div>
                 ))}
             </div>

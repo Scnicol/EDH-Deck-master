@@ -40,6 +40,9 @@ const DeckDetails = () => {
             <div>
                 <ReviewList deckReviews={deckReviews}/>
             </div>
+            <NavLink to={`/reviews/current/${deckId}`}>
+                Leave a Review
+            </NavLink>
         </div>
     )
 }

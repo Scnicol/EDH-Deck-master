@@ -31,6 +31,7 @@ def create_review():
     reviewForm = CreateReviewForm()
     reviewForm['csrf_token'].data = request.cookies['csrf_token']
 
+    print(request.get_json(), "request Body")
     if reviewForm.validate_on_submit():
 
         newReview = Review(

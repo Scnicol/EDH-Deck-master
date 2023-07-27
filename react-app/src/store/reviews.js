@@ -72,10 +72,10 @@ export const createReview = (review) => async dispatch => {
         body: JSON.stringify(review)
     })
 
-
     if (response.ok) {
         let newReview = await response.json();
         dispatch(actionCreateReview(newReview));
+        return newReview;
     }
 }
 
