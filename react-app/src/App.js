@@ -9,6 +9,8 @@ import HomePage from "./components/HomePage/HomePage";
 import DeckDetails from "./components/Decks/DeckDetails";
 import DeckList from "./components/Decks/DeckList";
 import UserReviews from "./components/Reviews/UserReviews";
+import CreateReviewForm from "./components/Reviews/CreateReviewForm";
+import CreateDeckForm from "./components/Decks/CreateDeckForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,12 +36,19 @@ function App() {
           <Route exact path={`/decks/current`}>
             <DeckList/>
           </Route>
+          <Route exact path={`/decks/current/new`}>
+            <CreateDeckForm/>
+          </Route>
           <Route exact path={`/decks/:deckId`}>
             <DeckDetails/>
           </Route>
-          <Route exact path={`/reviews/current`}>
+          <Route path={`/reviews/current`}>
             <UserReviews/>
           </Route>
+          <Route path={`/reviews/current/:deckId`}>
+            <CreateReviewForm/>
+          </Route>
+
         </Switch>
       )}
     </>
