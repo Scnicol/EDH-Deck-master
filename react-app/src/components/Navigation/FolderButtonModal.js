@@ -6,14 +6,17 @@ function FolderButton({ user }) {
 
     return (
         <div>
-            <NavLink exact to={`/decks/current`}>
+            <NavLink to={`/decks/current`}>
                 Decks
             </NavLink>
-            <NavLink exact to={`/challenges/current`}>
+            <NavLink to={`/challenges/current`}>
                 Challenges
             </NavLink>
-            <NavLink exact to={`/wishlist`}>
+            <NavLink to={`/wishlist`}>
                 Wishlist
+            </NavLink>
+            <NavLink to={`/reviews/current`}>
+                Reviews
             </NavLink>
         </div>
     )

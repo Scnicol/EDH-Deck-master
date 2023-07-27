@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 const mtg = require('mtgsdk')
 
-const CardSearch = () => {
+const CardSearch = ({onAddCard}) => {
 
     const dispatch = useDispatch()
 
@@ -36,7 +36,7 @@ const CardSearch = () => {
                         return 0;
                     })
 
-                    
+
                     setCardResults(finalResults)
                 }).catch((error) => {
                     console.error(error);

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDeckById } from '../../store/decks';
+import { loadAllReviews } from '../../store/reviews';
+import ReviewList from '../Reviews/ReviewsList';
 
 
 const DeckDetails = () => {
@@ -9,9 +11,12 @@ const DeckDetails = () => {
     const dispatch = useDispatch();
 
     const deck = useSelector(state => state.decks[deckId])
+    const reviews = Object.values(useSelector(state => state.reviews))
+    const deckReviews = reviews.filter(review => review.deckId == deckId)
 
     useEffect(() => {
         dispatch(getDeckById(deckId))
+        dispatch(loadAllReviews())
     }, [dispatch])
 
     if (!deck) return (
@@ -31,6 +36,9 @@ const DeckDetails = () => {
                         {card.count}x {card.name}
                     </div>
                 ))}
+            </div>
+            <div>
+                <ReviewList deckReviews={deckReviews}/>
             </div>
         </div>
     )
