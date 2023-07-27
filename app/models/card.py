@@ -30,6 +30,7 @@ class Card(db.Model, UserMixin):
             'deckId': self.deckId,
             'count': self.count,
             'name': self.name,
+            'mtgId': self.mtgId,
             'imageUrl': self.imageUrl,
             'createdAt': self.created_at.isoformat(),
             'updatedAt': self.updated_at.isoformat()
