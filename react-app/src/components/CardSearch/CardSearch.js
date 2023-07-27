@@ -6,7 +6,7 @@ const CardSearch = ({onAddCard}) => {
 
     const dispatch = useDispatch()
 
-    const [cardName, setCardName] = useState(null)
+    const [cardName, setCardName] = useState('')
     const [cardResults, setCardResults] = useState([])
 
     const updateCardName = (e) => setCardName(e.target.value)
@@ -15,9 +15,8 @@ const CardSearch = ({onAddCard}) => {
         if (cardName && cardName.length > 1) {
             mtg.card.where({ name: cardName })
                 .then(results => {
-                    console.log(results)
-                    let filteredResults = {}
 
+                    let filteredResults = {}
 
                     results.filter((card) => {
                         return card.name.toLowerCase().startsWith(cardName.toLowerCase())
@@ -25,8 +24,7 @@ const CardSearch = ({onAddCard}) => {
                         filteredResults[card.name] = card
                     })
 
-
-                    let finalResults = Object.values(filteredResults).toSorted(function (x, y) {
+                    let sortedResults = Object.values(filteredResults).toSorted(function (x, y) {
                         if (x.name < y.name) {
                             return -1;
                         }
@@ -36,6 +34,7 @@ const CardSearch = ({onAddCard}) => {
                         return 0;
                     })
 
+                    let finalResults = sortedResults.slice(0, 5);
 
                     setCardResults(finalResults)
                 }).catch((error) => {
@@ -54,7 +53,13 @@ const CardSearch = ({onAddCard}) => {
             />
             <div>
                 {cardResults.map((card) => (
-                    <div key={card.id}>
+                    <div key={card.id}
+                     onClick={(e) => {
+
+                        // console.log("inside CardSearch")
+                        onAddCard(card)
+                    }}
+                     >
                         {card.name}
                     </div>
                 ))}

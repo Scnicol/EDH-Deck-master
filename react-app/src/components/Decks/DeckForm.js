@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CardSearch from '../CardSearch/CardSearch';
 
-function DeckForm() {
+function DeckForm({ }) {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -14,7 +14,7 @@ function DeckForm() {
     const [cards, setCards] = useState([])
 
     // ____________VALIDATION_ERRORS______________
-    const [errors, setErrors] = useState({ name: [], description: []})
+    const [errors, setErrors] = useState({ name: [], description: [] })
 
     const updateName = (e) => setName(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -32,10 +32,10 @@ function DeckForm() {
         )
     }
 
-    const handleAddCard = () => {
+    const handleAddCard = (newCard) => {
         setCards((prevCards) => [
             ...prevCards,
-
+            newCard
         ])
     }
 
@@ -49,6 +49,23 @@ function DeckForm() {
     }
 
     // ____VALIDATION_ERROR_CHECK___________
+
+    return (
+        <div>
+            <div>
+                {cards.map((card) => (
+                    <div key={card.id}>
+                        {card.count}x {card.name}
+                        {/* <img src={(card?.imageUrl)} /> */}
+                    </div>
+                ))}
+            </div>
+            <div>
+                <CardSearch onAddCard={handleAddCard} />
+            </div>
+        </div>
+    )
+
 
 
 }

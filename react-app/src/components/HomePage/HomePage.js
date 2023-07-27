@@ -28,9 +28,7 @@ const HomePage = () => {
             <div>
                 EDH DECK MASTER!
             </div>
-            <div>
-                <CardSearch/>
-            </div>
+            
             <div>
                 Decks
                 <div>

@@ -22,12 +22,12 @@ function ReviewList({ deckReviews }) {
             <h1>Reviews</h1>
             <div>
                 {deckReviews.map((review) => (
-                    <div>
-                        <div key={review.id}>
-                            rating: {review.rating}
-                            description: {review.description}
-                        </div>
+
+                    <div key={review.id}>
+                        rating: {review.rating}
+                        description: {review.description}
                     </div>
+
                 ))}
             </div>
         </div>
