@@ -11,7 +11,7 @@ function DeckForm({ }) {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [newCard, setNewCard] = useState(null)
-    const [cards, setCards] = useState([])
+    const [cards, setCards] = useState({})
 
     // ____________VALIDATION_ERRORS______________
     const [errors, setErrors] = useState({ name: [], description: [] })
@@ -19,6 +19,15 @@ function DeckForm({ }) {
     const updateName = (e) => setName(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
     const addCard = (e) => cards.append(e)
+    const sortedCards = Object.values(cards).toSorted(function (x, y) {
+        if (x.name < y.name) {
+            return -1;
+        }
+        if (x.name > y.name) {
+            return 1;
+        }
+        return 0;
+    })
 
     // useEffect(() => {
     //     // dispatch()
@@ -33,10 +42,12 @@ function DeckForm({ }) {
     }
 
     const handleAddCard = (newCard) => {
-        setCards((prevCards) => [
-            ...prevCards,
-            newCard
-        ])
+        setCards(function (prevCards) {
+            return {
+                ...prevCards,
+                [newCard.id]: { ...newCard, count: 1 }
+            }
+        })
     }
 
     const handleSubmit = async (e) => {
@@ -53,8 +64,13 @@ function DeckForm({ }) {
     return (
         <div>
             <div>
-                {cards.map((card) => (
+                {sortedCards.map((card) => (
                     <div key={card.id}>
+                        <input
+                            type="number"
+                            min="1"
+
+                        />
                         {card.count}x {card.name}
                         {/* <img src={(card?.imageUrl)} /> */}
                     </div>
