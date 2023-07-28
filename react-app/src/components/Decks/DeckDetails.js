@@ -37,6 +37,9 @@ const DeckDetails = () => {
                     </div>
                 ))}
             </div>
+            <NavLink to={`current/${deckId}/edit`}>
+                Edit Deck
+            </NavLink>
             <div>
                 <ReviewList deckReviews={deckReviews}/>
             </div>

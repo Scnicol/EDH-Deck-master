@@ -91,7 +91,7 @@ export const updateDeck = (deck) => async dispatch => {
     if (response.ok) {
         const updatedDeck = await response.json();
         dispatch(loadUpdateDeck(updatedDeck));
-
+        return updatedDeck;
     }
 }
 

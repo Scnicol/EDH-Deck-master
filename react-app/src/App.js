@@ -14,6 +14,8 @@ import CreateDeckForm from "./components/Decks/CreateDeckForm";
 import UpdateReviewForm from "./components/Reviews/UpdateReviewForm";
 import UsersChallengeList from "./components/Challenges/UsersChallengeList";
 import CreateChallengeForm from "./components/Challenges/CreateChallengeForm";
+import UpdateChallengeForm from "./components/Challenges/UpdateChallengeForm";
+import UpdateDeckForm from "./components/Decks/UpdateDeckForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +47,9 @@ function App() {
           <Route exact path={`/decks/:deckId`}>
             <DeckDetails/>
           </Route>
+          <Route exact path={`/decks/current/:deckId/edit`}>
+            <UpdateDeckForm/>
+          </Route>
           <Route exact path={`/reviews/current`}>
             <UserReviews/>
           </Route>
@@ -57,11 +62,12 @@ function App() {
           <Route exact path={`/challenges/current`}>
             <UsersChallengeList/>
           </Route>
-          
-          <Route path={`/challenges/current/:challengedId`}>
+          <Route exact path={`/challenges/current/:challengedId`}>
             <CreateChallengeForm/>
           </Route>
-
+          <Route path={`/challenges/current/:challengedId/edit/:challengeId`}>
+            <UpdateChallengeForm/>
+          </Route>
 
         </Switch>
       )}

@@ -91,16 +91,11 @@ def update_deck(deckId):
         return {'error': 'User is not authorized'}, 401
 
     if deckForm.validate_on_submit():
-        data = deckForm.data
+       
         deckData = request.get_json()
 
         deck.name = deckForm.data['name']
         deck.description = deckForm.data['description']
-
-        # if cardForm.validate_on_submit():
-
-        # for card in deck.cards:
-        #     deck.cards.remove(card)
 
         cardsArr = []
         for cardData in deckData["cards"]:
@@ -109,7 +104,7 @@ def update_deck(deckId):
                 count = cardData["count"],
                 name = cardData["name"],
                 mtgId = cardData["mtgId"],
-                imageUrl = cardData["imageUrl"]
+                imageUrl = cardData.get("imageUrl")
             )
 
             cardsArr.append(card)

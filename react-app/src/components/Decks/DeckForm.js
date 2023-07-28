@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CardSearch from '../CardSearch/CardSearch';
@@ -14,7 +14,6 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
 
     const [name, setName] = useState(deck.name)
     const [description, setDescription] = useState(deck.description)
-    const [newCard, setNewCard] = useState(null)
     const [cards, setCards] = useState(deckCards)
 
     // ____________VALIDATION_ERRORS______________
@@ -22,7 +21,6 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
 
     const updateName = (e) => setName(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
-    const addCard = (e) => cards.append(e)
     const sortedCards = Object.values(cards).toSorted(function (x, y) {
         if (x.name < y.name) {
             return -1;
@@ -32,10 +30,6 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
         }
         return 0;
     })
-
-    // useEffect(() => {
-    //     // dispatch()
-    // }, [dispatch])
 
     const currentUser = useSelector(state => state.session.user)
 
