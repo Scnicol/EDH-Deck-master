@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CardSearch from '../CardSearch/CardSearch';
 
-function DeckForm({ submitAction, deck}) {
+function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -80,14 +80,19 @@ function DeckForm({ submitAction, deck}) {
         }
         // ____VALIDATION_ERROR_CHECK___________
 
+
         let newDeck;
         newDeck = await dispatch(submitAction(deck))
-    }
 
+        if (newDeck) {
+            history.push(`/decks/current`)
+        }
+    }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <h2>{formTitle} your deck</h2>
                 <p>Please give your deck a name</p>
                 <input
                     type="text"
@@ -119,7 +124,7 @@ function DeckForm({ submitAction, deck}) {
                 <div>
                     <CardSearch onAddCard={handleAddCard} />
                 </div>
-                <button type="submit">create deck</button>
+                <button type="submit">{formSubmit} deck</button>
             </form>
         </div>
     )

@@ -77,7 +77,7 @@ export const createDeck = (deck) => async dispatch => {
     if (response.ok) {
         newDeck = await response.json();
         dispatch(loadCreateDeck(newDeck));
-
+        return newDeck;
     }
 }
 

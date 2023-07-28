@@ -24,6 +24,9 @@ function DeckList() {
             <div>
                 User's Decks
             </div>
+            <NavLink to="/decks/current/new">
+                Create a Deck
+            </NavLink>
             <div>
                 {userDecks.map((deck) => (
                     <div key={deck.id}>

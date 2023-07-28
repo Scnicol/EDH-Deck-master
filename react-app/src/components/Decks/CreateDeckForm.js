@@ -19,7 +19,7 @@ function CreateDeckForm() {
     }
 
     return (
-        <DeckForm deck={deck} submitAction={submitAction} />
+        <DeckForm deck={deck} submitAction={submitAction} formTitle="Create" formSubmit="Create"/>
     )
 }
 
