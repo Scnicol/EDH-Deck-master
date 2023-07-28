@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CardSearch from '../CardSearch/CardSearch';
 
-function DeckForm({ }) {
+function DeckForm({ submitAction}) {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -66,13 +66,30 @@ function DeckForm({ }) {
             description,
             cards,
         }
+        // ____VALIDATION_ERROR_CHECK___________
+
+        let newDeck;
+        newDeck = await dispatch(submitAction(deck))
     }
 
-    // ____VALIDATION_ERROR_CHECK___________
-    // TODO add fields for name and description
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <p>Please give your deck a name</p>
+                <input
+                    type="text"
+                    placeholder="Name your deck"
+                    value={name}
+                    onChange={updateName}
+                />
+                <p>Please give your deck a description</p>
+                <textarea
+                    type="textarea"
+                    placeholder="My deck does..."
+                    value={description}
+                    onChange={updateDescription}
+                />
                 <div>
                     {sortedCards.map((card) => (
                         <div key={card.id}>
@@ -83,7 +100,6 @@ function DeckForm({ }) {
                                 onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
                             />
                             {card.count}x {card.name}
-                            {/* <img src={(card?.imageUrl)} /> */}
                         </div>
                     ))}
                 </div>

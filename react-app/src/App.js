@@ -57,6 +57,7 @@ function App() {
           <Route exact path={`/challenges/current`}>
             <UsersChallengeList/>
           </Route>
+          
           <Route path={`/challenges/current/:challengedId`}>
             <CreateChallengeForm/>
           </Route>

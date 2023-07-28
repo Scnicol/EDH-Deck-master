@@ -69,8 +69,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit}) {
                     onChange={updateName}
                 />
                 <p>Describe your challenge</p>
-                <input
-                    type="textarea"
+                <textarea
                     placeholder="Description"
                     rows="5"
                     cols="40"
@@ -78,7 +77,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit}) {
                     onChange={updateDescription}
                 />
                 <p>Please choose a date for your challenge</p>
-                <input
+                <date
                     type="datetime"
                     placeholder='YYYY-MM-DD'
                     onChange={updateChallengeDate}
