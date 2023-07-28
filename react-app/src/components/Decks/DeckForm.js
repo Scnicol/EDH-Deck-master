@@ -57,7 +57,7 @@ function DeckForm({ submitAction, deck}) {
     const handleRemoveCard = (removedCard) => {
         setCards(function (prevCards) {
             let newCards = {...prevCards}
-            delete newCards[removedCard.id]
+            delete newCards[removedCard.mtgId]
             return newCards;
         })
     }
@@ -66,7 +66,7 @@ function DeckForm({ submitAction, deck}) {
         setCards(function (prevCards) {
             return {
                 ...prevCards,
-                [card.id]: { ...card, count: count }
+                [card.mtgId]: { ...card, count: count }
             }
         })
     }
@@ -76,7 +76,7 @@ function DeckForm({ submitAction, deck}) {
         const deck = {
             name,
             description,
-            cards,
+            cards: Object.values(cards),
         }
         // ____VALIDATION_ERROR_CHECK___________
 
@@ -104,7 +104,7 @@ function DeckForm({ submitAction, deck}) {
                 />
                 <div>
                     {sortedCards.map((card) => (
-                        <div key={card.id}>
+                        <div key={card.mtgId}>
                             <input
                                 type="number"
                                 min="1"
