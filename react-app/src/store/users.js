@@ -31,7 +31,7 @@ export const getUsers = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(actionGetUsers(data.challenges))
+        dispatch(actionGetUsers(data.users))
     }
 }
 

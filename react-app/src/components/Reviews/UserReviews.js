@@ -3,6 +3,7 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadAllReviews } from '../../store/reviews';
 import { getUsersDecks } from '../../store/decks';
+import { getDecks } from '../../store/decks';
 
 
 function UserReviews() {
@@ -14,7 +15,7 @@ function UserReviews() {
 
     useEffect(() => {
         dispatch(loadAllReviews())
-        dispatch(getUsersDecks())
+        dispatch(getDecks())
     }, [dispatch])
 
     if (!reviews) {
@@ -29,6 +30,9 @@ function UserReviews() {
             <div>
                 {userReviews.map((review) => (
                     <div key={review.id}>
+                        <div>
+                            {decks[review.deckId].name}
+                            </div>
                         <div>
                             rating: {review.rating}
                         </div>

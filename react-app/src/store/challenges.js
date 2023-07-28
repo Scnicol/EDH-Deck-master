@@ -49,10 +49,10 @@ export const loadAllChallenges = () => async dispatch => {
 
 export const getAllUserChallenges = () => async dispatch => {
     const response = await fetch(`/api/challenges/current`)
-
+    console.log(response, "response in challenges store")
     if (response.ok) {
-        const data = await response.json();
-        dispatch(actionGetChallenges(data.challenges))
+        const challenge = await response.json();
+        dispatch(actionGetChallenges(challenge))
     }
 }
 
@@ -119,7 +119,7 @@ const challengeReducer = (state = initialState, action) => {
             }
         case GET_CHALLENGES:
             let userChallengesState = {}
-            action.challenges.forEach(challenge => {
+            action.challenges.startedChallenges.forEach(challenge => {
                 userChallengesState[challenge.id] = challenge
             })
             return {

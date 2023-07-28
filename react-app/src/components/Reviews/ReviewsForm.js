@@ -57,8 +57,9 @@ function ReviewForm({review, deckId, submitAction, formSubmit, formTitle}) {
             <form onSubmit={handleSubmit}>
                 <p>Description</p>
                 <input
-                type="text"
+                type="textarea"
                 placeholder="Describe your review"
+                rows="4"
                 value={description}
                 onChange={updateDescription}
                 />
