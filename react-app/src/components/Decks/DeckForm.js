@@ -3,15 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CardSearch from '../CardSearch/CardSearch';
 
-function DeckForm({ submitAction}) {
+function DeckForm({ submitAction, deck}) {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    let deckCards = {}
+    deck.cards.forEach(card => {
+        deckCards[card.mtgId] = card
+    })
 
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
+    const [name, setName] = useState(deck.name)
+    const [description, setDescription] = useState(deck.description)
     const [newCard, setNewCard] = useState(null)
-    const [cards, setCards] = useState({})
+    const [cards, setCards] = useState(deckCards)
 
     // ____________VALIDATION_ERRORS______________
     const [errors, setErrors] = useState({ name: [], description: [] })
@@ -45,8 +49,16 @@ function DeckForm({ submitAction}) {
         setCards(function (prevCards) {
             return {
                 ...prevCards,
-                [newCard.id]: { ...newCard, count: 1 }
+                [newCard.id]: { name: newCard.name, mtgId: newCard.id , imageUrl: newCard.imageUrl , count: 1 }
             }
+        })
+    }
+
+    const handleRemoveCard = (removedCard) => {
+        setCards(function (prevCards) {
+            let newCards = {...prevCards}
+            delete newCards[removedCard.id]
+            return newCards;
         })
     }
 
@@ -100,6 +112,7 @@ function DeckForm({ submitAction}) {
                                 onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
                             />
                             {card.count}x {card.name}
+                            <button onClick={(e) => handleRemoveCard(card)}>X</button>
                         </div>
                     ))}
                 </div>
@@ -108,12 +121,8 @@ function DeckForm({ submitAction}) {
                 </div>
                 <button type="submit">create deck</button>
             </form>
-
         </div>
     )
-
-
-
 }
 
 
