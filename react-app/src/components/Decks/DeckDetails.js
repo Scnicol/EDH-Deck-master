@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getDeckById } from '../../store/decks';
 import { loadAllReviews } from '../../store/reviews';
 import ReviewList from '../Reviews/ReviewsList';
+import DeckDeleteModal from './DeckDeleteModal';
+import OpenModalButton from '../OpenModalButton';
 
 
 const DeckDetails = () => {
@@ -40,6 +42,10 @@ const DeckDetails = () => {
             <NavLink to={`current/${deckId}/edit`}>
                 Edit Deck
             </NavLink>
+            <OpenModalButton
+                buttonText="Delete"
+                modalComponent={<DeckDeleteModal deckId={deckId}/>}
+            />
             <div>
                 <ReviewList deckReviews={deckReviews}/>
             </div>
