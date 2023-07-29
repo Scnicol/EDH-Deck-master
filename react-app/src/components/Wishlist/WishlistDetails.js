@@ -3,6 +3,9 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from '../../store/users';
 import { getDecks } from '../../store/decks';
+import OpenModalButton from '../OpenModalButton';
+import RemoveDeckModal from './RemoveDeckModal';
+
 
 const WishlistDetails = () => {
     const history = useHistory();
@@ -13,7 +16,14 @@ const WishlistDetails = () => {
 
     const user = useSelector(state => state.users[userId])
 
-    // const userWishlist = Object.values(user.wishlist)
+
+    // const handleRemoveDeck = async (e) => {
+    //     e.preventDefault();
+
+    //     await dispatch(removeFromWishlist(deckId))
+    //     history.push('/wishlist')
+    // }
+
 
     useEffect(() => {
         dispatch(getUsers())
@@ -26,15 +36,6 @@ const WishlistDetails = () => {
         )
     }
 
-    // const handleAddDeck = (newDeck) => {
-    //     setDecks(function (prevDecks){
-    //         return {
-    //             ...prevDecks,
-    //             [newDeck.id]: {name: newDeck.name, creatorId: newDeck.creatorId,
-    //                          description: newDeck.description }
-    //         }
-    //     })
-    // }
 
     return (
         <div>
@@ -42,8 +43,15 @@ const WishlistDetails = () => {
             <div>
                 {user.wishlist.map((deck) => (
                     <div key={deck.id}>
-                        {deck.name}
+                        <div>
+                            {deck.name}
+                        </div>
+                        <OpenModalButton
+                            buttonText="Remove"
+                            modalComponent={<RemoveDeckModal deckId={deck.id}/>}
+                        />
                     </div>
+
                 ))}
             </div>
         </div>
