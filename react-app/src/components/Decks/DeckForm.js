@@ -79,7 +79,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
         newDeck = await dispatch(submitAction(deck))
 
         if (newDeck) {
-            history.push(`/decks/current`)
+            history.push(`/decks/${newDeck.id}`)
         }
     }
 
