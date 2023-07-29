@@ -76,8 +76,8 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     onChange={updateDescription}
                 />
                 <p>Please choose a date for your challenge</p>
-                <date
-                    type="datetime"
+                <input
+                    type="date"
                     placeholder='YYYY-MM-DD'
                     onChange={updateChallengeDate}
                 />
