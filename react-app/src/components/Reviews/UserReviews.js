@@ -4,12 +4,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadAllReviews } from '../../store/reviews';
 import { getUsersDecks } from '../../store/decks';
 import { getDecks } from '../../store/decks';
+import OpenModalButton from '../OpenModalButton';
+import ReviewDeleteModal from './ReviewDeleteModal';
 
 
 function UserReviews() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const reviews = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
+
+    if (!user) history.push('/')
+
     const decks = useSelector(state => state.decks)
     const userReviews = Object.values(reviews).filter(review => review.reviewerId == user.id)
 
@@ -42,6 +48,10 @@ function UserReviews() {
                         <NavLink to={`/reviews/current/${review.deckId}/edit/${review.id}`}>
                             Edit Review
                         </NavLink>
+                        <OpenModalButton
+                            buttonText="Delete"
+                            modalComponent={<ReviewDeleteModal reviewId={review.id}/>}
+                        />
                     </div>
                 ))}
             </div>
