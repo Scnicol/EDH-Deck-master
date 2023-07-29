@@ -6,8 +6,12 @@ import { loadAllChallenges } from '../../store/challenges';
 
 function UsersChallengeList() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const challenges = useSelector(state => state.challenges)
     const user = useSelector(state => state.session.user)
+
+    if (!user) history.push('/')
+
     const usersChallenges = Object.values(challenges).filter(challenge => challenge.challengerId == user.id)
     const usersChallenged = Object.values(challenges).filter(challenge => challenge.challengedId == user.id)
     useEffect(() => {

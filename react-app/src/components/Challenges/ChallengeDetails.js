@@ -13,6 +13,8 @@ const ChallengeDetails = () => {
     const challenge = useSelector(state => state.challenges[challengeId])
     const user = useSelector(state => state.session.user)
 
+    if (!user) history.push('/')
+
     useEffect(() => {
         dispatch(getChallengeById(challengeId))
     }, [dispatch])
@@ -20,8 +22,6 @@ const ChallengeDetails = () => {
     if (!challenge) return (
         <h1>Challenge Doesn't Exist</h1>
     )
-
-    if (user.id != challenge.challengerId) history.push('/')
 
     return (
         <div>
@@ -39,3 +39,5 @@ const ChallengeDetails = () => {
         </div>
     )
 }
+
+export default ChallengeDetails;

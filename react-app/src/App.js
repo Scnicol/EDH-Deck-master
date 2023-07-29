@@ -16,6 +16,7 @@ import UsersChallengeList from "./components/Challenges/UsersChallengeList";
 import CreateChallengeForm from "./components/Challenges/CreateChallengeForm";
 import UpdateChallengeForm from "./components/Challenges/UpdateChallengeForm";
 import UpdateDeckForm from "./components/Decks/UpdateDeckForm";
+import ChallengeDetails from "./components/Challenges/ChallengeDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,10 +63,13 @@ function App() {
           <Route exact path={`/challenges/current`}>
             <UsersChallengeList/>
           </Route>
+          <Route exact path={`/challenges/:challengeId`}>
+            <ChallengeDetails/>
+          </Route>
           <Route exact path={`/challenges/current/:challengedId`}>
             <CreateChallengeForm/>
           </Route>
-          <Route path={`/challenges/current/:challengedId/edit/:challengeId`}>
+          <Route exact path={`/challenges/current/:challengedId/edit/:challengeId`}>
             <UpdateChallengeForm/>
           </Route>
 
