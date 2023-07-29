@@ -13,6 +13,7 @@ const DeckDetails = () => {
     const dispatch = useDispatch();
 
     const deck = useSelector(state => state.decks[deckId])
+    const user = useSelector(state => state.session.user)
     const reviews = Object.values(useSelector(state => state.reviews))
     const deckReviews = reviews.filter(review => review.deckId == deckId)
 
@@ -39,15 +40,18 @@ const DeckDetails = () => {
                     </div>
                 ))}
             </div>
-            <NavLink to={`current/${deckId}/edit`}>
-                Edit Deck
-            </NavLink>
-            <OpenModalButton
-                buttonText="Delete"
-                modalComponent={<DeckDeleteModal deckId={deckId}/>}
-            />
+            {user.id == deck.creatorId &&
+                <div>
+                    <NavLink to={`current/${deckId}/edit`}>
+                        Edit Deck
+                    </NavLink>
+                    <OpenModalButton
+                        buttonText="Delete"
+                        modalComponent={<DeckDeleteModal deckId={deckId} />}
+                    />
+                </div>}
             <div>
-                <ReviewList deckReviews={deckReviews}/>
+                <ReviewList deckReviews={deckReviews} />
             </div>
             <NavLink to={`/reviews/current/${deckId}`}>
                 Leave a Review

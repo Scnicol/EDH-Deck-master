@@ -17,7 +17,8 @@ function CreateChallengeForm() {
     }
 
     return (
-        <ChallengeForm challengedId={challengedId} challenge={challenge} formtTitle="Create" formSubmit="Create" submitAction={submitAction}/>
+        <ChallengeForm challengedId={challengedId} challenge={challenge}
+        formtTitle="Create" formSubmit="Create" submitAction={submitAction}/>
     )
 }
 

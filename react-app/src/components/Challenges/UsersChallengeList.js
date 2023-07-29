@@ -32,7 +32,7 @@ function UsersChallengeList() {
             <div>
                 {usersChallenges.map((challenge) => (
                     <div key={challenge.id}>
-                        <NavLink to={`/decks/${challenge.id}`}>
+                        <NavLink to={`/challenges/${challenge.id}`}>
                             {challenge.name}
 
                         </NavLink>
@@ -48,7 +48,7 @@ function UsersChallengeList() {
             <div>
                 {usersChallenged.map((challenge) => (
                     <div key={challenge.id}>
-                        <NavLink to={`/decks/${challenge.id}`}>
+                        <NavLink to={`/challenges/${challenge.id}`}>
                             {challenge.name}
 
                         </NavLink>

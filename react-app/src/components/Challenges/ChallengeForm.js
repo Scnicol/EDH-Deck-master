@@ -5,13 +5,13 @@ import { getAllUserChallenges } from '../../store/challenges';
 import { loadAllChallenges } from '../../store/challenges';
 import { getUsers } from '../../store/users';
 
-function ChallengeForm({challengedId, submitAction, formSubmit}) {
+function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formTitle }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('')
-    const [challengeDate, setChallengeDate] = useState('')
+    const [name, setName] = useState(challenge.name);
+    const [description, setDescription] = useState(challenge.description)
+    const [challengeDate, setChallengeDate] = useState(challenge.challengeDate)
 
     // ________VAILDATION_ERRORS_STATE____________
     const [errors, setErrors] = useState({ name: [], description: []})
@@ -21,7 +21,6 @@ function ChallengeForm({challengedId, submitAction, formSubmit}) {
     const updateChallengeDate = (e) => setChallengeDate(e.target.value);
 
     const user = useSelector(state => state.session.user)
-    const challenge = useSelector(state => state.challenges[challengedId])
     const challengedUser = useSelector(state => state.users[challengedId])
 
     useEffect(() => {
@@ -29,7 +28,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit}) {
         dispatch(getUsers())
     },[dispatch])
 
-    if (!user || !challenge || !challengedUser) {
+    if (!user || !challengedUser) {
         return (
             <h1>Loading...</h1>
         )
@@ -59,7 +58,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit}) {
 
     return (
         <div>
-            <h1>Create new Challenge against {challengedUser.username}</h1>
+            <h1>{formTitle} new Challenge against {challengedUser.username}</h1>
             <form onSubmit={handleSubmit}>
                 <p>Name your challenge</p>
                 <input

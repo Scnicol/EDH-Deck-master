@@ -17,9 +17,9 @@ const actionGetChallenges = (challenges) => ({
     challenges
 })
 
-const actionGetChallengeById = (challengeId) => ({
+const actionGetChallengeById = (challenge) => ({
     type: GET_CHALLENGE_BY_ID,
-    challengeId
+    challenge
 })
 
 const actionCreateChallenge = (challenge) => ({
@@ -60,8 +60,9 @@ export const getChallengeById = (challengeId) => async dispatch => {
     const response = await fetch(`/api/challenges/${challengeId}`)
 
     if (response.ok) {
-        const data = await response.json();
-        dispatch(actionGetChallengeById(data.challengeId))
+        const challenge = await response.json();
+
+        dispatch(actionGetChallengeById(challenge))
     }
 }
 
