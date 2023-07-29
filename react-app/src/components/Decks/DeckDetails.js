@@ -6,6 +6,7 @@ import { loadAllReviews } from '../../store/reviews';
 import ReviewList from '../Reviews/ReviewsList';
 import DeckDeleteModal from './DeckDeleteModal';
 import OpenModalButton from '../OpenModalButton';
+import AddDeckModal from '../Wishlist/AddDeckModal';
 
 
 const DeckDetails = () => {
@@ -50,6 +51,12 @@ const DeckDetails = () => {
                         modalComponent={<DeckDeleteModal deckId={deckId} />}
                     />
                 </div>}
+                <div>
+                <OpenModalButton
+                        buttonText="Add to Wishlist"
+                        modalComponent={<AddDeckModal deckId={deck.id} />}
+                    />
+                </div>
             <div>
                 <ReviewList deckReviews={deckReviews} />
             </div>

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from '../../store/users';
 import { getDecks } from '../../store/decks';
@@ -15,15 +15,6 @@ const WishlistDetails = () => {
     if (!userId) history.push('/')
 
     const user = useSelector(state => state.users[userId])
-
-
-    // const handleRemoveDeck = async (e) => {
-    //     e.preventDefault();
-
-    //     await dispatch(removeFromWishlist(deckId))
-    //     history.push('/wishlist')
-    // }
-
 
     useEffect(() => {
         dispatch(getUsers())

@@ -45,10 +45,11 @@ export const getUserById = (userId) => async dispatch => {
 }
 
 export const addToWishList = (deckId) => async dispatch => {
+    let id = { deckId: deckId }
     const response = await fetch(`/api/users/wishlist`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(deckId)
+        body: JSON.stringify(id)
     });
 
     if (response.ok) {
