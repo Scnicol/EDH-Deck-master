@@ -9,10 +9,11 @@ const RemoveDeckModal = ({deckId}) => {
     const history = useHistory();
 
     const handleRemove = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         await dispatch(removeFromWishlist(deckId)).then(closeModal);
         history.push('/wishlist');
+        window.location.reload(true);
     }
 
     return (
