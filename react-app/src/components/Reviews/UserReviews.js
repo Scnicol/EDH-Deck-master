@@ -17,7 +17,7 @@ function UserReviews() {
     if (!user) history.push('/')
 
     const decks = useSelector(state => state.decks)
-    const userReviews = Object.values(reviews).filter(review => review.reviewerId == user.id)
+    const userReviews = Object.values(reviews).filter(review => review?.reviewerId == user.id)
 
     useEffect(() => {
         dispatch(loadAllReviews())

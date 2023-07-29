@@ -17,6 +17,7 @@ import CreateChallengeForm from "./components/Challenges/CreateChallengeForm";
 import UpdateChallengeForm from "./components/Challenges/UpdateChallengeForm";
 import UpdateDeckForm from "./components/Decks/UpdateDeckForm";
 import ChallengeDetails from "./components/Challenges/ChallengeDetails";
+import WishlistDetails from "./components/Wishlist/WishlistDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -71,6 +72,9 @@ function App() {
           </Route>
           <Route exact path={`/challenges/current/:challengedId/edit/:challengeId`}>
             <UpdateChallengeForm/>
+          </Route>
+          <Route path={'/wishlist'}>
+            <WishlistDetails/>
           </Route>
 
         </Switch>
