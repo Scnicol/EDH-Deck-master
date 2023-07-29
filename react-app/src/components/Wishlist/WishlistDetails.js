@@ -13,13 +13,28 @@ const WishlistDetails = () => {
 
     const user = useSelector(state => state.users[userId])
 
-    console.log(user.wishlist[0], "user------")
     // const userWishlist = Object.values(user.wishlist)
 
     useEffect(() => {
         dispatch(getUsers())
         dispatch(getDecks())
     }, [dispatch])
+
+    if (!user) {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
+
+    // const handleAddDeck = (newDeck) => {
+    //     setDecks(function (prevDecks){
+    //         return {
+    //             ...prevDecks,
+    //             [newDeck.id]: {name: newDeck.name, creatorId: newDeck.creatorId,
+    //                          description: newDeck.description }
+    //         }
+    //     })
+    // }
 
     return (
         <div>

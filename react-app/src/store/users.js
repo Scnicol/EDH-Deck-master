@@ -93,6 +93,11 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 [action.user.id]: action.user
             }
+        case REMOVE_FROM_USERS_WISHLIST:
+            newState = {...state}
+            delete newState[action.user.id]
+            return newState
+
         default:
             return state;
     }
