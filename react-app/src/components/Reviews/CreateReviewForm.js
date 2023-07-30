@@ -1,4 +1,4 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { createReview } from '../../store/reviews';
 import ReviewForm from './ReviewsForm';
 

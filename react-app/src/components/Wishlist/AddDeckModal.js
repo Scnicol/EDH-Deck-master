@@ -6,7 +6,6 @@ import { addToWishList } from "../../store/users";
 const AddDeckModal = ({ deckId }) => {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-    const history = useHistory();
 
     const handleAdd = async (e) => {
         e.preventDefault();

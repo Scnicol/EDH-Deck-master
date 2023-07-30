@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 
-function FolderButton({ user }) {
+function FolderButton() {
     const {closeModal} = useModal();
     return (
         <div>

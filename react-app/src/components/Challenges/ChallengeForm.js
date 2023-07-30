@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getAllUserChallenges } from '../../store/challenges';
 import { loadAllChallenges } from '../../store/challenges';
 import { getUsers } from '../../store/users';
 
@@ -21,6 +20,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
     const updateChallengeDate = (e) => setChallengeDate(e.target.value);
 
     const user = useSelector(state => state.session.user)
+    if (!user) history.push('/')
     const challengedUser = useSelector(state => state.users[challengedId])
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
         dispatch(getUsers())
     },[dispatch])
 
-    if (!user || !challengedUser) {
+    if (!challengedUser) {
         return (
             <h1>Loading...</h1>
         )
@@ -43,8 +43,6 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
             challengedId
         }
 
-        console.log(payload, "payload------")
-
         // ____VALIDATION_ERRORS________
         const validationErrors = { name: [], description: []};
         if (name.length === 0) validationErrors.name.push('Name field is required');
@@ -55,10 +53,10 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
             return;
         }
 
-        console.log(payload, "payload-------")
+
         let challenge;
         challenge = await dispatch(submitAction(payload));
-        console.log(challenge, "challenge-------")
+
 
         if (challenge) {
             history.push(`/challenges/current`);

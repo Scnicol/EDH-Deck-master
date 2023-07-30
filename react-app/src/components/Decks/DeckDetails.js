@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDeckById } from '../../store/decks';
 import { loadAllReviews } from '../../store/reviews';
@@ -7,7 +7,7 @@ import ReviewList from '../Reviews/ReviewsList';
 import DeckDeleteModal from './DeckDeleteModal';
 import OpenModalButton from '../OpenModalButton';
 import AddDeckModal from '../Wishlist/AddDeckModal';
-import CreateChallengeForm from '../Challenges/CreateChallengeForm';
+
 
 
 const DeckDetails = () => {

@@ -1,4 +1,4 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { createChallenge } from '../../store/challenges';
 import ChallengeForm from './ChallengeForm';
 
