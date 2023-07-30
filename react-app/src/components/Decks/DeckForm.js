@@ -33,11 +33,8 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
 
     const currentUser = useSelector(state => state.session.user)
 
-    if (!currentUser) {
-        return (
-            <h1>User must be logged in</h1>
-        )
-    }
+    if (!currentUser) history.push('/')
+
 
     const handleAddCard = (newCard) => {
         setCards(function (prevCards) {

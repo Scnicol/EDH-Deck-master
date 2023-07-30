@@ -5,9 +5,11 @@ import { getUsersDecks } from '../../store/decks';
 
 function DeckList() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const decks = useSelector(state => state.decks)
     const user = useSelector(state => state.session.user)
-    const userDecks = Object.values(decks).filter(deck => deck.creatorId == user.id)
+    if (!user) history.push('/')
+    const userDecks = Object.values(decks).filter(deck => deck.creatorId == user?.id)
 
     useEffect(() => {
         dispatch(getUsersDecks());

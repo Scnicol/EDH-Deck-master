@@ -12,8 +12,8 @@ function UsersChallengeList() {
 
     if (!user) history.push('/')
 
-    const usersChallenges = Object.values(challenges).filter(challenge => challenge.challengerId == user.id)
-    const usersChallenged = Object.values(challenges).filter(challenge => challenge.challengedId == user.id)
+    const usersChallenges = Object.values(challenges).filter(challenge => challenge.challengerId == user?.id)
+    const usersChallenged = Object.values(challenges).filter(challenge => challenge.challengedId == user?.id)
     useEffect(() => {
         dispatch(getUsersDecks());
         dispatch(loadAllChallenges())

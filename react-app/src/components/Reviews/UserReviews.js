@@ -17,14 +17,14 @@ function UserReviews() {
     if (!user) history.push('/')
 
     const decks = useSelector(state => state.decks)
-    const userReviews = Object.values(reviews).filter(review => review?.reviewerId == user.id)
+    const userReviews = Object.values(reviews).filter(review => review?.reviewerId == user?.id)
 
     useEffect(() => {
         dispatch(loadAllReviews())
         dispatch(getDecks())
     }, [dispatch])
 
-    if (!reviews) {
+    if (!reviews || !decks) {
         return (
             <h1>Loading...</h1>
         )
@@ -37,7 +37,7 @@ function UserReviews() {
                 {userReviews.map((review) => (
                     <div key={review.id}>
                         <div>
-                            {decks[review.deckId].name}
+                            {decks[review.deckId]?.name}
                             </div>
                         <div>
                             rating: {review.rating}

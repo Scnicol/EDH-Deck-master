@@ -41,7 +41,7 @@ const DeckDetails = () => {
                     </div>
                 ))}
             </div>
-            {user.id == deck.creatorId &&
+            {user?.id == deck.creatorId &&
                 <div>
                     <NavLink to={`current/${deckId}/edit`}>
                         Edit Deck
@@ -51,18 +51,19 @@ const DeckDetails = () => {
                         modalComponent={<DeckDeleteModal deckId={deckId} />}
                     />
                 </div>}
-                <div>
+                {user && user.id != deck.creatorId && <div>
                 <OpenModalButton
                         buttonText="Add to Wishlist"
                         modalComponent={<AddDeckModal deckId={deck.id} />}
                     />
-                </div>
+                </div>}
             <div>
                 <ReviewList deckReviews={deckReviews} />
             </div>
-            <NavLink to={`/reviews/current/${deckId}`}>
+
+            {user && user.id != deck.creatorId && <NavLink to={`/reviews/current/${deckId}`}>
                 Leave a Review
-            </NavLink>
+            </NavLink>}
         </div>
     )
 }

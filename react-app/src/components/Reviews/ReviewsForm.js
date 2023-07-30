@@ -9,8 +9,6 @@ function ReviewForm({review, deckId, submitAction, formSubmit, formTitle}) {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log(review, "Review---------")
-
     const [rating, setRating] = useState(review.rating);
     const [description, setDescription] = useState(review.description);
 
@@ -21,7 +19,8 @@ function ReviewForm({review, deckId, submitAction, formSubmit, formTitle}) {
     const updateDescription = (e) => setDescription(e.target.value);
 
     const deck = useSelector(state => state.decks[deckId])
-
+    const user = useSelector(state => state.session.user)
+    if (!user) history.push('/')
     useEffect(() => {
         dispatch(loadAllReviews())
         dispatch(getDeckById(deckId))

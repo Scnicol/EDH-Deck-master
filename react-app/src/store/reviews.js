@@ -67,6 +67,7 @@ export const getReviewById = (reviewId) => async dispatch => {
 }
 
 export const createReview = (review) => async dispatch => {
+    console.log(review, "review in thunkCreate")
     const response = await fetch(`/api/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

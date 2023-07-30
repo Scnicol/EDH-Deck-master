@@ -11,7 +11,8 @@ const WishlistDetails = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const userId = useSelector(state => state.session.user.id)
+
+    const userId = useSelector(state => state.session.user?.id)
     if (!userId) history.push('/')
 
     const user = useSelector(state => state.users[userId])
