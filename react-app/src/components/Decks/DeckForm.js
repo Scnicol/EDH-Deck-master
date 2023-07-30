@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CardSearch from '../CardSearch/CardSearch';
 
-function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
+function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -21,6 +21,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
 
     const updateName = (e) => setName(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
+
     const sortedCards = Object.values(cards).toSorted(function (x, y) {
         if (x.name < y.name) {
             return -1;
@@ -40,14 +41,14 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
         setCards(function (prevCards) {
             return {
                 ...prevCards,
-                [newCard.id]: { name: newCard.name, mtgId: newCard.id , imageUrl: newCard.imageUrl , count: 1 }
+                [newCard.id]: { name: newCard.name, mtgId: newCard.id, imageUrl: newCard.imageUrl, count: 1 }
             }
         })
     }
 
     const handleRemoveCard = (removedCard) => {
         setCards(function (prevCards) {
-            let newCards = {...prevCards}
+            let newCards = { ...prevCards }
             delete newCards[removedCard.mtgId]
             return newCards;
         })
@@ -70,7 +71,14 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
             cards: Object.values(cards),
         }
         // ____VALIDATION_ERROR_CHECK___________
+        const validationErrors = { name: [], description: [] };
+        if (name.length === 0) validationErrors.name.push('Namefiled is required');
+        if (description.length < 30) validationErrors.description.push('Description needs 30 or more characters');
+        setErrors(validationErrors)
 
+        if (validationErrors.name.length > 0 || validationErrors.description.length > 0) {
+            return;
+        }
 
         let newDeck;
         newDeck = await dispatch(submitAction(deck))
@@ -91,6 +99,11 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
                     value={name}
                     onChange={updateName}
                 />
+                <ul className='errors'>
+                    {errors.name.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <p>Please give your deck a description</p>
                 <textarea
                     type="textarea"
@@ -98,6 +111,11 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
                     value={description}
                     onChange={updateDescription}
                 />
+                <ul className='errors'>
+                    {errors.description.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <div>
                     {sortedCards.map((card) => (
                         <div key={card.mtgId}>
@@ -115,7 +133,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit}) {
                 <div>
                     <CardSearch onAddCard={handleAddCard} />
                 </div>
-                <button type="submit">{formSubmit} deck</button>
+                <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} deck</button>
             </form>
         </div>
     )
