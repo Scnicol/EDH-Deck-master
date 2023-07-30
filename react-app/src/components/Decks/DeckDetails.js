@@ -7,6 +7,7 @@ import ReviewList from '../Reviews/ReviewsList';
 import DeckDeleteModal from './DeckDeleteModal';
 import OpenModalButton from '../OpenModalButton';
 import AddDeckModal from '../Wishlist/AddDeckModal';
+import CreateChallengeForm from '../Challenges/CreateChallengeForm';
 
 
 const DeckDetails = () => {
@@ -51,12 +52,15 @@ const DeckDetails = () => {
                         modalComponent={<DeckDeleteModal deckId={deckId} />}
                     />
                 </div>}
-                {user && user.id != deck.creatorId && <div>
-                <OpenModalButton
+            {user && user.id != deck.creatorId && <div>
+                <div>
+                    <OpenModalButton
                         buttonText="Add to Wishlist"
                         modalComponent={<AddDeckModal deckId={deck.id} />}
                     />
-                </div>}
+                </div>
+<NavLink to={`/challenges/current/${deck.creatorId}`}>Challenge Creator</NavLink>
+            </div>}
             <div>
                 <ReviewList deckReviews={deckReviews} />
             </div>

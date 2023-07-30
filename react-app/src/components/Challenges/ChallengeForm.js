@@ -47,6 +47,13 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
 
         // ____VALIDATION_ERRORS________
         const validationErrors = { name: [], description: []};
+        if (name.length === 0) validationErrors.name.push('Name field is required');
+        if (description.length < 15) validationErrors.description.push('Description needs 15 or more characters');
+        setErrors(validationErrors)
+
+        if (validationErrors.name.length > 0 || validationErrors.description.length > 0) {
+            return;
+        }
 
         let challenge;
         challenge = await dispatch(submitAction(payload));

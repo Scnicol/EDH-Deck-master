@@ -3,8 +3,8 @@ import { createChallenge } from '../../store/challenges';
 import ChallengeForm from './ChallengeForm';
 
 
-function CreateChallengeForm() {
-    const {challengedId} = useParams();
+function CreateChallengeForm({challengedId}) {
+    // const {challengedId} = useParams();
     const challenge = {
         name: '',
         description: '',
