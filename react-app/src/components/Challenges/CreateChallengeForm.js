@@ -1,4 +1,4 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { createChallenge } from '../../store/challenges';
 import ChallengeForm from './ChallengeForm';
 
@@ -18,7 +18,7 @@ function CreateChallengeForm() {
 
     return (
         <ChallengeForm challengedId={challengedId} challenge={challenge}
-        formtTitle="Create" formSubmit="Create" submitAction={submitAction}/>
+        formTitle="Create" formSubmit="Create" submitAction={submitAction}/>
     )
 }
 

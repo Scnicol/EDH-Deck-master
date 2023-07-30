@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getAllUserChallenges } from '../../store/challenges';
 import { loadAllChallenges } from '../../store/challenges';
 import { getUsers } from '../../store/users';
 
@@ -21,6 +20,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
     const updateChallengeDate = (e) => setChallengeDate(e.target.value);
 
     const user = useSelector(state => state.session.user)
+    if (!user) history.push('/')
     const challengedUser = useSelector(state => state.users[challengedId])
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
         dispatch(getUsers())
     },[dispatch])
 
-    if (!user || !challengedUser) {
+    if (!challengedUser) {
         return (
             <h1>Loading...</h1>
         )
@@ -43,13 +43,20 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
             challengedId
         }
 
-        console.log(payload, "payload------")
-
         // ____VALIDATION_ERRORS________
         const validationErrors = { name: [], description: []};
+        if (name.length === 0) validationErrors.name.push('Name field is required');
+        if (description.length < 15) validationErrors.description.push('Description needs 15 or more characters');
+        setErrors(validationErrors)
+
+        if (validationErrors.name.length > 0 || validationErrors.description.length > 0) {
+            return;
+        }
+
 
         let challenge;
         challenge = await dispatch(submitAction(payload));
+
 
         if (challenge) {
             history.push(`/challenges/current`);
@@ -67,6 +74,11 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     value={name}
                     onChange={updateName}
                 />
+                                <ul className='errors'>
+                    {errors.name.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <p>Describe your challenge</p>
                 <textarea
                     placeholder="Description"
@@ -75,6 +87,11 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     value={description}
                     onChange={updateDescription}
                 />
+                                <ul className='errors'>
+                    {errors.description.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <p>Please choose a date for your challenge</p>
                 <input
                     type="date"
@@ -82,7 +99,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     onChange={updateChallengeDate}
                 />
                 <h2>
-                    <button type="submit">{formSubmit} Challenge</button>
+                    <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} Challenge</button>
                 </h2>
             </form>
         </div>

@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 const mtg = require('mtgsdk')
 
-const CardSearch = ({onAddCard}) => {
-
-    const dispatch = useDispatch()
+const CardSearch = ({ onAddCard }) => {
 
     const [cardName, setCardName] = useState('')
     const [cardResults, setCardResults] = useState([])
@@ -13,14 +10,15 @@ const CardSearch = ({onAddCard}) => {
 
     useEffect(() => {
         if (cardName && cardName.length > 1) {
-            mtg.card.where({ name: cardName })
+            let requestToken = mtg.card.where({ name: cardName })
                 .then(results => {
 
-                    let filteredResults = {}
+                    let filteredResults = {};
 
                     results.filter((card) => {
                         return card.name.toLowerCase().startsWith(cardName.toLowerCase())
                     }).forEach((card) => {
+                        //We turn our results into a Dictionary to remove duplicate names
                         filteredResults[card.name] = card
                     })
 
@@ -40,6 +38,12 @@ const CardSearch = ({onAddCard}) => {
                 }).catch((error) => {
                     console.error(error);
                 });
+            return () => {
+
+                requestToken.cancel();
+            };
+        } else {
+            setCardResults([]);
         }
     }, [cardName])
 
@@ -51,15 +55,10 @@ const CardSearch = ({onAddCard}) => {
                 value={cardName}
                 onChange={updateCardName}
             />
+
             <div>
                 {cardResults.map((card) => (
-                    <div key={card.id}
-                     onClick={(e) => {
-
-                        // console.log("inside CardSearch")
-                        onAddCard(card)
-                    }}
-                     >
+                    <div key={card.id} onClick={(e) => {onAddCard(card)}}>
                         {card.name}
                     </div>
                 ))}

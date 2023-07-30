@@ -77,6 +77,7 @@ export const createChallenge = (challenge) => async dispatch => {
     if (response.ok) {
         let newChallenge = await response.json();
         dispatch(actionCreateChallenge(newChallenge))
+        return newChallenge;
     }
 }
 
@@ -90,6 +91,7 @@ export const updateChallenge = (challenge) => async dispatch => {
     if (response.ok) {
         const updatedChallenge = await response.json();
         dispatch(actionUpdateChallenge(updatedChallenge));
+        return updatedChallenge;
     }
 }
 

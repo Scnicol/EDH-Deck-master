@@ -91,6 +91,7 @@ export const updateReview = (review) => async dispatch => {
     if (response.ok) {
         const updatedReview = await response.json();
         dispatch(actionUpdateReview(updatedReview));
+        return updatedReview;
     }
 }
 

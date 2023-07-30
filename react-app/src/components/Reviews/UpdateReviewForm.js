@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-import { loadAllReviews, updateReview } from '../../store/reviews';
+import { useParams } from 'react-router-dom';
+import { updateReview } from '../../store/reviews';
 import { getReviewById } from '../../store/reviews';
 import ReviewForm from './ReviewsForm';
 

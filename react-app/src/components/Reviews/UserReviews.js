@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadAllReviews } from '../../store/reviews';
-import { getUsersDecks } from '../../store/decks';
 import { getDecks } from '../../store/decks';
 import OpenModalButton from '../OpenModalButton';
 import ReviewDeleteModal from './ReviewDeleteModal';
