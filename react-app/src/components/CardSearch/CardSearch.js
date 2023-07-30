@@ -5,8 +5,11 @@ const CardSearch = ({ onAddCard }) => {
 
     const [cardName, setCardName] = useState('')
     const [cardResults, setCardResults] = useState([])
+    const [noResults, setNoResults] = useState(false)
 
     const updateCardName = (e) => setCardName(e.target.value)
+
+
 
     useEffect(() => {
         if (cardName && cardName.length > 1) {
@@ -33,7 +36,7 @@ const CardSearch = ({ onAddCard }) => {
                     })
 
                     let finalResults = sortedResults.slice(0, 5);
-
+                    setNoResults(finalResults.length == 0)
                     setCardResults(finalResults)
                 }).catch((error) => {
                     console.error(error);
@@ -45,6 +48,9 @@ const CardSearch = ({ onAddCard }) => {
         } else {
             setCardResults([]);
         }
+
+
+
     }, [cardName])
 
     return (
@@ -58,11 +64,14 @@ const CardSearch = ({ onAddCard }) => {
 
             <div>
                 {cardResults.map((card) => (
-                    <div key={card.id} onClick={(e) => {onAddCard(card)}}>
+                    <div key={card.id} onClick={(e) => { onAddCard(card) }}>
                         {card.name}
                     </div>
                 ))}
             </div>
+            {noResults && <div>
+                no results were found
+            </div>}
         </div>
     )
 }

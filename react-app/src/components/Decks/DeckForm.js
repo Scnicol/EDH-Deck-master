@@ -38,6 +38,8 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
 
 
     const handleAddCard = (newCard) => {
+        if (cards[newCard.id]) return;
+
         setCards(function (prevCards) {
             return {
                 ...prevCards,
@@ -137,7 +139,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                     ))}
                 </ul>
                 <div>
-                    <CardSearch onAddCard={handleAddCard} />
+                    <CardSearch onAddCard={handleAddCard}/>
                 </div>
                 <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} deck</button>
             </form>
