@@ -59,7 +59,7 @@ const DeckDetails = () => {
                         modalComponent={<AddDeckModal deckId={deck.id} />}
                     />
                 </div>
-<NavLink to={`/challenges/current/${deck.creatorId}`}>Challenge Creator</NavLink>
+                <NavLink to={`/challenges/current/${deck.creatorId}`}>Challenge Creator</NavLink>
             </div>}
             <div>
                 <ReviewList deckReviews={deckReviews} />

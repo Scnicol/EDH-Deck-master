@@ -55,8 +55,10 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
             return;
         }
 
+        console.log(payload, "payload-------")
         let challenge;
         challenge = await dispatch(submitAction(payload));
+        console.log(challenge, "challenge-------")
 
         if (challenge) {
             history.push(`/challenges/current`);
@@ -74,6 +76,11 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     value={name}
                     onChange={updateName}
                 />
+                                <ul className='errors'>
+                    {errors.name.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <p>Describe your challenge</p>
                 <textarea
                     placeholder="Description"
@@ -82,6 +89,11 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     value={description}
                     onChange={updateDescription}
                 />
+                                <ul className='errors'>
+                    {errors.description.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <p>Please choose a date for your challenge</p>
                 <input
                     type="date"
@@ -89,7 +101,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     onChange={updateChallengeDate}
                 />
                 <h2>
-                    <button type="submit">{formSubmit} Challenge</button>
+                    <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} Challenge</button>
                 </h2>
             </form>
         </div>

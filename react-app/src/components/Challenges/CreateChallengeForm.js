@@ -3,8 +3,8 @@ import { createChallenge } from '../../store/challenges';
 import ChallengeForm from './ChallengeForm';
 
 
-function CreateChallengeForm({challengedId}) {
-    // const {challengedId} = useParams();
+function CreateChallengeForm() {
+    const {challengedId} = useParams();
     const challenge = {
         name: '',
         description: '',
@@ -18,7 +18,7 @@ function CreateChallengeForm({challengedId}) {
 
     return (
         <ChallengeForm challengedId={challengedId} challenge={challenge}
-        formtTitle="Create" formSubmit="Create" submitAction={submitAction}/>
+        formTitle="Create" formSubmit="Create" submitAction={submitAction}/>
     )
 }
 
