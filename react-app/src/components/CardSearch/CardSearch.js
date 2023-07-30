@@ -5,10 +5,14 @@ const CardSearch = ({ onAddCard }) => {
 
     const [cardName, setCardName] = useState('')
     const [cardResults, setCardResults] = useState([])
+    const [noResults, setNoResults] = useState(false)
 
     const updateCardName = (e) => setCardName(e.target.value)
 
+
+
     useEffect(() => {
+        setNoResults(false)
         if (cardName && cardName.length > 1) {
             let requestToken = mtg.card.where({ name: cardName })
                 .then(results => {
@@ -32,8 +36,8 @@ const CardSearch = ({ onAddCard }) => {
                         return 0;
                     })
 
-                    let finalResults = sortedResults.slice(0, 5);
-
+                    let finalResults = sortedResults.slice(0, 15);
+                    setNoResults(finalResults.length == 0)
                     setCardResults(finalResults)
                 }).catch((error) => {
                     console.error(error);
@@ -45,6 +49,9 @@ const CardSearch = ({ onAddCard }) => {
         } else {
             setCardResults([]);
         }
+
+
+
     }, [cardName])
 
     return (
@@ -58,11 +65,14 @@ const CardSearch = ({ onAddCard }) => {
 
             <div>
                 {cardResults.map((card) => (
-                    <div key={card.id} onClick={(e) => {onAddCard(card)}}>
+                    <div key={card.id} onClick={(e) => { onAddCard(card) }}>
                         {card.name}
                     </div>
                 ))}
             </div>
+            {noResults && <div>
+                no results were found
+            </div>}
         </div>
     )
 }

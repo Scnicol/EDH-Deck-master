@@ -17,7 +17,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
     const [cards, setCards] = useState(deckCards)
 
     // ____________VALIDATION_ERRORS______________
-    const [errors, setErrors] = useState({ name: [], description: [] })
+    const [errors, setErrors] = useState({ name: [], description: [], cards: [] })
 
     const updateName = (e) => setName(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -38,6 +38,8 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
 
 
     const handleAddCard = (newCard) => {
+        if (cards[newCard.id]) return;
+
         setCards(function (prevCards) {
             return {
                 ...prevCards,
@@ -71,12 +73,13 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
             cards: Object.values(cards),
         }
         // ____VALIDATION_ERROR_CHECK___________
-        const validationErrors = { name: [], description: [] };
+        const validationErrors = { name: [], description: [], cards: [] };
         if (name.length === 0) validationErrors.name.push('Namefiled is required');
         if (description.length < 30) validationErrors.description.push('Description needs 30 or more characters');
+        if (deck.cards.length < 1) validationErrors.cards.push('Please have at least 1 card in your deck')
         setErrors(validationErrors)
 
-        if (validationErrors.name.length > 0 || validationErrors.description.length > 0) {
+        if (validationErrors.name.length > 0 || validationErrors.description.length > 0 || validationErrors.cards.length > 0) {
             return;
         }
 
@@ -130,8 +133,13 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                         </div>
                     ))}
                 </div>
+                <ul className='errors'>
+                    {errors.cards.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <div>
-                    <CardSearch onAddCard={handleAddCard} />
+                    <CardSearch onAddCard={handleAddCard}/>
                 </div>
                 <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} deck</button>
             </form>
