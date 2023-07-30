@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 const mtg = require('mtgsdk')
 
 const CardSearch = ({ onAddCard }) => {
-
-    const dispatch = useDispatch()
 
     const [cardName, setCardName] = useState('')
     const [cardResults, setCardResults] = useState([])
@@ -45,6 +42,8 @@ const CardSearch = ({ onAddCard }) => {
 
                 requestToken.cancel();
             };
+        } else {
+            setCardResults([]);
         }
     }, [cardName])
 
