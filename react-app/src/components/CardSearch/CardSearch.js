@@ -12,6 +12,7 @@ const CardSearch = ({ onAddCard }) => {
 
 
     useEffect(() => {
+        setNoResults(false)
         if (cardName && cardName.length > 1) {
             let requestToken = mtg.card.where({ name: cardName })
                 .then(results => {
@@ -35,7 +36,7 @@ const CardSearch = ({ onAddCard }) => {
                         return 0;
                     })
 
-                    let finalResults = sortedResults.slice(0, 5);
+                    let finalResults = sortedResults.slice(0, 15);
                     setNoResults(finalResults.length == 0)
                     setCardResults(finalResults)
                 }).catch((error) => {
