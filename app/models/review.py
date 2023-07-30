@@ -27,5 +27,7 @@ class Review(db.Model, UserMixin):
             'description': self.description,
             'rating': self.rating,
             'reviewerId': self.reviewerId,
-            'deckId': self.deckId
+            'deckId': self.deckId,
+            'reviewerName': self.reviewer.username
         }
+    
