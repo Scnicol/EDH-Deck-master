@@ -17,9 +17,9 @@ const actionGetChallenges = (challenges) => ({
     challenges
 })
 
-const actionGetChallengeById = (challengeId) => ({
+const actionGetChallengeById = (challenge) => ({
     type: GET_CHALLENGE_BY_ID,
-    challengeId
+    challenge
 })
 
 const actionCreateChallenge = (challenge) => ({
@@ -49,10 +49,10 @@ export const loadAllChallenges = () => async dispatch => {
 
 export const getAllUserChallenges = () => async dispatch => {
     const response = await fetch(`/api/challenges/current`)
-
+    console.log(response, "response in challenges store")
     if (response.ok) {
-        const data = await response.json();
-        dispatch(actionGetChallenges(data.challenges))
+        const challenge = await response.json();
+        dispatch(actionGetChallenges(challenge))
     }
 }
 
@@ -60,8 +60,9 @@ export const getChallengeById = (challengeId) => async dispatch => {
     const response = await fetch(`/api/challenges/${challengeId}`)
 
     if (response.ok) {
-        const data = await response.json();
-        dispatch(actionGetChallengeById(data.challengeId))
+        const challenge = await response.json();
+
+        dispatch(actionGetChallengeById(challenge))
     }
 }
 
@@ -119,7 +120,7 @@ const challengeReducer = (state = initialState, action) => {
             }
         case GET_CHALLENGES:
             let userChallengesState = {}
-            action.challenges.forEach(challenge => {
+            action.challenges.startedChallenges.forEach(challenge => {
                 userChallengesState[challenge.id] = challenge
             })
             return {

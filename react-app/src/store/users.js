@@ -31,7 +31,7 @@ export const getUsers = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(actionGetUsers(data.challenges))
+        dispatch(actionGetUsers(data.users))
     }
 }
 
@@ -45,10 +45,11 @@ export const getUserById = (userId) => async dispatch => {
 }
 
 export const addToWishList = (deckId) => async dispatch => {
+    let id = { deckId: deckId }
     const response = await fetch(`/api/users/wishlist`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(deckId)
+        body: JSON.stringify(id)
     });
 
     if (response.ok) {
@@ -93,6 +94,11 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 [action.user.id]: action.user
             }
+        case REMOVE_FROM_USERS_WISHLIST:
+            newState = {...state}
+            delete newState[action.user.id]
+            return newState
+
         default:
             return state;
     }

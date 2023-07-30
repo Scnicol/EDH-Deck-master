@@ -52,20 +52,14 @@ def addDeckToWishlist():
 @user_routes.route('/wishlist/<int:deckId>', methods=['DELETE'])
 @login_required
 def deleteDeckFromWishlist(deckId):
-    wishlistForm = UpdateWishlistForm()
-    wishlistForm['csrf_token'].data = request.cookies['csrf_token']
 
-    if wishlistForm.validate_on_submit():
-        user = current_user
-        # deckId = wishlistForm.data['deckId']
+    user = current_user
+    deck = Deck.query.get(deckId)
 
-        deck = Deck.query.get(deckId)
-
-        if deck is None:
-            return {'error': 'Deck could not be found'}, 404
+    if deck is None:
+        return {'error': 'Deck could not be found'}, 404
 
 
-        user.wishlistDecks.remove(deck)
-        db.session.commit()
-        return user.to_dict()
-    return {'form errors': validation_errors_to_error_messages(wishlistForm.errors)}, 401
+    user.wishlistDecks.remove(deck)
+    db.session.commit()
+    return user.to_dict()

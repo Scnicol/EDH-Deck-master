@@ -11,6 +11,13 @@ import DeckList from "./components/Decks/DeckList";
 import UserReviews from "./components/Reviews/UserReviews";
 import CreateReviewForm from "./components/Reviews/CreateReviewForm";
 import CreateDeckForm from "./components/Decks/CreateDeckForm";
+import UpdateReviewForm from "./components/Reviews/UpdateReviewForm";
+import UsersChallengeList from "./components/Challenges/UsersChallengeList";
+import CreateChallengeForm from "./components/Challenges/CreateChallengeForm";
+import UpdateChallengeForm from "./components/Challenges/UpdateChallengeForm";
+import UpdateDeckForm from "./components/Decks/UpdateDeckForm";
+import ChallengeDetails from "./components/Challenges/ChallengeDetails";
+import WishlistDetails from "./components/Wishlist/WishlistDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,11 +49,32 @@ function App() {
           <Route exact path={`/decks/:deckId`}>
             <DeckDetails/>
           </Route>
-          <Route path={`/reviews/current`}>
+          <Route exact path={`/decks/current/:deckId/edit`}>
+            <UpdateDeckForm/>
+          </Route>
+          <Route exact path={`/reviews/current`}>
             <UserReviews/>
           </Route>
-          <Route path={`/reviews/current/:deckId`}>
+          <Route exact path={`/reviews/current/:deckId`}>
             <CreateReviewForm/>
+          </Route>
+          <Route path={`/reviews/current/:deckId/edit/:reviewId`}>
+            <UpdateReviewForm/>
+          </Route>
+          <Route exact path={`/challenges/current`}>
+            <UsersChallengeList/>
+          </Route>
+          <Route exact path={`/challenges/:challengeId`}>
+            <ChallengeDetails/>
+          </Route>
+          <Route exact path={`/challenges/current/:challengedId`}>
+            <CreateChallengeForm/>
+          </Route>
+          <Route exact path={`/challenges/current/:challengedId/edit/:challengeId`}>
+            <UpdateChallengeForm/>
+          </Route>
+          <Route path={'/wishlist'}>
+            <WishlistDetails/>
           </Route>
 
         </Switch>

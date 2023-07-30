@@ -14,12 +14,13 @@ function Navigation({ isLoaded }){
 			<div>
 				<NavLink exact to="/">Home</NavLink>
 			</div>
+			{sessionUser &&
 			<div>
 			<OpenModalButton
               buttonText="Inventory"
               modalComponent={<FolderButtonModal />}
             />
-			</div>
+			</div>}
 			{isLoaded && (
 				<div>
 					<ProfileButton user={sessionUser} />

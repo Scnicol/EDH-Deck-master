@@ -45,6 +45,7 @@ def create_challenge():
     form = CreateChallengeForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print(request.get_json(), "request Body")
     currentUserId = current_user.get_id()
     user = User.query.get(currentUserId)
 
@@ -52,18 +53,17 @@ def create_challenge():
         return {'error': 'User not found'}, 404
 
     if form.validate_on_submit():
-        data = form.data
         challengesDate = form.data['challengeDate']
 
         if challengesDate < datetime.now().date():
             return {'errors': 'Cannot schedule challenge in the past'}, 400
 
         newChallenge = Challenge(
-            name = data['name'],
-            description = data['description'],
-            challengeDate = data['challengeDate'],
+            name = form.data['name'],
+            description = form.data['description'],
+            challengeDate = form.data['challengeDate'],
             challengerId = currentUserId,
-            challengedId = data['challengedId'],
+            challengedId = form.data['challengedId'],
         )
 
         db.session.add(newChallenge)

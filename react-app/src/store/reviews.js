@@ -60,12 +60,14 @@ export const getReviewById = (reviewId) => async dispatch => {
     const response = await fetch(`/api/reviews/${reviewId}`)
 
     if (response.ok) {
-        const data = await response.json();
-        dispatch(actionGetReviewById(data.review))
+        const review = await response.json();
+        console.log(review, "review inside get thunk")
+        dispatch(actionGetReviewById(review))
     }
 }
 
 export const createReview = (review) => async dispatch => {
+    console.log(review, "review in thunkCreate")
     const response = await fetch(`/api/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -30,6 +30,7 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const login = (email, password) => async (dispatch) => {
+	console.log(email, password, 'Email and password in thunk')
 	const response = await fetch("/api/auth/login", {
 		method: "POST",
 		headers: {
@@ -104,4 +105,3 @@ export default function reducer(state = initialState, action) {
 			return state;
 	}
 }
-

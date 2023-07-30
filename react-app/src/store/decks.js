@@ -73,11 +73,11 @@ export const createDeck = (deck) => async dispatch => {
         body: JSON.stringify(deck)
     });
 
-    let newDeck;
-    if (response.ok) {
-        newDeck = await response.json();
-        dispatch(loadCreateDeck(newDeck));
 
+    if (response.ok) {
+        const newDeck = await response.json();
+        dispatch(loadCreateDeck(newDeck));
+        return newDeck;
     }
 }
 
@@ -91,7 +91,7 @@ export const updateDeck = (deck) => async dispatch => {
     if (response.ok) {
         const updatedDeck = await response.json();
         dispatch(loadUpdateDeck(updatedDeck));
-
+        return updatedDeck;
     }
 }
 
@@ -101,8 +101,7 @@ export const deleteDeck = (deckId) => async dispatch => {
     });
 
     if (response.ok) {
-        const deletedDeck = await response.json();
-        dispatch(actionDeleteDeck(deletedDeck));
+        dispatch(actionDeleteDeck(deckId));
     }
 }
 
