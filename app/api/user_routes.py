@@ -62,4 +62,4 @@ def deleteDeckFromWishlist(deckId):
 
     user.wishlistDecks.remove(deck)
     db.session.commit()
-    return user.to_dict()
+    return user.to_dict_full()

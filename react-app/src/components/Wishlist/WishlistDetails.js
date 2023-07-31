@@ -5,6 +5,7 @@ import { getUsers } from '../../store/users';
 import { getDecks } from '../../store/decks';
 import OpenModalButton from '../OpenModalButton';
 import RemoveDeckModal from './RemoveDeckModal';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const WishlistDetails = () => {
@@ -35,12 +36,12 @@ const WishlistDetails = () => {
             <div>
                 {user.wishlist.map((deck) => (
                     <div key={deck.id}>
-                        <div>
+                        <NavLink to={`/decks/${deck.id}`}>
                             {deck.name}
-                        </div>
+                        </NavLink>
                         <OpenModalButton
                             buttonText="Remove"
-                            modalComponent={<RemoveDeckModal deckId={deck.id}/>}
+                            modalComponent={<RemoveDeckModal deckId={deck.id} dispatch={dispatch}/>}
                         />
                     </div>
 

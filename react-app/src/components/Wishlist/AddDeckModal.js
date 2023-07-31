@@ -3,15 +3,14 @@ import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { addToWishList } from "../../store/users";
 
-const AddDeckModal = ({ deckId }) => {
-    const dispatch = useDispatch();
+const AddDeckModal = ({ deckId, dispatch }) => {
+    // const dispatch = useDispatch();
     const { closeModal } = useModal();
 
     const handleAdd = async (e) => {
         e.preventDefault();
 
         await dispatch(addToWishList(deckId)).then(closeModal);
-        window.location.reload(true);
     }
 
     return (

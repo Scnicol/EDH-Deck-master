@@ -64,7 +64,8 @@ export const removeFromWishlist = (deckId) => async dispatch => {
     });
 
     if (response.ok) {
-        dispatch(actionRemoveFromWishlist(deckId))
+        let user = await response.json()
+        dispatch(actionRemoveFromWishlist(user))
     }
 }
 
@@ -95,9 +96,10 @@ const userReducer = (state = initialState, action) => {
                 [action.user.id]: action.user
             }
         case REMOVE_FROM_USERS_WISHLIST:
-            newState = {...state}
-            delete newState[action.user.id]
-            return newState
+            return {
+                ...state,
+                [action.user.id]: action.user
+            }
 
         default:
             return state;
