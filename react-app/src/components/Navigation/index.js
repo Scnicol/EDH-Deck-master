@@ -7,27 +7,29 @@ import FolderButtonModal from './FolderButtonModal';
 import OpenModalButton from '../OpenModalButton';
 
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
 		<main className='navContainer'>
-			<div className="navLinkLogo">
-				<NavLink exact to="/" >Home</NavLink>
-				<img className='logoimg' scr={'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fen%2Fpng-thskj&psig=AOvVaw36GmQYM37FwqhM9eV7rcLU&ust=1690911207814000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCND-_LG9uYADFQAAAAAdAAAAABAD'}/>
+			<div className="">
+				<NavLink exact to="/" >EDH DECK MASTER</NavLink>
+				<img className='logoimg' scr={'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fen%2Fpng-thskj&psig=AOvVaw36GmQYM37FwqhM9eV7rcLU&ust=1690911207814000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCND-_LG9uYADFQAAAAAdAAAAABAD'} />
 			</div>
-			{sessionUser &&
-			<div>
-			<OpenModalButton
-              buttonText="Inventory"
-              modalComponent={<FolderButtonModal />}
-            />
-			</div>}
-			{isLoaded && (
-				<div className='profileButton'>
+			<div className='inventory-profile-container'>
+				{sessionUser &&
+					<div>
+						<OpenModalButton
+							buttonText="Inventory"
+							modalComponent={<FolderButtonModal />}
+						/>
+					</div>}
+				{isLoaded && (
+
 					<ProfileButton user={sessionUser} />
-				</div>
-			)}
+
+				)}
+			</div>
 		</main>
 	);
 }

@@ -1,0 +1,16 @@
+.homepage-main-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1.5px solid black;
+}
+
+.deck-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-image {
+    width: auto;
+    height: 280px;
+}

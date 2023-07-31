@@ -1,3 +1,10 @@
+html, body
+{
+    /* height: 100%; */
+    /* width: 100%; */
+    margin: 0px;
+}
+
 .profile-dropdown {
   position: absolute;
 }
@@ -16,6 +23,20 @@
   margin-top: 15px;
 }
 
-.navContainer{
-  background-color: white;
+.inventory-profile-container{
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
 }
+
+.navContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border: 1.5px solid black;
+  background-color: black;
+}
+
