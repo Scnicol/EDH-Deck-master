@@ -25,7 +25,7 @@ const DeckDetails = () => {
     useEffect(() => {
         dispatch(getDeckById(deckId))
         dispatch(loadAllReviews())
-        dispatch(getUserById(user.id))
+        dispatch(getUserById(user?.id))
     }, [dispatch])
 
     if (!deck) return (
