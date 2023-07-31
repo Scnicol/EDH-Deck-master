@@ -11,6 +11,7 @@ const AddDeckModal = ({ deckId }) => {
         e.preventDefault();
 
         await dispatch(addToWishList(deckId)).then(closeModal);
+        window.location.reload(true);
     }
 
     return (

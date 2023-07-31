@@ -11,16 +11,14 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
-  const loginUser = (email, password) => {
-    console.log(email, password, "credential and password")
-    setErrors([]);
-    return dispatch(login( email, password ))
-      .then(closeModal)
-      .catch(async (res) => {
-        const data = await res.json();
-        console.log(data.errors, 'Data errors')
-        if (data && data.errors) setErrors([data.errors.message]);
-      });
+  const loginUser = async (email, password) => {
+
+    const data = await dispatch(login( email, password ))
+    if (data) {
+      setErrors(data);
+    } else {
+        closeModal()
+    }
   }
 
   const loginDemoUser = () => {
@@ -37,9 +35,7 @@ function LoginFormModal() {
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <label>
           Email
@@ -59,7 +55,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit" disabled={email.length == 0 || password.length == 0}>Log In</button>
       </form>
       <button onClick={loginDemoUser}>
         Login as DemoUser
