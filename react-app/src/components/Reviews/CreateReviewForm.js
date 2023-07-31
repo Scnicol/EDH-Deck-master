@@ -16,7 +16,7 @@ function CreateReviewForm() {
     }
 
     return (
-        <ReviewForm review={review} deckId={deckId} formTitle="Create" formSubmit="Create" submitAction={submitAction} />
+        <ReviewForm review={review} deckId={deckId} formTitle="Create" formSubmit="Create" submitAction={submitAction} pageOnSubmit={`/decks/${deckId}`} />
     )
 }
 

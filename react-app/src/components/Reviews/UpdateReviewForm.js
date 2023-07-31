@@ -10,8 +10,6 @@ function UpdateReviewForm() {
     const {deckId, reviewId} = useParams();
     const dispatch = useDispatch();
 
-    console.log(reviewId, "review ID")
-
     const review = useSelector(state => state.reviews[reviewId])
 
     useEffect(() => {
@@ -30,7 +28,7 @@ function UpdateReviewForm() {
     }
 
     return (
-        <ReviewForm review={review} deckId={deckId} formTitle="Edit" formSubmit="Edit" submitAction={submitAction} />
+        <ReviewForm review={review} deckId={deckId} formTitle="Edit" formSubmit="Edit" submitAction={submitAction} pageOnSubmit={'/reviews/current'}/>
     )
 }
 

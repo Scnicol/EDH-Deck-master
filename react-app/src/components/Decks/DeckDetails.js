@@ -6,9 +6,9 @@ import { loadAllReviews } from '../../store/reviews';
 import ReviewList from '../Reviews/ReviewsList';
 import DeckDeleteModal from './DeckDeleteModal';
 import OpenModalButton from '../OpenModalButton';
-import AddDeckModal from '../Wishlist/AddDeckModal';
 import { getUserById } from '../../store/users';
-
+import { removeFromWishlist } from '../../store/users';
+import { addToWishList } from '../../store/users';
 
 
 const DeckDetails = () => {
@@ -21,6 +21,18 @@ const DeckDetails = () => {
     const deckReviews = reviews.filter(review => review.deckId == deckId)
     const currUserWishlist = useSelector(state => state.users[user?.id]?.wishlist)
     const isInWishlist = currUserWishlist?.some((e) => e.id == deckId)
+
+    const handleRemove = async (e) => {
+        e.preventDefault();
+
+        await dispatch(removeFromWishlist(deckId))
+    }
+
+    const handleAdd = async (e) => {
+        e.preventDefault();
+
+        await dispatch(addToWishList(deckId));
+    }
 
     useEffect(() => {
         dispatch(getDeckById(deckId))
@@ -58,13 +70,15 @@ const DeckDetails = () => {
                 </div>}
             {user && user.id != deck.creatorId && !isInWishlist && <div>
                 <div>
-                    <OpenModalButton
-                        buttonText="Add to Wishlist"
-                        modalComponent={<AddDeckModal deckId={deck.id} />}
-                    />
+                    <button onClick={handleAdd}>Add to wishlist</button>
                 </div>
 
             </div>}
+            {user && isInWishlist &&
+                <div>
+
+                    <button onClick={handleRemove}>Remove from wishlist</button>
+                </div>}
             {user && user.id != deck.creatorId && <div>
                 <NavLink to={`/challenges/current/${deck.creatorId}`}>Challenge Creator</NavLink>
             </div>}

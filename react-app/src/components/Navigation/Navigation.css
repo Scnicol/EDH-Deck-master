@@ -5,3 +5,17 @@
 .hidden {
   display: none;
 }
+
+.navContainer li {
+  list-style-type: none;
+}
+
+.profileButton {
+  float: right;
+  margin-right: 120px;
+  margin-top: 15px;
+}
+
+.navContainer{
+  background-color: white;
+}

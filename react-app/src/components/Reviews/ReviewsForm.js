@@ -5,7 +5,7 @@ import { loadAllReviews } from '../../store/reviews';
 import { getDeckById } from '../../store/decks';
 
 
-function ReviewForm({review, deckId, submitAction, formSubmit, formTitle}) {
+function ReviewForm({review, deckId, submitAction, formSubmit, formTitle, pageOnSubmit}) {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -40,7 +40,7 @@ function ReviewForm({review, deckId, submitAction, formSubmit, formTitle}) {
         newReview = await dispatch(submitAction(payload))
 
         if (newReview) {
-            history.push(`/reviews/current`);
+            history.push(pageOnSubmit);
         }
     };
 

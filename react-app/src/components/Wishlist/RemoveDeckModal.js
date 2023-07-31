@@ -3,17 +3,14 @@ import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { removeFromWishlist } from "../../store/users";
 
-const RemoveDeckModal = ({deckId}) => {
-    const dispatch = useDispatch();
+const RemoveDeckModal = ({deckId, dispatch}) => {
+
     const {closeModal} = useModal()
-    const history = useHistory();
 
     const handleRemove = async (e) => {
         e.preventDefault();
 
         await dispatch(removeFromWishlist(deckId)).then(closeModal);
-        history.push('/wishlist');
-        window.location.reload(true);
     }
 
     return (

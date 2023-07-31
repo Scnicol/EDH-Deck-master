@@ -22,7 +22,7 @@ const HomePage = () => {
     }
 
     return (
-        <main>
+        <main className='homepage-main-container'>
             <div>
                 EDH DECK MASTER!
             </div>
