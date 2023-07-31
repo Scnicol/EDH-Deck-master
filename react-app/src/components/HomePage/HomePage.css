@@ -1,6 +1,8 @@
 .homepage-main-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
     border: 1.5px solid black;
 }
 
@@ -13,4 +15,6 @@
 .card-image {
     width: auto;
     height: 280px;
+    border: 1.5px solid black;
+    border-radius: 12px;
 }

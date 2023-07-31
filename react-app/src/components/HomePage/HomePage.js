@@ -30,7 +30,7 @@ const HomePage = () => {
 
                         {deck.name}
 
-                        <img className='card-image' src={(deck.cards[0]?.imageUrl)} />
+                        <img className='card-image' src={(deck.cards[0]?.imageUrl) ?? 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg'} />
 
                     </NavLink>
                 ))}
