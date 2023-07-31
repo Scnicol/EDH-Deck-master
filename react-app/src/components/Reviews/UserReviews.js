@@ -35,9 +35,9 @@ function UserReviews() {
             <div>
                 {userReviews.map((review) => (
                     <div key={review.id}>
-                        <div>
-                            {decks[review.deckId]?.name}
-                            </div>
+                        <NavLink to={`/decks/${review.deckId}`}>
+                            Deck: {decks[review.deckId]?.name}
+                        </NavLink>
                         <div>
                             rating: {review.rating}
                         </div>
@@ -49,7 +49,7 @@ function UserReviews() {
                         </NavLink>
                         <OpenModalButton
                             buttonText="Delete"
-                            modalComponent={<ReviewDeleteModal reviewId={review.id}/>}
+                            modalComponent={<ReviewDeleteModal reviewId={review.id} />}
                         />
                     </div>
                 ))}
