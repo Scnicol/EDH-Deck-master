@@ -39,8 +39,8 @@ export const getUserById = (userId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}`)
 
     if (response.ok) {
-        const data = await response.json();
-        dispatch(actionGetUserById(data.userId))
+        const user = await response.json();
+        dispatch(actionGetUserById(user))
     }
 }
 
