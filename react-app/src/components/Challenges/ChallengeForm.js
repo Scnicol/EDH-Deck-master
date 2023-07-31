@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { loadAllChallenges } from '../../store/challenges';
 import { getUsers } from '../../store/users';
+import DatePicker from "react-datepicker";
 
-function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formTitle }) {
+
+
+function ChallengeForm({ challengedId, submitAction, formSubmit, challenge, formTitle }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -13,7 +16,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
     const [challengeDate, setChallengeDate] = useState(challenge.challengeDate)
 
     // ________VAILDATION_ERRORS_STATE____________
-    const [errors, setErrors] = useState({ name: [], description: []})
+    const [errors, setErrors] = useState({ name: [], description: [], date: [] })
 
     const updateName = (e) => setName(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -26,7 +29,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
     useEffect(() => {
         dispatch(loadAllChallenges())
         dispatch(getUsers())
-    },[dispatch])
+    }, [dispatch])
 
     if (!challengedUser) {
         return (
@@ -44,12 +47,15 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
         }
 
         // ____VALIDATION_ERRORS________
-        const validationErrors = { name: [], description: []};
+        const validationErrors = { name: [], description: [], date: [] };
+        let currDate = new Date().toJSON().slice(0, 10);
+        console.log(currDate, challengeDate, "currDate vs ChallengeDate")
         if (name.length === 0) validationErrors.name.push('Name field is required');
         if (description.length < 15) validationErrors.description.push('Description needs 15 or more characters');
+        if (challengeDate < currDate) validationErrors.date.push('Cannot set challenge in the past')
         setErrors(validationErrors)
 
-        if (validationErrors.name.length > 0 || validationErrors.description.length > 0) {
+        if (validationErrors.name.length > 0 || validationErrors.description.length > 0 || validationErrors.date.length > 0) {
             return;
         }
 
@@ -74,7 +80,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     value={name}
                     onChange={updateName}
                 />
-                                <ul className='errors'>
+                <ul className='errors'>
                     {errors.name.map((error) => (
                         <li key={error}>{error}</li>
                     ))}
@@ -87,7 +93,7 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     value={description}
                     onChange={updateDescription}
                 />
-                                <ul className='errors'>
+                <ul className='errors'>
                     {errors.description.map((error) => (
                         <li key={error}>{error}</li>
                     ))}
@@ -98,8 +104,13 @@ function ChallengeForm({challengedId, submitAction, formSubmit, challenge, formT
                     placeholder='YYYY-MM-DD'
                     onChange={updateChallengeDate}
                 />
+                <ul className='errors'>
+                    {errors.date.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <h2>
-                    <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} Challenge</button>
+                    <button type="submit" disabled={name.length == 0 || description.length == 0 || challengeDate.length == 0}>{formSubmit} Challenge</button>
                 </h2>
             </form>
         </div>
