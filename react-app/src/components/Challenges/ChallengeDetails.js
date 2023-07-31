@@ -29,13 +29,15 @@ const ChallengeDetails = () => {
                 <h1>{challenge.name}</h1>
                 <h2>{challenge.description}</h2>
             </div>
-            <NavLink to={`current/${challenge.challengedId}/edit/${challengeId}`}>
+           {user.id == challenge.challengerId &&
+           <div><NavLink to={`current/${challenge.challengedId}/edit/${challengeId}`}>
                 Edit Challenge
             </NavLink>
             <OpenModalButton
                 buttonText="Delete"
                 modalComponent={<ChallengeDeleteModal challengeId={challengeId}/>}
             />
+            </div>}
         </div>
     )
 }

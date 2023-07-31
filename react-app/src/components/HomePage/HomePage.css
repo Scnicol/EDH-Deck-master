@@ -12,6 +12,10 @@
     align-items: center;
 }
 
+.deck-name {
+    text-decoration: none;
+}
+
 .card-image {
     width: auto;
     height: 280px;

@@ -27,11 +27,12 @@ const HomePage = () => {
             <div className='homepage-main-container'>
                 {decks.map((deck) => (
                     <NavLink className='deck-details' key={deck.id} to={`/decks/${parseInt(deck.id)}`}>
-
-                        {deck.name}
-
-                        <img className='card-image' src={(deck.cards[0]?.imageUrl) ?? 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg'} />
-
+                        <div className="deck-name">
+                            {deck.name}
+                        </div>
+                        <div>
+                            <img className='card-image' src={(deck.cards[0]?.imageUrl) ?? 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg'} />
+                        </div>
                     </NavLink>
                 ))}
             </div>

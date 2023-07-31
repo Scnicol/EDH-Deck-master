@@ -28,7 +28,9 @@ function UpdateReviewForm() {
     }
 
     return (
-        <ReviewForm review={review} deckId={deckId} formTitle="Edit" formSubmit="Edit" submitAction={submitAction} pageOnSubmit={'/reviews/current'}/>
+        <ReviewForm review={review} deckId={deckId}
+        formTitle="Edit" formSubmit="Edit" submitAction={submitAction}
+        pageOnSubmit={'/reviews/current'}/>
     )
 }
 

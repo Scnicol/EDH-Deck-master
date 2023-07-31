@@ -36,7 +36,7 @@ function ReviewForm({ review, deckId, submitAction, formSubmit, formTitle, pageO
 
         // ____VALIDATION_ERRORS________
         const validationErrors = { rating: [], description: [] };
-        if (rating.length === 0) validationErrors.rating.push('Rating cannot be empty')
+        if (!rating.length) validationErrors.rating.push('Rating cannot be empty')
         if (description.length < 15) validationErrors.description.push('Description needs 15 or more characters');
         setErrors(validationErrors)
 
