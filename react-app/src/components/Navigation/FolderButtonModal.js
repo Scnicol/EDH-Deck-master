@@ -1,21 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useModal } from "../../context/Modal";
+import './FolderButton.css'
 
 function FolderButton() {
     const {closeModal} = useModal();
     return (
-        <div>
-            <NavLink to={`/decks/current`} onClick={closeModal}>
+        <div className="inventory-container">
+            <NavLink className="button" to={`/decks/current`} onClick={closeModal}>
                 Decks
             </NavLink>
-            <NavLink to={`/challenges/current`} onClick={closeModal}>
+            <NavLink className="button" to={`/challenges/current`} onClick={closeModal}>
                 Challenges
             </NavLink>
-            <NavLink to={`/wishlist`} onClick={closeModal}>
+            <NavLink className="button" to={`/wishlist`} onClick={closeModal}>
                 Wishlist
             </NavLink>
-            <NavLink to={`/reviews/current`} onClick={closeModal}>
+            <NavLink className="button" to={`/reviews/current`} onClick={closeModal}>
                 Reviews
             </NavLink>
         </div>
