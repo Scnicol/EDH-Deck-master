@@ -7,7 +7,7 @@ export const formattedDateTime = (dateString) => {
 
 
 //_____IMAGE_DISPLAY_______
-export const imageDisplay = (images) => {
-    const image = images?.[0]?.url ?? 'image.png';
+export const imageDisplay = (deck) => {
+    const image = deck.cards[0]?.imageUrl ?? 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg';
     return image;
 }

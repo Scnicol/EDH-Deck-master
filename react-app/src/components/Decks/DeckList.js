@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsersDecks } from '../../store/decks';
+import './DeckList.css'
+import { imageDisplay } from '../../helperFunctions';
 
 function DeckList() {
     const dispatch = useDispatch();
@@ -22,21 +24,27 @@ function DeckList() {
     }
 
     return (
-        <div>
-            <div>
-                User's Decks
+        <div >
+            <div className='deck-main-container'>
+                <div className="users-decks">
+                    Your Decks
+                </div>
+                <NavLink className="create-deck" to="/decks/current/new">
+                    Create a Deck
+                </NavLink>
             </div>
-            <NavLink to="/decks/current/new">
-                Create a Deck
-            </NavLink>
-            <div>
+            <div className='decks-display-container'>
                 {userDecks.map((deck) => (
-                    <div key={deck.id}>
-                        <NavLink to={`/decks/${deck.id}`}>
-                            {deck.name}
-                            <img src={(deck.cards[0]?.imageUrl)} />
+                    <div className="deck-details" key={deck.id}>
+                        <NavLink className="" to={`/decks/${deck.id}`}>
+                            <div className='deck-name'>
+                                {deck.name}
+                            </div>
+                            <img className="card-image" src={imageDisplay(deck)} />
                         </NavLink>
-                        {deck.description}
+                        <div className="deck-description">
+                            {deck.description}
+                        </div>
                     </div>
                 ))}
             </div>
