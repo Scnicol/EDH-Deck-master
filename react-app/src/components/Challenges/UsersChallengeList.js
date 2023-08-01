@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsersDecks } from '../../store/decks';
-import { loadAllChallenges } from '../../store/challenges';
+import { getAllUserChallenges } from '../../store/challenges';
 
 function UsersChallengeList() {
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function UsersChallengeList() {
     const usersChallenged = Object.values(challenges).filter(challenge => challenge.challengedId == user?.id)
     useEffect(() => {
         dispatch(getUsersDecks());
-        dispatch(loadAllChallenges())
+        dispatch(getAllUserChallenges(user.id))
     }, [dispatch])
 
     if (!challenges) {

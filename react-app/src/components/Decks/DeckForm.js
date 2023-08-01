@@ -17,7 +17,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
     const [cards, setCards] = useState(deckCards)
 
     // ____________VALIDATION_ERRORS______________
-    const [errors, setErrors] = useState({ name: [], description: [], cards: [] })
+    const [errors, setErrors] = useState({ name: [], description: [], cards: [], search: [] })
 
     const updateName = (e) => setName(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -73,10 +73,11 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
             cards: Object.values(cards),
         }
         // ____VALIDATION_ERROR_CHECK___________
-        const validationErrors = { name: [], description: [], cards: [] };
+        const validationErrors = { name: [], description: [], cards: [], search: [] };
         if (name.length === 0) validationErrors.name.push('Namefiled is required');
         if (description.length < 30) validationErrors.description.push('Description needs 30 or more characters');
         if (deck.cards.length < 1) validationErrors.cards.push('Please have at least 1 card in your deck')
+        // const isInWishlist = currUserWishlist?.some((e) => e.id == deckId)
         setErrors(validationErrors)
 
         if (validationErrors.name.length > 0 || validationErrors.description.length > 0 || validationErrors.cards.length > 0) {

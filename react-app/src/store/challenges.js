@@ -117,13 +117,13 @@ const challengeReducer = (state = initialState, action) => {
                 challengesState[challenge.id] = challenge;
             })
             return {
-                ...state,
+                // ...state,
                 ...challengesState
             }
         case GET_CHALLENGES:
             let userChallengesState = {}
             action.challenges.startedChallenges.forEach(challenge => {
-                userChallengesState[challenge.id] = challenge
+                userChallengesState[challenge.id] = challenge;
             })
             return {
                 ...state,
