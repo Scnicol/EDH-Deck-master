@@ -1,0 +1,56 @@
+.deck-form-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    background-color: aliceblue;
+    /* width: 400px; */
+    margin-left: 150px;
+    margin-right: 150px;
+    border: 1.5px solid red;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+.add-card-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-list-main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.deck-list {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.deck-card {
+    background-color: aliceblue;
+    width:250px;
+}
+
+.card-count {
+    width:20px;
+    height: 15px;
+}
+
+.card-search {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    margin:5px;
+}
+
+.card-select {
+    color:black;
+}
+
+.card-select:hover {
+    color: red;
+    cursor: default;
+    border: 1px solid black;
+}

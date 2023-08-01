@@ -63,9 +63,9 @@ const CardSearch = ({ onAddCard }) => {
                 onChange={updateCardName}
             />
 
-            <div>
+            <div >
                 {cardResults.map((card) => (
-                    <div key={card.id} onClick={(e) => { onAddCard(card) }}>
+                    <div className='card-select' key={card.id} onClick={(e) => { onAddCard(card) }}>
                         {card.name}
                     </div>
                 ))}

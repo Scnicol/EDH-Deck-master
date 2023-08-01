@@ -19,6 +19,9 @@ html, body
 
 .profile-dropdown {
   position: absolute;
+  right: 20px;
+  top:30px;
+  background-color: grey;
 }
 
 .hidden {
@@ -30,7 +33,7 @@ html, body
 }
 
 .profileButton {
-  float: right;
+  float: left;
   margin-right: 120px;
   margin-top: 15px;
 }

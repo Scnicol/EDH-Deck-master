@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CardSearch from '../CardSearch/CardSearch';
+import './DeckForm.css'
 
 function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
 
@@ -95,54 +96,73 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <h2>{formTitle} your deck</h2>
-                <p>Please give your deck a name</p>
-                <input
-                    type="text"
-                    placeholder="Name your deck"
-                    value={name}
-                    onChange={updateName}
-                />
-                <ul className='errors'>
-                    {errors.name.map((error) => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-                <p>Please give your deck a description</p>
-                <textarea
-                    type="textarea"
-                    placeholder="My deck does..."
-                    value={description}
-                    onChange={updateDescription}
-                />
-                <ul className='errors'>
-                    {errors.description.map((error) => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-                <div>
-                    {sortedCards.map((card) => (
-                        <div key={card.mtgId}>
-                            <input
-                                type="number"
-                                min="1"
-                                value={card.count}
-                                onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
-                            />
-                            {card.count}x {card.name}
-                            <button onClick={(e) => handleRemoveCard(card)}>X</button>
-                        </div>
-                    ))}
+                <div className='deck-form-main-container'>
+                    <h2>{formTitle} your deck</h2>
+                    <p>Please give your deck a name</p>
+                    <input
+                        type="text"
+                        placeholder="Name your deck"
+                        value={name}
+                        onChange={updateName}
+                    />
+                    <ul className='errors'>
+                        {errors.name.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                    <p>Please give your deck a description</p>
+                    <textarea
+                        type="textarea"
+                        placeholder="My deck does..."
+                        value={description}
+                        onChange={updateDescription}
+                    />
+                    <ul className='errors'>
+                        {errors.description.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                    <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} deck</button>
                 </div>
-                <ul className='errors'>
-                    {errors.cards.map((error) => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-                <div>
-                    <CardSearch onAddCard={handleAddCard}/>
+                <div className='add-card-container'>
+                    <ul className='errors'>
+                        {errors.cards.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                    <div className="card-search">
+                        <CardSearch onAddCard={handleAddCard} />
+                    </div>
+                    <div className='card-list-main-container'>
+                        {sortedCards.map((card) => (
+                            <div>
+                                <div className="deck-list" key={card.mtgId}>
+                                    
+                                        <input
+                                        className='card-count'
+                                            type="number"
+                                            min="1"
+                                            size="small"
+                                            value={card.count}
+                                            onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
+                                        />
+
+                                    <div className='deck-card'>
+                                        {card.count}x {card.name}
+                                    </div>
+                                    <div>
+                                        <button onClick={(e) => handleRemoveCard(card)}>X</button>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        ))}
+                    </div>
+
+
                 </div>
-                <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} deck</button>
             </form>
         </div>
     )
