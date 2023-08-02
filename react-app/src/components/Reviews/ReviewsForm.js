@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { loadAllReviews } from '../../store/reviews';
 import { getDeckById } from '../../store/decks';
+import './ReviewForm.css'
 
 
 function ReviewForm({ review, deckId, submitAction, formSubmit, formTitle, pageOnSubmit }) {
@@ -60,8 +61,9 @@ function ReviewForm({ review, deckId, submitAction, formSubmit, formTitle, pageO
 
     return (
         <div>
-            <h1>{formTitle} your review for {deck.name}</h1>
-            <form onSubmit={handleSubmit}>
+
+            <form className='review-form-main-container' onSubmit={handleSubmit}>
+                <h1 className='review-form-title '>{formTitle} your review for {deck.name}</h1>
                 <p>Description</p>
                 <textarea
                     placeholder="Describe your review"

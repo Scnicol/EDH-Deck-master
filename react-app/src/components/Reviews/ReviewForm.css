@@ -1,4 +1,4 @@
-.challenge-form-main-container {
+.review-form-main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,9 +8,8 @@
     width: 80%;
 }
 
-
-.challenge-form-title {
+.review-form-title {
     background-color: rgb(207, 204, 204);
-    width: 400px;
+    width: 500px;
     text-align: center;
 }

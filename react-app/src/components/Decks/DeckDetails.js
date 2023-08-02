@@ -64,7 +64,7 @@ const DeckDetails = () => {
                                 {card.count}x {card.name}
                             </a>
                             <div className="card-image-hide">
-                                <img className='card-image' src={`${card.imageUrl}`} />
+                                <img className='deck-card-image' src={`${card.imageUrl}`} />
                             </div>
 
                         </div>

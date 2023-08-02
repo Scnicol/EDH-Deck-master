@@ -31,6 +31,7 @@ const ChallengeDetails = () => {
                 <h1 className='challenge-details-name'>{challenge.name}</h1>
                 <h2 className='challenge-details-description-title'>Description: </h2>
                 <h3 className='challenge-detail-description'>{challenge.description}</h3>
+                <h3 className='challenge-detail-description'>Challenge Date: {challenge.challengeDate.slice(0, 10)}</h3>
             </div>
             {user?.id == challenge.challengerId &&
                 <div>
