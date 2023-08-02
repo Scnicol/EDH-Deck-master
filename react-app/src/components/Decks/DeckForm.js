@@ -131,21 +131,26 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                         ))}
                     </ul>
                     <div className="card-search">
-                        <CardSearch onAddCard={handleAddCard} />
+                        <div>
+                            Add a card
+                        </div>
+                        <div>
+                            <CardSearch onAddCard={handleAddCard} />
+                        </div>
                     </div>
                     <div className='card-list-main-container'>
                         {sortedCards.map((card) => (
                             <div>
                                 <div className="deck-list" key={card.mtgId}>
-                                    
-                                        <input
+
+                                    <input
                                         className='card-count'
-                                            type="number"
-                                            min="1"
-                                            size="small"
-                                            value={card.count}
-                                            onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
-                                        />
+                                        type="number"
+                                        min="1"
+                                        size="small"
+                                        value={card.count}
+                                        onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
+                                    />
 
                                     <div className='deck-card'>
                                         {card.count}x {card.name}

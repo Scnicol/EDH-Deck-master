@@ -1,9 +1,8 @@
 html {
     background-image: url('https://wallpaper.dog/large/10897304.jpg') ;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
 }
 
 .homepage-main-container {
