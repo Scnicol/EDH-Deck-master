@@ -1,0 +1,22 @@
+.decks-reviews-main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews-title {
+    background-color: rgb(207, 204, 204);
+    border-radius: 1px;
+    border: 1.5px solid red;
+    width: 120px;
+    margin-top: 34px;
+}
+
+.decks-reviews {
+    background-color: rgb(207, 204, 204);
+    border-radius: 1px;
+    border: 1.5px solid red;
+    font-size: 14px;
+    text-align: left;
+    margin: 2px;
+    padding: 4px;
+}
