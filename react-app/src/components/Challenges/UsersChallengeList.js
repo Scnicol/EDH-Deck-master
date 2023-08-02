@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsersDecks } from '../../store/decks';
-import { getAllUserChallenges } from '../../store/challenges';
+import { loadAllChallenges } from '../../store/challenges';
+import './UsersChallenges.css'
 
 function UsersChallengeList() {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function UsersChallengeList() {
     const usersChallenged = Object.values(challenges).filter(challenge => challenge.challengedId == user?.id)
     useEffect(() => {
         dispatch(getUsersDecks());
-        dispatch(getAllUserChallenges(user.id))
+        dispatch(loadAllChallenges())
     }, [dispatch])
 
     if (!challenges) {
@@ -26,42 +27,56 @@ function UsersChallengeList() {
     }
 
     return (
-        <div>
-            <div>
-                User's Challenges
+        <div className='users-challenges-main-container'>
+            <div className='users-challenges-title'>
+                Your Challenges
             </div>
-            <div>
+
+            <div className='created-challenges-title'>
                 Created Challenges:
             </div>
             <div>
                 {usersChallenges.map((challenge) => (
-                    <div key={challenge.id}>
-                        <NavLink to={`/challenges/${challenge.id}`}>
+                    <div className='created-challenges-container' key={challenge.id}>
+                        <NavLink className="create-update-buttons" to={`/challenges/${challenge.id}`}>
                             {challenge.name}
 
                         </NavLink>
-                        <div>
-                            {challenge.description}
+                        <div className='created-challenges-details'>
+                            <div>
+                                Challenge Date: {challenge.challengeDate.slice(0, 10)}
+                            </div>
+                            <div>
+                                Description: {challenge.description}
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
-            <div>
+
+
+            <div className='recieved-challenges-title'>
                 Recieved Challenges:
             </div>
             <div>
                 {usersChallenged.map((challenge) => (
-                    <div key={challenge.id}>
-                        <NavLink to={`/challenges/${challenge.id}`}>
+                    <div className='recieved-challenges-container' key={challenge.id}>
+                        <NavLink className="create-update-buttons" to={`/challenges/${challenge.id}`}>
                             {challenge.name}
 
                         </NavLink>
-                        <div>
-                            {challenge.description}
+                        <div className='created-challenges-details'>
+                            <div>
+                                Challenge Date: {challenge.challengeDate.slice(0, 10)}
+                            </div>
+                            <div>
+                                Description: {challenge.description}
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
+
         </div >
     )
 }
