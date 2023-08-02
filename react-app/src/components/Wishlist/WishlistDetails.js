@@ -6,6 +6,7 @@ import { getDecks } from '../../store/decks';
 import OpenModalButton from '../OpenModalButton';
 import RemoveDeckModal from './RemoveDeckModal';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import './WishList.css'
 
 
 const WishlistDetails = () => {
@@ -31,12 +32,12 @@ const WishlistDetails = () => {
 
 
     return (
-        <div>
-            <h1>Users Wishlist</h1>
-            <div>
+        <div className='wishlist-main-container'>
+            <h1 className='wishlist-title'>Users Wishlist</h1>
+            <div className='wishlist-list-container'>
                 {user.wishlist.map((deck) => (
                     <div key={deck.id}>
-                        <NavLink to={`/decks/${deck.id}`}>
+                        <NavLink className='create-update-buttons' to={`/decks/${deck.id}`}>
                             {deck.name}
                         </NavLink>
                         <OpenModalButton
