@@ -21,6 +21,8 @@ html, body
   position: absolute;
   right: 20px;
   top:30px;
+  width: 15px;
+  height: 15px;
   background-color: grey;
 }
 
@@ -41,6 +43,8 @@ html, body
 .inventory-profile-container{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   padding: 15px;
 }
 

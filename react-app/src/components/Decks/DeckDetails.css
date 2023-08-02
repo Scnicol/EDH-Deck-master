@@ -12,13 +12,15 @@
     border: 1.5px solid red;
     font-size: 14px;
     text-align: left;
-    height: 40px
+    height: 40px;
+    padding: 5px;
 }
 
 .decks-name {
     background-color: rgb(207, 204, 204);
     border-radius: 1px;
     border: 1.5px solid red;
+    padding: 8px;
 }
 
 .deck-details-list {

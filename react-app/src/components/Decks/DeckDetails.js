@@ -72,7 +72,7 @@ const DeckDetails = () => {
                     </NavLink>
                     <OpenModalButton
                     className="create-update-buttons"
-                        buttonText="Delete"
+                        buttonText="Delete Deck"
                         modalComponent={<DeckDeleteModal deckId={deckId} />}
                     />
                 </div>}

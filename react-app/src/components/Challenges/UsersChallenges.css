@@ -16,8 +16,9 @@
     border-radius: 1px;
     border: 1.5px solid red;
     padding: 5px;
-    margin-top: 5px;
+    margin-top: -5px;
     width: 400px;
+    margin-bottom: 10px;
 }
 
 .recieved-challenges-container {
