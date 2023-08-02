@@ -57,11 +57,17 @@ const DeckDetails = () => {
                 <div>
                     <img src={imageDisplay(deck)} />
                 </div>
-                <div className='deck-card-list'>
+                <div>
                     {deck.cards.map((card) => (
-                        <a href={`${card.imageUrl}`} className="deck-card" key={card.id}>
-                            {card.count}x {card.name}
-                        </a>
+                        <div>
+                            <a href={`${card.imageUrl}`} className="deck-card deck-card-list" key={card.id}>
+                                {card.count}x {card.name}
+                            </a>
+                            <div className="card-image-hide">
+                                <img className='card-image' src={`${card.imageUrl}`} />
+                            </div>
+
+                        </div>
                     ))}
                 </div>
             </div>
@@ -71,7 +77,7 @@ const DeckDetails = () => {
                         Edit Deck
                     </NavLink>
                     <OpenModalButton
-                    className="create-update-buttons"
+                        className="create-update-buttons"
                         buttonText="Delete Deck"
                         modalComponent={<DeckDeleteModal deckId={deckId} />}
                     />

@@ -37,15 +37,30 @@
     border-radius: 5px;
 }
 
-.deck-card {
-    background-color: rgb(207, 204, 204);
-}
+
 
 .deck-details-title {
     background-color: rgb(207, 204, 204);
 }
 
-.deck-card:hover {
+.deck-card {
+    background-color: rgb(207, 204, 204);
+    display: block;
+}
+
+.card-image {
+    position: absolute;
+    top: 250px; right: 60px;
+    width: 200px;
+    height: auto;
+}
+
+.card-image-hide {
+    display: none;
+}
+
+.deck-card:hover + .card-image-hide {
     color: red;
     cursor: default;
+    display: block;
 }

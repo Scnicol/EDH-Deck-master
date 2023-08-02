@@ -19,10 +19,8 @@ html, body
 
 .profile-dropdown {
   position: absolute;
-  right: 20px;
-  top:30px;
-  width: 15px;
-  height: 15px;
+  right: 30px;
+  top:45px;
   background-color: grey;
 }
 
@@ -37,7 +35,7 @@ html, body
 .profileButton {
   float: left;
   margin-right: 120px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .inventory-profile-container{
