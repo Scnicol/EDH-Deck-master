@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { loadAllChallenges } from '../../store/challenges';
 import { getUsers } from '../../store/users';
-import DatePicker from "react-datepicker";
+import './ChallengeForm.css'
 
 
 
@@ -71,8 +71,9 @@ function ChallengeForm({ challengedId, submitAction, formSubmit, challenge, form
 
     return (
         <div>
-            <h1>{formTitle} new Challenge against {challengedUser.username}</h1>
-            <form onSubmit={handleSubmit}>
+
+            <form className='challenge-form-main-container' onSubmit={handleSubmit}>
+            <h1 className='challenge-form-title'>{formTitle} new Challenge against {challengedUser.username}</h1>
                 <p>Name your challenge</p>
                 <input
                     type="text"
@@ -110,7 +111,7 @@ function ChallengeForm({ challengedId, submitAction, formSubmit, challenge, form
                     ))}
                 </ul>
                 <h2>
-                    <button type="submit" disabled={name.length == 0 || description.length == 0 || challengeDate.length == 0}>{formSubmit} Challenge</button>
+                    <button className='create-update-buttons' type="submit" disabled={name.length == 0 || description.length == 0 || challengeDate.length == 0}>{formSubmit} Challenge</button>
                 </h2>
             </form>
         </div>
