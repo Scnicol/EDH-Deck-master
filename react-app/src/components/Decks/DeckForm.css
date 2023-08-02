@@ -43,6 +43,7 @@
     flex-direction: column;
     background-color: rgb(207, 204, 204);
     margin:5px;
+    padding: 10px;
 }
 
 .card-select {

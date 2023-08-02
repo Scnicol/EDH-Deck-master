@@ -105,7 +105,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                         value={name}
                         onChange={updateName}
                     />
-                    <ul className='errors'>
+                    <ul className='form-errors'>
                         {errors.name.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
@@ -125,14 +125,14 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                     <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} deck</button>
                 </div>
                 <div className='add-card-container'>
-                    <ul className='errors'>
+                    <ul className='form-errors'>
                         {errors.cards.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
                     <div className="card-search">
                         <div>
-                            Add a card
+                            Start adding cards here
                         </div>
                         <div>
                             <CardSearch onAddCard={handleAddCard} />

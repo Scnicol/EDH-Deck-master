@@ -81,7 +81,7 @@ function ChallengeForm({ challengedId, submitAction, formSubmit, challenge, form
                     value={name}
                     onChange={updateName}
                 />
-                <ul className='errors'>
+                <ul className='form-errors'>
                     {errors.name.map((error) => (
                         <li key={error}>{error}</li>
                     ))}
@@ -94,7 +94,7 @@ function ChallengeForm({ challengedId, submitAction, formSubmit, challenge, form
                     value={description}
                     onChange={updateDescription}
                 />
-                <ul className='errors'>
+                <ul className='form-errors'>
                     {errors.description.map((error) => (
                         <li key={error}>{error}</li>
                     ))}
@@ -105,7 +105,7 @@ function ChallengeForm({ challengedId, submitAction, formSubmit, challenge, form
                     placeholder='YYYY-MM-DD'
                     onChange={updateChallengeDate}
                 />
-                <ul className='errors'>
+                <ul className='form-errors'>
                     {errors.date.map((error) => (
                         <li key={error}>{error}</li>
                     ))}

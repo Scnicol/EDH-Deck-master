@@ -37,7 +37,7 @@ function ReviewForm({ review, deckId, submitAction, formSubmit, formTitle, pageO
 
         // ____VALIDATION_ERRORS________
         const validationErrors = { rating: [], description: [] };
-        if (!rating.length) validationErrors.rating.push('Rating cannot be empty')
+        // if (!rating.length) validationErrors.rating.push('Rating cannot be empty')
         if (description.length < 15) validationErrors.description.push('Description needs 15 or more characters');
         setErrors(validationErrors)
 
@@ -71,7 +71,7 @@ function ReviewForm({ review, deckId, submitAction, formSubmit, formTitle, pageO
                     value={description}
                     onChange={updateDescription}
                 />
-                <ul className='errors'>
+                <ul className='form-errors'>
                     {errors.description.map((error) => (
                         <li key={error}>{error}</li>
                     ))}
@@ -85,13 +85,13 @@ function ReviewForm({ review, deckId, submitAction, formSubmit, formTitle, pageO
                     value={rating}
                     onChange={updateRating}
                 />
-                <ul className='errors'>
+                <ul className='form-errors'>
                     {errors.rating.map((error) => (
                         <li key={error}>{error}</li>
                     ))}
                 </ul>
                 <h2>
-                    <button type="submit" disabled={description.length == 0 || rating.length == 0}>{formSubmit} Review</button>
+                    <button type="submit" disabled={description.length == 0}>{formSubmit} Review</button>
                 </h2>
             </form>
         </div>

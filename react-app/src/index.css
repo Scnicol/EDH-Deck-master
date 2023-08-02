@@ -25,3 +25,8 @@ button.secondary {
     margin-top: 15px;
     padding: 10px;
   }
+
+  .form-errors {
+    color: red;
+    font-size: 15px;
+  }
