@@ -30,9 +30,10 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+		<main className="signup-form-main-container">
+
+			<form className='signup-form-container' onSubmit={handleSubmit}>
+				<h1>Sign Up</h1>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
@@ -74,9 +75,9 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<button className='create-update-buttons' type="submit">Sign Up</button>
 			</form>
-		</>
+		</main>
 	);
 }
 
