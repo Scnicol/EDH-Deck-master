@@ -12,9 +12,9 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<main className='navContainer'>
-			<div className="">
-				<NavLink exact to="/" >EDH DECK MASTER</NavLink>
-				<img className='logoimg' scr={'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fen%2Fpng-thskj&psig=AOvVaw36GmQYM37FwqhM9eV7rcLU&ust=1690911207814000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCND-_LG9uYADFQAAAAAdAAAAABAD'} />
+			<div >
+				<NavLink  className="logo" exact to="/" >EDH DECK MASTER</NavLink>
+				<img scr={'https://scalebranding.com/wp-content/uploads/2021/02/21.-Card-game-logo.jpg'} />
 			</div>
 			<div className='inventory-profile-container'>
 				{sessionUser &&

@@ -31,7 +31,7 @@ function LoginFormModal() {
   }
 
   return (
-    <>
+    <main className="login-form-main-container">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -55,12 +55,12 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button type="submit" disabled={email.length == 0 || password.length == 0}>Log In</button>
+        <button className='create-update-buttons' type="submit" disabled={email.length == 0 || password.length == 0}>Log In</button>
       </form>
-      <button onClick={loginDemoUser}>
+      <button className='create-update-buttons' onClick={loginDemoUser}>
         Login as DemoUser
       </button>
-    </>
+    </main>
   );
 }
 

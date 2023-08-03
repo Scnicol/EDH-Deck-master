@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 import { deleteDeck } from "../../store/decks";
+import './DeckDeleteModal.css'
 
 
 const DeckDeleteModal = ({ deckId }) => {
@@ -17,13 +18,13 @@ const DeckDeleteModal = ({ deckId }) => {
     }
 
     return (
-        <div>
+        <div className="deck-delete-main-container">
             <h2>Confirm Delete</h2>
             <h3>Are you sure you want to delete this deck?</h3>
-            <button onClick={(handleDelete)}>
+            <button className='create-update-buttons' onClick={(handleDelete)}>
                 {'Yes (Delete Deck)'}
             </button>
-            <button onClick={closeModal}>
+            <button className='create-update-buttons' onClick={closeModal}>
                 {'No (Keep Deck)'}
             </button>
         </div>

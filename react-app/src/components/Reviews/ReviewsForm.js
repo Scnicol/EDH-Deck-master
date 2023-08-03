@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { loadAllReviews } from '../../store/reviews';
 import { getDeckById } from '../../store/decks';
+import './ReviewForm.css'
 
 
-function ReviewForm({review, deckId, submitAction, formSubmit, formTitle, pageOnSubmit}) {
+function ReviewForm({ review, deckId, submitAction, formSubmit, formTitle, pageOnSubmit }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -24,7 +25,7 @@ function ReviewForm({review, deckId, submitAction, formSubmit, formTitle, pageOn
     useEffect(() => {
         dispatch(loadAllReviews())
         dispatch(getDeckById(deckId))
-    },[dispatch])
+    }, [dispatch])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +36,14 @@ function ReviewForm({review, deckId, submitAction, formSubmit, formTitle, pageOn
         };
 
         // ____VALIDATION_ERRORS________
+        const validationErrors = { rating: [], description: [] };
+        // if (!rating.length) validationErrors.rating.push('Rating cannot be empty')
+        if (description.length < 15) validationErrors.description.push('Description needs 15 or more characters');
+        setErrors(validationErrors)
+
+        if (validationErrors.rating.length > 0 || validationErrors.description.length > 0) {
+            return;
+        }
 
         let newReview;
         newReview = await dispatch(submitAction(payload))
@@ -52,16 +61,21 @@ function ReviewForm({review, deckId, submitAction, formSubmit, formTitle, pageOn
 
     return (
         <div>
-            <h1>{formTitle} your review for {deck.name}</h1>
-            <form onSubmit={handleSubmit}>
+
+            <form className='review-form-main-container' onSubmit={handleSubmit}>
+                <h1 className='review-form-title '>{formTitle} your review for {deck.name}</h1>
                 <p>Description</p>
-                <input
-                type="textarea"
-                placeholder="Describe your review"
-                rows="4"
-                value={description}
-                onChange={updateDescription}
+                <textarea
+                    placeholder="Describe your review"
+                    rows="4"
+                    value={description}
+                    onChange={updateDescription}
                 />
+                <ul className='form-errors'>
+                    {errors.description.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <p>Give the deck a rating</p>
                 <input
                     type="number"
@@ -71,8 +85,13 @@ function ReviewForm({review, deckId, submitAction, formSubmit, formTitle, pageOn
                     value={rating}
                     onChange={updateRating}
                 />
+                <ul className='form-errors'>
+                    {errors.rating.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
                 <h2>
-                    <button type="submit" disabled={description.length == 0 || rating.length == 0}>{formSubmit} Review</button>
+                    <button type="submit" disabled={description.length == 0}>{formSubmit} Review</button>
                 </h2>
             </form>
         </div>

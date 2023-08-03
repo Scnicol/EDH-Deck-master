@@ -1,13 +1,13 @@
-
+import './ReviewsList.css'
 
 function ReviewList({ deckReviews }) {
 
     return (
         <div>
-            <h1>Reviews</h1>
-            <div>
+            <h1 className='reviews-title'>Reviews</h1>
+            <div className='decks-reviews-main-container'>
                 {deckReviews.map((review) => (
-                    <div key={review.id}>
+                    <div className="decks-reviews" key={review.id}>
                         <div>{review.reviewerName}</div>
                         <div>rating: {review.rating}</div>
                         <div>description: {review.description}</div>

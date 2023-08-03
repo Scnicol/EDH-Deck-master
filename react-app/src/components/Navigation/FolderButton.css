@@ -1,0 +1,21 @@
+.inventory-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 280px;
+    height: 220px;
+    background-color: black;
+    align-items: center;
+}
+
+.button {
+    color: rgb(207, 204, 204);
+    border: 1.5px solid red;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+}
+
+.button:hover {
+    color: red;
+}

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getDecks } from '../../store/decks';
+import { imageDisplay } from '../../helperFunctions';
 import './HomePage.css';
 
 
@@ -27,11 +28,12 @@ const HomePage = () => {
             <div className='homepage-main-container'>
                 {decks.map((deck) => (
                     <NavLink className='deck-details' key={deck.id} to={`/decks/${parseInt(deck.id)}`}>
-
-                        {deck.name}
-
-                        <img className='card-image' src={(deck.cards[0]?.imageUrl)} />
-
+                        <div className="deck-name">
+                            {deck.name}
+                        </div>
+                        <div>
+                            <img className='card-image' src={imageDisplay(deck)} />
+                        </div>
                     </NavLink>
                 ))}
             </div>

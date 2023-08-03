@@ -1,0 +1,59 @@
+.users-challenges-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.created-challenges-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.created-challenges-details {
+    background-color: rgb(207, 204, 204);
+    border-radius: 1px;
+    border: 1.5px solid red;
+    padding: 5px;
+    margin-top: -5px;
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+.recieved-challenges-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.users-challenges-title {
+    background-color: rgb(207, 204, 204);
+    border-radius: 1px;
+    border: 1.5px solid red;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 7px;
+}
+
+.created-challenges-title {
+    background-color: rgb(207, 204, 204);
+    border-radius: 1px;
+    border: 1px solid red;
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px;
+    width: 165px;
+}
+
+.recieved-challenges-title {
+    background-color: rgb(207, 204, 204);
+    border-radius: 1px;
+    border: 1px solid red;
+    font-size: 20px;
+    margin-top: 80px;
+    padding: 5px;
+    width: 175px;
+}

@@ -1,1 +1,32 @@
 /* TODO Add site wide styles */
+.create-update-buttons {
+    text-decoration: none;
+    color: rgb(207, 204, 204);
+    border: 1.5px solid red;
+    border-radius: 4px;
+    background-color: black;
+    text-align: center;
+    margin: 10px;
+    padding: 8px;
+}
+
+.create-update-buttons:hover {
+    color: red;
+    border: 1.5px solid red;
+}
+
+button.secondary {
+    text-decoration: none;
+    color: rgb(207, 204, 204);
+    border: 1.5px solid red;
+    border-radius: 4px;
+    background-color: black;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+  }
+
+  .form-errors {
+    color: red;
+    font-size: 15px;
+  }

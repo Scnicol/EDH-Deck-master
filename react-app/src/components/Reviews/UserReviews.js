@@ -5,6 +5,7 @@ import { loadAllReviews } from '../../store/reviews';
 import { getDecks } from '../../store/decks';
 import OpenModalButton from '../OpenModalButton';
 import ReviewDeleteModal from './ReviewDeleteModal';
+import './UserReviews.css'
 
 
 function UserReviews() {
@@ -30,12 +31,12 @@ function UserReviews() {
     }
 
     return (
-        <div>
-            <h1>Reviews</h1>
+        <div className='users-reviews-main-container'>
+            <h1 className='review-title'>Your Reviews</h1>
             <div>
                 {userReviews.map((review) => (
-                    <div key={review.id}>
-                        <NavLink to={`/decks/${review.deckId}`}>
+                    <div className='single-review-container' key={review.id}>
+                        <NavLink className='single-review-name' to={`/decks/${review.deckId}`}>
                             Deck: {decks[review.deckId]?.name}
                         </NavLink>
                         <div>
@@ -44,7 +45,7 @@ function UserReviews() {
                         <div>
                             description: {review.description}
                         </div>
-                        <NavLink to={`/reviews/current/${review.deckId}/edit/${review.id}`}>
+                        <NavLink className='create-update-buttons' to={`/reviews/current/${review.deckId}/edit/${review.id}`}>
                             Edit Review
                         </NavLink>
                         <OpenModalButton
