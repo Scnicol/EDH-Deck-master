@@ -1,12 +1,13 @@
 .deck-details-main-container {
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: rgb(28, 28, 28);
     align-items: start;
-    margin-left: 150px;
+    width: 800px;
     margin-top: 30px;
     margin-right: 150px;
-    padding: 10px;
+    margin-left: 150px;
+    height: auto;
 
 }
 

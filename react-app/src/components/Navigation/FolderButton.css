@@ -9,13 +9,13 @@
 }
 
 .button {
-    color: rgb(207, 204, 204);
-    border: 1.5px solid red;
+    color: var(--white);
+    border: 1.5px solid var(--red);
     border-radius: 5px;
     width: 100px;
     text-align: center;
 }
 
 .button:hover {
-    color: red;
+    color: var(--red);
 }
