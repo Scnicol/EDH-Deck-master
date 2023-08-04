@@ -75,9 +75,9 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
         }
         // ____VALIDATION_ERROR_CHECK___________
         const validationErrors = { name: [], description: [], cards: [], search: [] };
-        if (name.length === 0) validationErrors.name.push('Namefiled is required');
+        if (name.length < 1) validationErrors.name.push('Namefield is required');
         if (description.length < 30) validationErrors.description.push('Description needs 30 or more characters');
-        if (deck.cards.length < 1) validationErrors.cards.push('Please have at least 1 card in your deck')
+        if (deck.cards.length < 1) validationErrors.cards.push('Decks require atleast 1 card in them')
         // const isInWishlist = currUserWishlist?.some((e) => e.id == deckId)
         setErrors(validationErrors)
 
@@ -98,6 +98,11 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
             <form onSubmit={handleSubmit}>
                 <div className='deck-form-main-container'>
                     <h2>{formTitle} your deck</h2>
+                    <ul className='form-errors'>
+                        {errors.cards.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
                     <p>Please give your deck a name</p>
                     <input
                         type="text"
@@ -117,22 +122,18 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                         value={description}
                         onChange={updateDescription}
                     />
-                    <ul className='errors'>
+                    <ul className='form-errors'>
                         {errors.description.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <button type="submit" disabled={name.length == 0 || description.length == 0}>{formSubmit} deck</button>
+                    <button className='create-update-buttons' type="submit">{formSubmit} deck</button>
                 </div>
                 <div className='add-card-container'>
-                    <ul className='form-errors'>
-                        {errors.cards.map((error) => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
+
                     <div className="card-search">
                         <div>
-                            Start adding cards here
+                            Card by name
                         </div>
                         <div>
                             <CardSearch onAddCard={handleAddCard} />

@@ -57,10 +57,10 @@ const DeckDetails = () => {
                 <div>
                     <img src={imageDisplay(deck)} />
                 </div>
-                <div>
+                <div className='deck-card-list-container'>
                     {deck.cards.map((card) => (
-                        <div>
-                            <a href={`${card.imageUrl}`} className="deck-card deck-card-list" key={card.id}>
+                        <div className='deck-card-container'>
+                            <a href={`${card.imageUrl}`} className="deck-details-card" key={card.id}>
                                 {card.count}x {card.name}
                             </a>
                             <div className="card-image-hide">

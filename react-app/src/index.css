@@ -30,3 +30,9 @@ button.secondary {
     color: red;
     font-size: 15px;
   }
+
+  :root {
+    --red: red;
+    --black: rgb(28, 28, 28);
+    --white: rgb(207, 204, 204);
+  }

@@ -31,10 +31,10 @@ function SignupFormModal() {
 
 	return (
 		<main className="signup-form-main-container">
-
+			<h1>Sign Up</h1>
 			<form className='signup-form-container' onSubmit={handleSubmit}>
-				<h1>Sign Up</h1>
-				<ul>
+
+				<ul className="form-errors">
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
