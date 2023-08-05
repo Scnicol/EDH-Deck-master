@@ -34,7 +34,7 @@ function LoginFormModal() {
     <main className="login-form-main-container">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
+        <ul className="form-errors">
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <label>
@@ -55,7 +55,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button className='create-update-buttons' type="submit" disabled={email.length == 0 || password.length == 0}>Log In</button>
+        <button className='create-update-buttons' type="submit">Log In</button>
       </form>
       <button className='create-update-buttons' onClick={loginDemoUser}>
         Login as DemoUser

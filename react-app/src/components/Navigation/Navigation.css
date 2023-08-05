@@ -18,6 +18,9 @@ html, body
 }
 
 .profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   right: 30px;
   top:45px;

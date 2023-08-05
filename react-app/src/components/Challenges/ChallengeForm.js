@@ -111,7 +111,7 @@ function ChallengeForm({ challengedId, submitAction, formSubmit, challenge, form
                     ))}
                 </ul>
                 <h2>
-                    <button className='create-update-buttons' type="submit" disabled={name.length == 0 || description.length == 0 || challengeDate.length == 0}>{formSubmit} Challenge</button>
+                    <button className='create-update-buttons' type="submit">{formSubmit} Challenge</button>
                 </h2>
             </form>
         </div>
