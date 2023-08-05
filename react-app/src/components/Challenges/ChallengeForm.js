@@ -51,6 +51,8 @@ function ChallengeForm({ challengedId, submitAction, formSubmit, challenge, form
         let currDate = new Date().toJSON().slice(0, 10);
         console.log(currDate, challengeDate, "currDate vs ChallengeDate")
         if (name.length === 0) validationErrors.name.push('Name field is required');
+        if (name.length > 50) validationErrors.name.push('Name must be less than 50 characters')
+        if (description.length > 300) validationErrors.description.push('Description must be less than 300 characters')
         if (description.length < 15) validationErrors.description.push('Description needs 15 or more characters');
         if (challengeDate < currDate) validationErrors.date.push('Cannot set challenge in the past')
         setErrors(validationErrors)
