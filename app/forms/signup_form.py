@@ -9,10 +9,10 @@ def email_is_valid(form, field):
     email = field.data
     try:
         emailinfo = validate_email(email, check_deliverability=False)
-        print(emailinfo, "*****EMAILINFO******")
+
         emailinfo = emailinfo.normalized
     except EmailNotValidError as e:
-        print(str(e))
+        
         raise ValidationError('Please use valid email address.')
 
 

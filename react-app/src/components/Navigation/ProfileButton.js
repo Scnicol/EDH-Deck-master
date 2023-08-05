@@ -45,13 +45,13 @@ function ProfileButton({ user }) {
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
+          <div className='profile'>
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>
               <button className='create-update-buttons' onClick={handleLogout}>Log Out</button>
             </li>
-          </>
+          </div>
         ) : (
           <>
             <OpenModalButton

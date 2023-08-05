@@ -18,13 +18,20 @@ html, body
 }
 
 .profile-dropdown {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: absolute;
   right: 30px;
   top:45px;
   background-color: var(--white);
+  padding: 10px 0px 10px 0px;
+  border: 1.5px solid var(--red);
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  margin-left: 0px;
 }
 
 .hidden {
