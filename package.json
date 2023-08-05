@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "email-validator": "^2.0.4",
     "mtgsdk": "^1.0.0",
     "react-datepicker": "^4.16.0"
   }
