@@ -45,7 +45,6 @@ function SignupFormModal() {
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -54,7 +53,6 @@ function SignupFormModal() {
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -63,7 +61,7 @@ function SignupFormModal() {
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						required
+
 					/>
 				</label>
 				<label>
@@ -72,7 +70,7 @@ function SignupFormModal() {
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
+						
 					/>
 				</label>
 				<button className='create-update-buttons' type="submit">Sign Up</button>
