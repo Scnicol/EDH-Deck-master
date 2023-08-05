@@ -75,8 +75,10 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
         }
         // ____VALIDATION_ERROR_CHECK___________
         const validationErrors = { name: [], description: [], cards: [], search: [] };
-        if (name.length < 1) validationErrors.name.push('Namefield is required');
+        if (name.length < 1) validationErrors.name.push('Name is required');
+        if (name.length > 50) validationErrors.name.push('Name must be less than 50 characters')
         if (description.length < 30) validationErrors.description.push('Description needs 30 or more characters');
+        if (description.length > 300) validationErrors.description.push('Description must be less than 300 characters')
         if (deck.cards.length < 1) validationErrors.cards.push('Decks require atleast 1 card in them')
         // const isInWishlist = currUserWishlist?.some((e) => e.id == deckId)
         setErrors(validationErrors)
