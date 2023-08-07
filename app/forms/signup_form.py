@@ -34,9 +34,6 @@ def username_exists(form, field):
 def password_length(form, field):
     # Checking for password length greater than 6
     password = field.data
-    print(password, 'Password----------------')
-    passwordLength = len(password)
-    print(passwordLength, 'Password----------------')
     if len(password) < 6:
         raise ValidationError('Password must be 6 characters or longer')
 

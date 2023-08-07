@@ -13,6 +13,7 @@
 .create-update-buttons:hover {
     color: red;
     border: 1.5px solid red;
+    cursor: pointer;
 }
 
 button.secondary {
