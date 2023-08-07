@@ -9,8 +9,6 @@ function UpdateDeckForm() {
     const {deckId} = useParams();
     const dispatch = useDispatch();
 
-    console.log(deckId, "deckId---------")
-
     const deck = useSelector(state => state.decks[deckId])
 
     useEffect(() => {
