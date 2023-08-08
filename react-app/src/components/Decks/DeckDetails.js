@@ -48,27 +48,29 @@ const DeckDetails = () => {
 
     return (
         <div className='deck-details-main-container'>
-            <div>
-                <h1 className='decks-name'>{deck.name}</h1>
-                <h2 className='decks-details'>{deck.description}</h2>
-
-            </div>
-            <div className='deck-details-list'>
+            <div className='deck-details-inner-container'>
                 <div>
-                    <img src={imageDisplay(deck)} />
-                </div>
-                <div className='deck-card-list-container'>
-                    {deck.cards.map((card) => (
-                        <div className='deck-card-container'>
-                            <a href={`${card.imageUrl}`} className="deck-details-card" key={card.id}>
-                                {card.count}x {card.name}
-                            </a>
-                            <div className="card-image-hide">
-                                <img className='deck-card-image' src={`${card.imageUrl}`} />
-                            </div>
+                    <h1 className='decks-name'>{deck.name}</h1>
+                    <h2 className='decks-details'>{deck.description}</h2>
 
-                        </div>
-                    ))}
+                </div>
+                <div className='deck-details-list'>
+                    <div>
+                        <img src={imageDisplay(deck)} />
+                    </div>
+                    <div className='deck-card-list-container'>
+                        {deck.cards.map((card) => (
+                            <div className='deck-card-container'>
+                                <a href={`${card.imageUrl}`} className="deck-details-card" key={card.id}>
+                                    {card.count}x {card.name}
+                                </a>
+                                <div className="card-image-hide">
+                                    <img className='deck-card-image' src={`${card.imageUrl}`} />
+                                </div>
+
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
             {user?.id == deck.creatorId &&

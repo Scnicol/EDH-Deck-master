@@ -1,7 +1,7 @@
 .deck-details-main-container {
     display: flex;
     flex-direction: column;
-    background-color: rgb(28, 28, 28);
+    background-color: rgb(42, 41, 41);
     align-items: start;
     width: 800px;
     margin-top: 30px;
@@ -9,6 +9,15 @@
     margin-left: 150px;
     height: auto;
 
+}
+
+.deck-details-inner-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(28, 28, 28);
+    width: 740px;
+    padding: 20px;
+    margin: 10px;
 }
 
 .decks-details {
@@ -19,6 +28,7 @@
     text-align: left;
     height: 40px;
     padding: 5px;
+    width: 80%;
 }
 
 .decks-name {
@@ -26,11 +36,15 @@
     border-radius: 1px;
     border: 1.5px solid red;
     padding: 8px;
+    width: 60%;
 }
 
 .deck-details-list {
     display: flex;
     flex-direction: row;
+    background-color: rgb(42, 41, 41);
+    padding: 30px;
+    margin-top: 80px;
 }
 
 .deck-card-list-container {
@@ -40,6 +54,8 @@
     border-radius: 5px;
     border: 2.5px solid red;
     margin-left: 50px;
+    height: 600px;
+    width: 400px;
 
 }
 
