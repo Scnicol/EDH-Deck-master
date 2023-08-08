@@ -49,14 +49,14 @@ const DeckDetails = () => {
     return (
         <div className='deck-details-main-container'>
             <div className='deck-details-inner-container'>
-                <div>
+                <div className='deck-name-details-container'>
                     <h1 className='decks-name'>{deck.name}</h1>
                     <h2 className='decks-details'>{deck.description}</h2>
 
                 </div>
                 <div className='deck-details-list'>
                     <div>
-                        <img src={imageDisplay(deck)} />
+                        <img className='deck-commander' src={imageDisplay(deck)} />
                     </div>
                     <div className='deck-card-list-container'>
                         {deck.cards.map((card) => (
