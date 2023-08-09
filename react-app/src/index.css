@@ -1,4 +1,12 @@
 /* TODO Add site wide styles */
+
+html {
+    background-image: url('https://wallpaper.dog/large/10897304.jpg') ;
+    background-size: cover;
+    background-repeat: repeat;
+    /* height: 100%; */
+}
+
 .create-update-buttons {
     text-decoration: none;
     color: rgb(207, 204, 204);
