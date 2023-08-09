@@ -72,39 +72,46 @@ const DeckDetails = () => {
                         ))}
                     </div>
                 </div>
-            </div>
-            {user?.id == deck.creatorId &&
-                <div>
-                    <NavLink className="create-update-buttons" to={`current/${deckId}/edit`}>
-                        Edit Deck
-                    </NavLink>
-                    <OpenModalButton
-                        className="create-update-buttons"
-                        buttonText="Delete Deck"
-                        modalComponent={<DeckDeleteModal deckId={deckId} />}
-                    />
-                </div>}
-            {user && user.id != deck.creatorId && !isInWishlist && <div>
-                <div>
-                    <button className="create-update-buttons" onClick={handleAdd}>Add to wishlist</button>
+
+                {user?.id == deck.creatorId &&
+                    <div>
+                        <NavLink className="create-update-buttons" to={`current/${deckId}/edit`}>
+                            Edit Deck
+                        </NavLink>
+                        <OpenModalButton
+                            className="create-update-buttons"
+                            buttonText="Delete Deck"
+                            modalComponent={<DeckDeleteModal deckId={deckId} />}
+                        />
+                    </div>}
+                <div className='deck-buttons-container'>
+                    <div>
+                        {user && user.id != deck.creatorId && !isInWishlist &&
+                            <div>
+                                <button className="create-update-buttons" onClick={handleAdd}>Add to wishlist</button>
+                            </div>}
+
+                        {user && isInWishlist &&
+                            <div>
+                                <button className="create-update-buttons" onClick={handleRemove}>Remove from wishlist</button>
+                            </div>}
+                    </div>
+                    {user && user.id != deck.creatorId &&
+                        <div>
+                            <NavLink className="create-update-buttons" to={`/challenges/current/${deck.creatorId}`}>Challenge Creator</NavLink>
+                        </div>}
+
                 </div>
+                <div className='deck-reviews-container' >
+                    <div>
+                        <ReviewList deckReviews={deckReviews} />
+                    </div>
 
-            </div>}
-            {user && isInWishlist &&
-                <div>
-
-                    <button className="create-update-buttons" onClick={handleRemove}>Remove from wishlist</button>
-                </div>}
-            {user && user.id != deck.creatorId && <div>
-                <NavLink className="create-update-buttons" to={`/challenges/current/${deck.creatorId}`}>Challenge Creator</NavLink>
-            </div>}
-            <div>
-                <ReviewList deckReviews={deckReviews} />
+                    {user && user.id != deck.creatorId && <NavLink className="create-update-buttons" to={`/reviews/current/${deckId}`}>
+                        Leave a Review
+                    </NavLink>}
+                </div>
             </div>
-
-            {user && user.id != deck.creatorId && <NavLink className="create-update-buttons" to={`/reviews/current/${deckId}`}>
-                Leave a Review
-            </NavLink>}
         </div>
     )
 }

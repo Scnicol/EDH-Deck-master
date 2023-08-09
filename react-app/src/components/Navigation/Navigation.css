@@ -20,7 +20,7 @@ html, body
 .profile-dropdown {
   position: absolute;
   right: 30px;
-  top:45px;
+  top: 45px;
   background-color: var(--white);
   padding: 10px 0px 10px 0px;
   border: 1.5px solid var(--red);
