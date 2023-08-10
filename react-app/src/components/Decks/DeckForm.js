@@ -96,8 +96,8 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
     }
 
     return (
-        <div>
-            <form className='deck-form-main-container' onSubmit={handleSubmit}>
+        <div className='deck-form-main-container'>
+            <form  className='deck-form-inner-container ' onSubmit={handleSubmit}>
                 <div className='deck-form-information-container'>
                     <h2>{formTitle} your deck</h2>
                     <ul className='form-errors'>
