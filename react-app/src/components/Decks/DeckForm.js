@@ -97,8 +97,8 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <div className='deck-form-main-container'>
+            <form className='deck-form-main-container' onSubmit={handleSubmit}>
+                <div className='deck-form-information-container'>
                     <h2>{formTitle} your deck</h2>
                     <ul className='form-errors'>
                         {errors.cards.map((error) => (
@@ -143,29 +143,29 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                     </div>
                     <div className='card-list-main-container'>
                         {sortedCards.map((card) => (
-                            <div>
-                                <div className="deck-list" key={card.mtgId}>
 
-                                    <input
-                                        className='card-count'
-                                        type="number"
-                                        min="1"
-                                        size="small"
-                                        value={card.count}
-                                        onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
-                                    />
+                            <div className="deck-list" key={card.mtgId}>
 
-                                    <div className='deck-card'>
-                                        {card.count}x {card.name}
-                                    </div>
-                                    <div>
-                                        <button onClick={(e) => handleRemoveCard(card)}>X</button>
-                                    </div>
+                                <input
+                                    className='card-count'
+                                    type="number"
+                                    min="1"
+                                    size="small"
+                                    value={card.count}
+                                    onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
+                                />
 
+                                <div className='deck-card'>
+                                    {card.count}x {card.name}
+                                </div>
+                                <div>
+                                    <button onClick={(e) => handleRemoveCard(card)}>X</button>
                                 </div>
 
-
                             </div>
+
+
+
                         ))}
                     </div>
 
