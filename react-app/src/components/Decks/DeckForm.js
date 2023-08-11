@@ -97,16 +97,17 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
 
     return (
         <div className='deck-form-main-container'>
-            <form  className='deck-form-inner-container ' onSubmit={handleSubmit}>
+            <form className='deck-form-inner-container ' onSubmit={handleSubmit}>
                 <div className='deck-form-information-container'>
-                    <h2>{formTitle} your deck</h2>
+                    <h2 className='deck-form-titles'>{formTitle} your deck</h2>
                     <ul className='form-errors'>
                         {errors.cards.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <p>Please give your deck a name</p>
+                    <p className='deck-form-titles'>Please give your deck a name</p>
                     <input
+                        className='deck-title-input-size'
                         type="text"
                         placeholder="Name your deck"
                         value={name}
@@ -117,10 +118,11 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <p>Please give your deck a description</p>
+                    <p className='deck-form-titles'>Please give your deck a description</p>
                     <textarea
                         type="textarea"
                         placeholder="My deck does..."
+                        rows='8'
                         value={description}
                         onChange={updateDescription}
                     />
@@ -129,10 +131,8 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <button className='create-update-buttons' type="submit">{formSubmit} deck</button>
                 </div>
                 <div className='add-card-container'>
-
                     <div className="card-search">
                         <div>
                             Card by name
@@ -143,9 +143,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                     </div>
                     <div className='card-list-main-container'>
                         {sortedCards.map((card) => (
-
                             <div className="deck-list" key={card.mtgId}>
-
                                 <input
                                     className='card-count'
                                     type="number"
@@ -154,23 +152,17 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                                     value={card.count}
                                     onChange={(e) => { handleUpdateCardCount(card, e.target.value) }}
                                 />
-
                                 <div className='deck-card'>
                                     {card.count}x {card.name}
                                 </div>
                                 <div>
                                     <button onClick={(e) => handleRemoveCard(card)}>X</button>
                                 </div>
-
                             </div>
-
-
-
                         ))}
                     </div>
-
-
                 </div>
+                <button className='create-update-buttons' type="submit">{formSubmit} deck</button>
             </form>
         </div>
     )
