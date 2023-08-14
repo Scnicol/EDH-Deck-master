@@ -12,7 +12,7 @@ def email_is_valid(form, field):
 
         emailinfo = emailinfo.normalized
     except EmailNotValidError as e:
-        
+
         raise ValidationError('Please use valid email address.')
 
 
@@ -31,9 +31,14 @@ def username_exists(form, field):
     if user:
         raise ValidationError('Username is already in use.')
 
+def password_length(form, field):
+    # Checking for password length greater than 6
+    password = field.data
+    if len(password) < 6:
+        raise ValidationError('Password must be 6 characters or longer')
 
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists, email_is_valid])
-    password = StringField('password', validators=[DataRequired()])
+    password = StringField('password', validators=[DataRequired(), password_length])

@@ -1,14 +1,37 @@
 .deck-details-main-container {
     display: flex;
     flex-direction: column;
-    background-color: rgb(28, 28, 28);
-    align-items: start;
-    width: 800px;
+    background-color: rgb(42, 41, 41);
+    /* align-items: center; */
+    /* justify-content: center; */
+    min-width: 900px;
     margin-top: 30px;
-    margin-right: 150px;
-    margin-left: 150px;
-    height: auto;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+    border: 1.7px solid var(--red);
+    border-radius: 4.5px;
+    box-shadow: 15px 15px 10px rgb(25, 25, 25);
 
+}
+
+.deck-details-inner-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(28, 28, 28);
+    /* width: 740px; */
+    padding: 20px;
+    margin: 30px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 3px rgb(207, 204, 204);
+}
+
+.deck-name-details-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(42, 41, 41);
+    box-shadow: 0px 0px 3px rgb(207, 204, 204);
+    padding: 10px
 }
 
 .decks-details {
@@ -19,6 +42,7 @@
     text-align: left;
     height: 40px;
     padding: 5px;
+    width: 80%;
 }
 
 .decks-name {
@@ -26,11 +50,16 @@
     border-radius: 1px;
     border: 1.5px solid red;
     padding: 8px;
+    width: 60%;
 }
 
 .deck-details-list {
     display: flex;
     flex-direction: row;
+    background-color: rgb(42, 41, 41);
+    padding: 30px;
+    margin-top: 80px;
+    box-shadow: 0px 0px 3px rgb(207, 204, 204);
 }
 
 .deck-card-list-container {
@@ -40,6 +69,8 @@
     border-radius: 5px;
     border: 2.5px solid red;
     margin-left: 50px;
+    height: 600px;
+    width: 400px;
 
 }
 
@@ -62,6 +93,10 @@
 
 .deck-details-title {
     background-color: rgb(207, 204, 204);
+}
+
+.deck-commander {
+    box-shadow: 10px 10px 10px rgb(28, 28, 28);
 }
 
 .deck-details-card {
@@ -88,4 +123,27 @@
     color: red;
     cursor: default;
     display: block;
+}
+
+.deck-buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: rgb(42, 41, 41);
+    box-shadow: 0px 0px 3px rgb(207, 204, 204);
+    width: 44%;
+}
+
+.deck-reviews-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: rgb(42, 41, 41);
+    box-shadow: 0px 0px 3px rgb(207, 204, 204);
 }

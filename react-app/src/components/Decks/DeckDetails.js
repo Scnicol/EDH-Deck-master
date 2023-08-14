@@ -48,61 +48,70 @@ const DeckDetails = () => {
 
     return (
         <div className='deck-details-main-container'>
-            <div>
-                <h1 className='decks-name'>{deck.name}</h1>
-                <h2 className='decks-details'>{deck.description}</h2>
+            <div className='deck-details-inner-container'>
+                <div className='deck-name-details-container'>
+                    <h1 className='decks-name'>{deck.name}</h1>
+                    <h2 className='decks-details'>{deck.description}</h2>
 
-            </div>
-            <div className='deck-details-list'>
-                <div>
-                    <img src={imageDisplay(deck)} />
                 </div>
-                <div className='deck-card-list-container'>
-                    {deck.cards.map((card) => (
-                        <div className='deck-card-container'>
-                            <a href={`${card.imageUrl}`} className="deck-details-card" key={card.id}>
-                                {card.count}x {card.name}
-                            </a>
-                            <div className="card-image-hide">
-                                <img className='deck-card-image' src={`${card.imageUrl}`} />
+                <div className='deck-details-list'>
+                    <div>
+                        <img className='deck-commander' src={imageDisplay(deck)} />
+                    </div>
+                    <div className='deck-card-list-container'>
+                        {deck.cards.map((card) => (
+                            <div className='deck-card-container'>
+                                <a href={`${card.imageUrl}`} className="deck-details-card" key={card.id}>
+                                    {card.count}x {card.name}
+                                </a>
+                                <div className="card-image-hide">
+                                    <img className='deck-card-image' src={`${card.imageUrl}`} />
+                                </div>
+
                             </div>
-
-                        </div>
-                    ))}
-                </div>
-            </div>
-            {user?.id == deck.creatorId &&
-                <div>
-                    <NavLink className="create-update-buttons" to={`current/${deckId}/edit`}>
-                        Edit Deck
-                    </NavLink>
-                    <OpenModalButton
-                        className="create-update-buttons"
-                        buttonText="Delete Deck"
-                        modalComponent={<DeckDeleteModal deckId={deckId} />}
-                    />
-                </div>}
-            {user && user.id != deck.creatorId && !isInWishlist && <div>
-                <div>
-                    <button className="create-update-buttons" onClick={handleAdd}>Add to wishlist</button>
+                        ))}
+                    </div>
                 </div>
 
-            </div>}
-            {user && isInWishlist &&
-                <div>
+                {user?.id == deck.creatorId &&
+                    <div>
+                        <NavLink className="create-update-buttons" to={`current/${deckId}/edit`}>
+                            Edit Deck
+                        </NavLink>
+                        <OpenModalButton
+                            className="create-update-buttons"
+                            buttonText="Delete Deck"
+                            modalComponent={<DeckDeleteModal deckId={deckId} />}
+                        />
+                    </div>}
+                <div className='deck-buttons-container'>
+                    <div>
+                        {user && user.id != deck.creatorId && !isInWishlist &&
+                            <div>
+                                <button className="create-update-buttons" onClick={handleAdd}>Add to wishlist</button>
+                            </div>}
 
-                    <button className="create-update-buttons" onClick={handleRemove}>Remove from wishlist</button>
-                </div>}
-            {user && user.id != deck.creatorId && <div>
-                <NavLink className="create-update-buttons" to={`/challenges/current/${deck.creatorId}`}>Challenge Creator</NavLink>
-            </div>}
-            <div>
-                <ReviewList deckReviews={deckReviews} />
+                        {user && isInWishlist &&
+                            <div>
+                                <button className="create-update-buttons" onClick={handleRemove}>Remove from wishlist</button>
+                            </div>}
+                    </div>
+                    {user && user.id != deck.creatorId &&
+                        <div>
+                            <NavLink className="create-update-buttons" to={`/challenges/current/${deck.creatorId}`}>Challenge Creator</NavLink>
+                        </div>}
+
+                </div>
+                <div className='deck-reviews-container' >
+                    <div>
+                        <ReviewList deckReviews={deckReviews} />
+                    </div>
+
+                    {user && user.id != deck.creatorId && <NavLink className="create-update-buttons" to={`/reviews/current/${deckId}`}>
+                        Leave a Review
+                    </NavLink>}
+                </div>
             </div>
-
-            {user && user.id != deck.creatorId && <NavLink className="create-update-buttons" to={`/reviews/current/${deckId}`}>
-                Leave a Review
-            </NavLink>}
         </div>
     )
 }

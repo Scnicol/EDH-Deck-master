@@ -3,24 +3,65 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    background-color: rgb(207, 204, 204);
-    /* width: 400px; */
-    margin-left: 150px;
-    margin-right: 150px;
+    background-color: rgb(42, 41, 41);
+    min-width: 600px;
+    margin-left: 100px;
+    margin-right: 100px;
     border: 1.5px solid red;
-    padding-bottom: 30px;
+    padding: 20px;
     margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.deck-form-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(28, 28, 28);
+    box-shadow: 0px 0px 4px rgb(207, 204, 204);
+    width: 90%;
+    padding: 20px;
+}
+
+.deck-form-titles {
+    color: white;
+}
+
+.deck-title-input-size {
+    width: 184px;
+}
+
+.deck-form-information-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(42, 41, 41);
+    box-shadow: 0px 0px 3px rgb(207, 204, 204);
+    width: 70%;
+    padding: 20px;
+    margin: 20px;
 }
 
 .add-card-container {
     display: flex;
     flex-direction: row;
+    align-items: start;
+    width: 90%;
+    background-color: rgb(42, 41, 41);
+    box-shadow: 0px 0px 3px rgb(207, 204, 204);
 }
 
 .card-list-main-container {
     display: flex;
     flex-direction: column;
+    background-color: rgb(28, 28, 28);
+    height: 600px;
+    width: 90%;
+    border: 1.5px solid red;
+    margin: 10px;
+    padding: 10px;
 }
+
+
 
 .deck-list {
     display: flex;
@@ -42,16 +83,18 @@
     display: flex;
     flex-direction: column;
     background-color: rgb(207, 204, 204);
-    margin:5px;
+    margin:10px;
     padding: 10px;
 }
 
 .card-select {
     color:black;
+    padding: 1px;
+    margin-top: 1px;
 }
 
 .card-select:hover {
+    cursor: pointer;
     color: red;
-    cursor: default;
     border: 1px solid black;
 }
