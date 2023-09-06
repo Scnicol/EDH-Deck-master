@@ -1,19 +1,28 @@
 /* TODO Add site wide styles */
 
+
+:root {
+  --red: #CD1818;
+  --black: #321E1E;
+  --turqouise: #116D6E;
+  --brown: #4E3636;
+}
+
 .create-update-buttons {
     text-decoration: none;
-    color: rgb(207, 204, 204);
-    border: 1.5px solid red;
+    color: var(--red);
+    border: 1.5px solid var(--red);
     border-radius: 4px;
-    background-color: black;
+    background-color: solid var(--brown);
     text-align: center;
     margin: 10px;
     padding: 8px;
 }
 
 .create-update-buttons:hover {
-    color: red;
-    box-shadow: 1.5px, 2.0px, 3px solid red;
+    color: var(--turqouise);
+    box-shadow: 1.5px, 2.0px, 3px solid var(--turqouise);
+    border: solid var(--turqouise);
     cursor: pointer;
 }
 
@@ -31,10 +40,4 @@ button.secondary {
   .form-errors {
     color: red;
     font-size: 15px;
-  }
-
-  :root {
-    --red: red;
-    --black: rgb(28, 28, 28);
-    --white: rgb(207, 204, 204);
   }
