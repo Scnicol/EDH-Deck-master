@@ -14,7 +14,7 @@ html, body
   height: 50px;
   border: 1.5px solid var(--black);
   background-color: var(--black);
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .profile-dropdown {
