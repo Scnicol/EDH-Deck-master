@@ -21,7 +21,7 @@ html, body
   position: absolute;
   right: 30px;
   top: 45px;
-  background-color: var(--brown);
+  background-color: var(--white);
   padding: 10px 0px 10px 0px;
   border: 1.5px solid var(--red);
 }

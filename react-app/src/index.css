@@ -2,10 +2,10 @@
 
 
 :root {
-  --red: #CD1818;
-  --black: #321E1E;
-  --turqouise: #116D6E;
-  --brown: #4E3636;
+  --red: #DA0037;
+  --black: #171717;
+  --grey: #444444;
+  --white: #EDEDED;
 }
 
 .create-update-buttons {
@@ -13,23 +13,23 @@
     color: var(--red);
     border: 1.5px solid var(--red);
     border-radius: 4px;
-    background-color: solid var(--brown);
+    background-color: solid var(--black);
     text-align: center;
     margin: 10px;
     padding: 8px;
 }
 
 .create-update-buttons:hover {
-    color: var(--turqouise);
-    box-shadow: 1.5px, 2.0px, 3px solid var(--turqouise);
-    border: solid var(--turqouise);
+    color: var(--white);
+    box-shadow: 10px, 10px, 5px var(--grey);
+    border: solid var(--white);
     cursor: pointer;
 }
 
 button.secondary {
     text-decoration: none;
     color: rgb(207, 204, 204);
-    border: 1.5px solid red;
+    border: 1.5px solid var(--red);
     border-radius: 4px;
     background-color: black;
     text-align: center;
@@ -38,6 +38,6 @@ button.secondary {
   }
 
   .form-errors {
-    color: red;
+    color: var(--red);
     font-size: 15px;
   }
