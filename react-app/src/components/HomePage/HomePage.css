@@ -1,12 +1,20 @@
 
+.homepage-outer-container {
+ display: grid;
+ background-color: var(--grey);
+}
+
 
 .homepage-main-container {
     display: grid;
-    background-color: var(--grey);
-    /* margin-top: 10px; */
+    background-color: var(--darkgrey);
+    border: 1px solid var(--white);
+    box-shadow: 0 1px 8px var(--white);
+    margin: 25px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    column-gap: 10px;
+    column-gap: 15px;
     row-gap: 10px;
+    padding: 10px;
 }
 
 .deck-details {
@@ -26,10 +34,10 @@
 
 .deck-name {
     /* color: rgb(207, 204, 204); */
-    color: black;
+    color: var(--red);
     /* border: 1.5px solid red; */
     border-radius: 4px;
-    /* background-color: rgb(111, 29, 29); */
+    /* background-color: var(--black); */
     padding-bottom: 3px;
     width: 200px;
     height: 20px;

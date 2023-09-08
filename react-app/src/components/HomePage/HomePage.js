@@ -24,7 +24,7 @@ const HomePage = () => {
     }
 
     return (
-        <main >
+        <main className='homepage-outer-container'>
             <div className='homepage-main-container'>
                 {decks.map((deck) => (
                     <NavLink className='deck-details' key={deck.id} to={`/decks/${parseInt(deck.id)}`}>
