@@ -78,5 +78,6 @@ html, body
 }
 
 .logo:hover {
-  color: var(--red);
+  color: var(--white);
+  border: 1.5px solid var(--white);
 }

@@ -5,11 +5,14 @@
     width: 280px;
     height: 220px;
     background-color: var(--black);
+    border: 1.5px solid var(--white);
+    border-radius: 6px;
+    color: var(--grey);
     align-items: center;
 }
 
 .button {
-    color: var(--white);
+    color: var(--red);
     border: 1.5px solid var(--red);
     border-radius: 5px;
     width: 100px;
@@ -17,5 +20,6 @@
 }
 
 .button:hover {
-    color: var(--red);
+    color: var(--white);
+    border: 1.5px solid var(--white);
 }

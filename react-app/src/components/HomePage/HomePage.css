@@ -2,7 +2,7 @@
 
 .homepage-main-container {
     display: grid;
-    background-color: var(--white);
+    background-color: var(--grey);
     /* margin-top: 10px; */
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     column-gap: 10px;
