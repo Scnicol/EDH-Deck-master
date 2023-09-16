@@ -1,36 +1,51 @@
 
+.homepage-outer-container {
+ display: grid;
+ background-color: var(--grey);
+}
+
 
 .homepage-main-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    column-gap: 10px;
+    background-color: var(--darkgrey);
+    border: 1px solid var(--white);
+    box-shadow: 0px 0px 3px 2px rgba(207, 204, 204, 0.488);
+    margin: 25px;
+    margin-left:150px;
+    margin-right: 150px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    column-gap: 15px;
     row-gap: 10px;
+    padding: 10px;
 }
 
 .deck-details {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 5px;
-    margin: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
 }
 
 .card-image {
     width: auto;
     height: 280px;
-    border: 1.5px solid black;
+    border: 1.5px solid var(--black);
     border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .deck-name {
-    color: rgb(207, 204, 204);
-    border: 1.5px solid red;
-    border-radius: 4px;
-    background-color: black;
-    padding-bottom: 3px;
+    color: var(--blue);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding-bottom: 10px;
     width: 200px;
     height: 20px;
     text-align: center;
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 
 a:link {
@@ -38,6 +53,7 @@ a:link {
 }
 
 .deck-name:hover {
-    color: red;
-    border: 1.5px solid red;
+    color: var(--white);
+    /* border: 1.5px solid red; */
+    box-shadow: 0px, 0px, 3px solid red;
 }

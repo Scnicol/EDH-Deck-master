@@ -1,47 +1,45 @@
 /* TODO Add site wide styles */
 
-html {
-    background-image: url('https://wallpaper.dog/large/10897304.jpg') ;
-    background-size: cover;
-    background-repeat: repeat;
-    /* height: 100%; */
+
+:root {
+  --red: #DA0037;
+  --black: #171717;
+  --grey: #444444;
+  --white: #EDEDED;
+  --darkgrey: #2d2d2d;
+  --blue: #187dd4;
 }
 
 .create-update-buttons {
     text-decoration: none;
-    color: rgb(207, 204, 204);
-    border: 1.5px solid red;
+    color: var(--red);
+    border: 1.5px solid var(--red);
     border-radius: 4px;
-    background-color: black;
+    background-color: solid var(--black);
     text-align: center;
     margin: 10px;
     padding: 8px;
 }
 
 .create-update-buttons:hover {
-    color: red;
-    border: 1.5px solid red;
+    color: var(--white);
+    box-shadow: 10px, 10px, 5px var(--grey);
+    border: 1.5px solid var(--white);
     cursor: pointer;
 }
 
 button.secondary {
     text-decoration: none;
-    color: rgb(207, 204, 204);
-    border: 1.5px solid red;
+    color: var(--grey);
+    border: 1.5px solid var(--red);
     border-radius: 4px;
-    background-color: black;
+    background-color: var(--black);
     text-align: center;
     margin-top: 15px;
     padding: 10px;
   }
 
   .form-errors {
-    color: red;
+    color: var(--red);
     font-size: 15px;
-  }
-
-  :root {
-    --red: red;
-    --black: rgb(28, 28, 28);
-    --white: rgb(207, 204, 204);
   }

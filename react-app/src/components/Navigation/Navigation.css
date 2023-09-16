@@ -14,7 +14,7 @@ html, body
   height: 50px;
   border: 1.5px solid var(--black);
   background-color: var(--black);
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .profile-dropdown {
@@ -43,15 +43,15 @@ html, body
 }
 
 .profileImage {
-  width: 20px;
+  width: 12px;
   padding: 2px;
   height: auto;
 }
 
 .profileButton {
-  color: var(--white);
+  color: var(--red);
   background-color: var(--red);
-  border: 2px solid black;
+  border: 2px var(--black);
   border-radius: 420px;
 }
 
@@ -72,11 +72,12 @@ html, body
   /* background: url("https://scalebranding.com/wp-content/uploads/2021/02/21.-Card-game-logo.jpg"); */
   margin: 15px;
   padding: 5px;
-  color: var(--white);
+  color: var(--red);
   border: 1.5px solid var(--red);
   border-radius: 5px;
 }
 
 .logo:hover {
-  color: var(--red);
+  color: var(--white);
+  border: 1.5px solid var(--white);
 }

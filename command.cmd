@@ -1,6 +1,7 @@
 To activate this project's virtualenv, run pipenv shell.
 Alternatively, run a command inside the virtualenv with pipenv run.
 To start backend run pipenv run flask run
+make sure to check the proxie and set the port number: -p 
 To start frontend cd into react-app then run npm start
 
 To migrate/seed tables run:

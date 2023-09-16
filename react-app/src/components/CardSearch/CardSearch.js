@@ -49,9 +49,6 @@ const CardSearch = ({ onAddCard }) => {
         } else {
             setCardResults([]);
         }
-
-
-
     }, [cardName])
 
     return (
