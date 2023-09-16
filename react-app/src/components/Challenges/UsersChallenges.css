@@ -2,6 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--darkgrey);
+}
+
+.users-challenges-inner-container {
+    display: flex;
+    flex-direction: row;
 }
 
 .created-challenges-container {
@@ -19,6 +25,15 @@
     margin-top: -5px;
     width: 400px;
     margin-bottom: 10px;
+}
+
+.created-recieved-challenges-main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: var(--grey);
 }
 
 .recieved-challenges-container {
@@ -53,7 +68,7 @@
     border-radius: 1px;
     border: 1px solid red;
     font-size: 20px;
-    margin-top: 80px;
+    margin: 10px;
     padding: 5px;
     width: 175px;
 }

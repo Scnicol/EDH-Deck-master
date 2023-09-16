@@ -3,28 +3,24 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    background-color: rgb(42, 41, 41);
+    background-color: var(--darkgrey);
     min-width: 600px;
-    margin-left: 100px;
-    margin-right: 100px;
-    border: 1.5px solid red;
+    /* border: 1.5px solid var(--red); */
     padding: 20px;
-    margin-bottom: 50px;
-    margin-top: 50px;
 }
 
 .deck-form-inner-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(28, 28, 28);
+    background-color: var(--black);
     box-shadow: 0px 0px 4px rgb(207, 204, 204);
     width: 90%;
     padding: 20px;
 }
 
 .deck-form-titles {
-    color: white;
+    color: var(--white);
 }
 
 .deck-title-input-size {
@@ -34,8 +30,8 @@
 .deck-form-information-container {
     display: flex;
     flex-direction: column;
-    background-color: rgb(42, 41, 41);
-    box-shadow: 0px 0px 3px rgb(207, 204, 204);
+    background-color: var(--darkgrey);
+    box-shadow: 0px 0px 3px var(--white);
     width: 70%;
     padding: 20px;
     margin: 20px;
@@ -46,17 +42,19 @@
     flex-direction: row;
     align-items: start;
     width: 90%;
-    background-color: rgb(42, 41, 41);
-    box-shadow: 0px 0px 3px rgb(207, 204, 204);
+    background-color: var(--darkgrey);
+    box-shadow: 0px 0px 3px var(--white);
+    margin-bottom: 20px;
 }
 
 .card-list-main-container {
     display: flex;
     flex-direction: column;
-    background-color: rgb(28, 28, 28);
+    background-color: var(--white);
     height: 600px;
-    width: 90%;
-    border: 1.5px solid red;
+    width: 70%;
+    border: 1.5px solid var(--red);
+    box-shadow: 0px 0px 3px var(--red);
     margin: 10px;
     padding: 10px;
 }
@@ -75,7 +73,7 @@
 }
 
 .card-count {
-    width:20px;
+    width:25px;
     height: 15px;
 }
 
@@ -95,6 +93,6 @@
 
 .card-select:hover {
     cursor: pointer;
-    color: red;
-    border: 1px solid black;
+    color: var(--red);
+    border: 1px solid var(--black);
 }

@@ -31,52 +31,52 @@ function UsersChallengeList() {
             <div className='users-challenges-title'>
                 Your Challenges
             </div>
+            <div className='users-challenges-inner-container'>
 
-            <div className='created-challenges-title'>
-                Created Challenges:
-            </div>
-            <div>
-                {usersChallenges.map((challenge) => (
-                    <div className='created-challenges-container' key={challenge.id}>
-                        <NavLink className="create-update-buttons" to={`/challenges/${challenge.id}`}>
-                            {challenge.name}
+                <div className='created-recieved-challenges-main-container'>
+                    <div className='created-challenges-title'>
+                        Created Challenges:
+                    </div>
+                    {usersChallenges.map((challenge) => (
+                        <div className='created-challenges-container' key={challenge.id}>
+                            <NavLink className="create-update-buttons" to={`/challenges/${challenge.id}`}>
+                                {challenge.name}
 
-                        </NavLink>
-                        <div className='created-challenges-details'>
-                            <div>
-                                Challenge Date: {challenge.challengeDate.slice(0, 10)}
-                            </div>
-                            <div>
-                                Description: {challenge.description}
+                            </NavLink>
+                            <div className='created-challenges-details'>
+                                <div>
+                                    Challenge Date: {challenge.challengeDate.slice(0, 10)}
+                                </div>
+                                <div>
+                                    Description: {challenge.description}
+                                </div>
                             </div>
                         </div>
+                    ))}
+                </div>
+
+                <div className='created-recieved-challenges-main-container'>
+                    <div className='recieved-challenges-title'>
+                        Recieved Challenges:
                     </div>
-                ))}
-            </div>
+                    {usersChallenged.map((challenge) => (
+                        <div className='recieved-challenges-container' key={challenge.id}>
+                            <NavLink className="create-update-buttons" to={`/challenges/${challenge.id}`}>
+                                {challenge.name}
 
-
-            <div className='recieved-challenges-title'>
-                Recieved Challenges:
-            </div>
-            <div>
-                {usersChallenged.map((challenge) => (
-                    <div className='recieved-challenges-container' key={challenge.id}>
-                        <NavLink className="create-update-buttons" to={`/challenges/${challenge.id}`}>
-                            {challenge.name}
-
-                        </NavLink>
-                        <div className='created-challenges-details'>
-                            <div>
-                                Challenge Date: {challenge.challengeDate.slice(0, 10)}
-                            </div>
-                            <div>
-                                Description: {challenge.description}
+                            </NavLink>
+                            <div className='created-challenges-details'>
+                                <div>
+                                    Challenge Date: {challenge.challengeDate.slice(0, 10)}
+                                </div>
+                                <div>
+                                    Description: {challenge.description}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-
         </div >
     )
 }
