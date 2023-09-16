@@ -162,7 +162,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                         ))}
                     </div>
                 </div>
-                <button className='create-update-buttons' type="submit">{formSubmit} deck</button>
+                <button className='create-deck' type="submit">{formSubmit} deck</button>
             </form>
         </div>
     )
