@@ -5,12 +5,18 @@
     background-color: var(--grey);
 }
 
+.decks-inner-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grey);
+}
 
 .decks-display-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     column-gap: 10px;
     row-gap: 10px;
+    margin: 40px;
     background-color: var(--darkgrey);
 }
 

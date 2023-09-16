@@ -33,20 +33,22 @@ function DeckList() {
                     Create a Deck
                 </NavLink>
             </div>
-            <div className='decks-display-container'>
-                {userDecks.map((deck) => (
-                    <div className="deck-details" key={deck.id}>
-                        <NavLink className="" to={`/decks/${deck.id}`}>
-                            <div className='deck-name'>
-                                {deck.name}
+            <div className='decks-inner-container'>
+                <div className='decks-display-container'>
+                    {userDecks.map((deck) => (
+                        <div className="deck-details" key={deck.id}>
+                            <NavLink className="" to={`/decks/${deck.id}`}>
+                                <div className='deck-name'>
+                                    {deck.name}
+                                </div>
+                                <img className="card-image" src={imageDisplay(deck)} />
+                            </NavLink>
+                            <div className="deck-description">
+                                {deck.description}
                             </div>
-                            <img className="card-image" src={imageDisplay(deck)} />
-                        </NavLink>
-                        <div className="deck-description">
-                            {deck.description}
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div >
     )
