@@ -25,20 +25,24 @@ function DeckList() {
 
     return (
         <div >
-            <div className='deck-main-container'>
+            <div className='decks-header-container'>
                 <div className="users-decks">
                     Your Decks
                 </div>
-                <NavLink className="create-deck" to="/decks/current/new">
-                    Create a Deck
-                </NavLink>
+                <div>
+                    <NavLink className="create-deck" to="/decks/current/new">
+                        Create a Deck
+                    </NavLink>
+                </div>
             </div>
+
             <div className='decks-inner-container'>
+
                 <div className='decks-display-container'>
                     {userDecks.map((deck) => (
                         <div className="deck-details" key={deck.id}>
                             <NavLink className="" to={`/decks/${deck.id}`}>
-                                <div className='deck-name'>
+                                <div className='decks-list-names'>
                                     {deck.name}
                                 </div>
                                 <img className="card-image" src={imageDisplay(deck)} />
