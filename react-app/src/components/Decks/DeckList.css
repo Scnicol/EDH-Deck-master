@@ -4,6 +4,7 @@
     align-items: center;
     align-content: space-between;
     background-color: var(--grey);
+    padding-bottom: 10px;
 }
 
 .decks-inner-container {
@@ -45,7 +46,7 @@
 
 .create-deck {
     color: rgb(207, 204, 204);
-    /* border: 1.5px solid red; */
+    border: 3px solid var(--grey);
     border-radius: 4px;
     background: linear-gradient(#78cc78, #489b48 50%, #236323);
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -54,7 +55,7 @@
     font-size: 20px;
     text-align: center;
     padding: 5px;
-    /* margin-bottom: 0px; */
+    margin: 20px;
 }
 
 .decks-list-names {
@@ -83,7 +84,7 @@
 }
 
 .create-deck:hover {
-    border-color: rgba(0,0,0,0.6);
+    border: 3px solid var(--grey);
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     background-image: linear-gradient(#236323, #489b48 50%, #78cc78);
 }

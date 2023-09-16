@@ -5,7 +5,7 @@
   --red: #DA0037;
   --black: #171717;
   --grey: #444444;
-  --white: #EDEDED;
+  --white: rgb(207, 204, 204);
   --darkgrey: #2d2d2d;
   --blue: #187dd4;
 }

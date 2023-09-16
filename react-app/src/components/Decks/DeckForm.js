@@ -131,6 +131,9 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
+                    <div>
+                        <button className='create-deck' type="submit">{formSubmit} deck</button>
+                    </div>
                 </div>
                 <div className='add-card-container'>
                     <div className="card-search">
@@ -162,7 +165,7 @@ function DeckForm({ submitAction, deck, formTitle, formSubmit }) {
                         ))}
                     </div>
                 </div>
-                <button className='create-deck' type="submit">{formSubmit} deck</button>
+
             </form>
         </div>
     )
