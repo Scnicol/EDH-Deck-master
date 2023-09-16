@@ -35,7 +35,7 @@
     color: rgb(207, 204, 204);
     /* border: 1.5px solid red; */
     border-radius: 4px;
-    background: linear-gradient(#78cc78, #62c462 60%, #53be53);
+    background: linear-gradient(#78cc78, #489b48 50%, #236323);
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     /* background-color: black; */
     padding-bottom: 3px;
@@ -61,5 +61,5 @@
 .create-deck:hover {
     border-color: rgba(0,0,0,0.6);
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    background-image: linear-gradient(#4e954e, #60bd60 60%, #53be53);
+    background-image: linear-gradient(#236323, #489b48 50%, #78cc78);
 }
