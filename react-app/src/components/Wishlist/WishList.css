@@ -1,23 +1,31 @@
 .wishlist-main-container {
     display: flex;
+    background-color: var(--darkgrey);
+    height: 1000px;
+}
+
+.wishlist-inner-container {
+    display: flex;
     flex-direction: column;
-    margin-left: 30px;
+    background-color: var(--grey);
+    margin: 50px;
+    padding: 15px;
 }
 
 .wishlist-list-container {
     display: flex;
     flex-direction: column;
     align-items:left;
-    background-color: rgb(207, 204, 204);
+    background-color: var(--black);
     border-radius: 1px;
-    border: 1.5px solid red;
+    border: 1.5px solid var(--red);
     width: 500px;
 }
 
 .wishlist-title {
-    background-color: rgb(207, 204, 204);
+    background-color: var(--white);
     border-radius: 1px;
-    border: 1.5px solid red;
+    border: 1.5px solid var(--red);
     width: 200px;
     padding: 5px;
 }

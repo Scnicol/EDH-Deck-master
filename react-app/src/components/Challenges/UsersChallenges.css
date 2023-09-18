@@ -8,6 +8,8 @@
 .users-challenges-inner-container {
     display: flex;
     flex-direction: row;
+    background-color: var(--lightgrey);
+    margin-bottom: 100px;
 }
 
 .created-challenges-container {
