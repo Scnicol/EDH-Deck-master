@@ -33,20 +33,21 @@ const WishlistDetails = () => {
 
     return (
         <div className='wishlist-main-container'>
-            <h1 className='wishlist-title'>Users Wishlist</h1>
-            <div className='wishlist-list-container'>
-                {user.wishlist.map((deck) => (
-                    <div key={deck.id}>
-                        <NavLink className='create-update-buttons' to={`/decks/${deck.id}`}>
-                            {deck.name}
-                        </NavLink>
-                        <OpenModalButton
-                            buttonText="Remove"
-                            modalComponent={<RemoveDeckModal deckId={deck.id} dispatch={dispatch}/>}
-                        />
-                    </div>
-
-                ))}
+            <div className='wishlist-inner-container'>
+                <h1 className='wishlist-title'>Users Wishlist</h1>
+                <div className='wishlist-list-container'>
+                    {user.wishlist.map((deck) => (
+                        <div key={deck.id}>
+                            <NavLink className='create-update-buttons' to={`/decks/${deck.id}`}>
+                                {deck.name}
+                            </NavLink>
+                            <OpenModalButton
+                                buttonText="Remove"
+                                modalComponent={<RemoveDeckModal deckId={deck.id} dispatch={dispatch} />}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
