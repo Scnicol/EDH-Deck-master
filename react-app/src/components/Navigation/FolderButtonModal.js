@@ -4,10 +4,13 @@ import { useModal } from "../../context/Modal";
 import './FolderButton.css'
 
 function FolderButton() {
-    const {closeModal} = useModal();
+    const { closeModal } = useModal();
     return (
         <div className="inventory-container">
-            Inventory
+            <div className="inventory-title">
+                Inventory
+            </div>
+
             <NavLink className="button" to={`/decks/current`} onClick={closeModal}>
                 Decks
             </NavLink>
