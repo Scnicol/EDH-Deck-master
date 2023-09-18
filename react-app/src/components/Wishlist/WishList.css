@@ -1,7 +1,7 @@
 .wishlist-main-container {
     display: flex;
     background-color: var(--darkgrey);
-    height: 1000px;
+    /* height: 1000px; */
 }
 
 .wishlist-inner-container {
@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items:left;
-    background-color: var(--black);
+    background-color: var(--darkgrey);
     border-radius: 1px;
     border: 1.5px solid var(--red);
     width: 500px;
