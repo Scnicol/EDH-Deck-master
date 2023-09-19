@@ -1,7 +1,7 @@
 .wishlist-main-container {
     display: flex;
     background-color: var(--darkgrey);
-    /* height: 1000px; */
+    margin: 50px;
 }
 
 .wishlist-inner-container {
