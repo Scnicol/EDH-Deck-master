@@ -1,6 +1,6 @@
 .about-inner-container {
     background-color: var(--white);
-    
+
 }
 
 .aboutDescription {
@@ -39,6 +39,12 @@
 
 .contributors-name {
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    padding: 5px;
     margin: 10px;
+}
+
+.about-name {
+    padding: 5px;
 }

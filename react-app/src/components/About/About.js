@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import linkedInLogo from './images/linkedin-logo.png'
+import gitHubLogo from './images/github-logo.png'
 import './About.css'
 
 const About = () => {
@@ -24,14 +25,18 @@ const About = () => {
                 </div>
 
                 <div className="contributors-name">
-                    Creator:
-                    <span className='about-name'>
-                        <> Scot Nicol</>
-                    </span>
-                    <a className='linkedIn' href='https://www.linkedin.com/in/scotnicol/' target="_blank">
-                        <img className='linkedIn' src={linkedInLogo} alt='linkedIn' width="20" height="20" />
-                    </a>
 
+                    <span className='about-name'>
+                        <>Scot Nicol </>
+                    </span>
+                    <div>
+                        <a className='linkedIn' href='https://www.linkedin.com/in/scotnicol/' target="_blank">
+                            <img className='linkedIn' src={linkedInLogo} alt='linkedIn' width="20" height="20" />
+                        </a>
+                        <a className='gitHub' href='https://github.com/Scnicol/EDH-Deck-master' target="_blank">
+                            <img className='gitHub' src={gitHubLogo} alt='linkedIn' width="20" height="20" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
