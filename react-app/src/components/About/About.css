@@ -1,3 +1,8 @@
+.about-inner-container {
+    background-color: var(--white);
+    
+}
+
 .aboutDescription {
     display: grid;
     justify-items: center;
@@ -24,12 +29,16 @@
 }
 .contributors-inner-container {
     display: grid;
-}
-
-.contributors-name {
+    justify-items: center;
 }
 
 .linkedIn {
     padding-right: 3px;
-    color: #006b54;
+    color: var(--blue);
+}
+
+.contributors-name {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
 }
