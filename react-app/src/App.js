@@ -18,6 +18,7 @@ import UpdateChallengeForm from "./components/Challenges/UpdateChallengeForm";
 import UpdateDeckForm from "./components/Decks/UpdateDeckForm";
 import ChallengeDetails from "./components/Challenges/ChallengeDetails";
 import WishlistDetails from "./components/Wishlist/WishlistDetails";
+import About from "./components/About/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/about">
+            <About/>
           </Route>
           <Route exact path={`/decks/current`}>
             <DeckList/>

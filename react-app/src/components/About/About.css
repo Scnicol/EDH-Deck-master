@@ -1,0 +1,35 @@
+.aboutDescription {
+    display: grid;
+    justify-items: center;
+    padding: 5px;
+}
+
+.aboutContent {
+    display: grid;
+    font-size: large;
+    border: solid var(--red);
+    border-radius: 5px;
+    padding: 8px;
+}
+.about-login-link {
+    text-decoration: none;
+    color: var(--blue);
+    font-size: large;
+}
+
+.contributors-outer-container {
+    display: grid;
+    justify-items: center;
+    padding: 5px;
+}
+.contributors-inner-container {
+    display: grid;
+}
+
+.contributors-name {
+}
+
+.linkedIn {
+    padding-right: 3px;
+    color: #006b54;
+}

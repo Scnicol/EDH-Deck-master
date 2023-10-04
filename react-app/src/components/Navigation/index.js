@@ -13,10 +13,16 @@ function Navigation({ isLoaded }) {
 	return (
 		<main className='navContainer'>
 			<div >
-				<NavLink  className="logo" exact to="/" >EDH DECK MASTER</NavLink>
+				<NavLink className="logo" exact to="/" >EDH DECK MASTER</NavLink>
 				<img scr={'https://scalebranding.com/wp-content/uploads/2021/02/21.-Card-game-logo.jpg'} />
 			</div>
 			<div className='inventory-profile-container'>
+				<div className="about-link">
+					<NavLink className="aboutLink" exact to="/about">
+						ABOUT
+					</NavLink>
+
+				</div>
 				{sessionUser &&
 					<div>
 						<OpenModalButton

@@ -81,3 +81,13 @@ html, body
   color: var(--white);
   border: 1.5px solid var(--white);
 }
+
+.aboutLink {
+  color: var(--red);
+  display: grid;
+  text-decoration: none;
+  justify-items: end;
+  /* margin-right: 30px; */
+  /* font-size: large; */
+
+}
