@@ -52,7 +52,6 @@ const DeckDetails = () => {
                 <div className='deck-name-details-container'>
                     <h1 className='decks-name'>{deck.name}</h1>
                     <h2 className='decks-details'>{deck.description}</h2>
-
                 </div>
                 <div className='deck-details-list'>
                     <div>

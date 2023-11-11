@@ -1,16 +1,20 @@
-/* TODO Add site wide styles */
-
-html {
-  background-color: var(--grey);
-}
 
 :root {
   --red: #DA0037;
   --black: #171717;
   --grey: #444444;
-  --white: rgb(207, 204, 204);
+  --white: #CFCCCC;
   --darkgrey: #2d2d2d;
   --blue: #187dd4;
+}
+
+html {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: var(--grey);
+}
+
+a {
+  color: var(--blue)
 }
 
 .create-update-buttons {
