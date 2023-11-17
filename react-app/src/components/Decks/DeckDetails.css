@@ -1,18 +1,15 @@
 .deck-details-main-container {
     display: flex;
     flex-direction: column;
-    /* background-color: rgb(42, 41, 41); */
     min-width: 900px;
 }
 
 .deck-details-inner-container {
     display: flex;
     flex-direction: column;
-    /* background-color: rgb(28, 28, 28); */
     padding: 5px;
     margin: 30px;
     margin-top: 20px;
-    /* box-shadow: 0px 0px 3px rgb(207, 204, 204); */
 }
 
 .deck-name-details-container {
@@ -25,21 +22,17 @@
 }
 
 .decks-details {
-    /* background-color: var(--white); */
     color: var(--white);
     border-radius: 1px;
     font-size: 14px;
     text-align: left;
     height: 40px;
-    /* padding-left: 5px; */
     width: 80%;
 }
 
 .decks-name {
-    /* background-color: var(--white); */
     color: var(--white);
     border-radius: 1px;
-    /* padding: 8px; */
     width: 60%;
 }
 
@@ -55,23 +48,12 @@
 .deck-card-list-container {
     display: flex;
     flex-direction: column;
-    /* background-color: rgb(207, 204, 204); */
     border-radius: 5px;
-    /* border: 2.5px solid red; */
     margin-left: 50px;
     height: 600px;
     width: 400px;
 }
 
-/* .deck-card-list {
-    display:flex;
-    flex-direction: column;
-    margin-left: 50px;
-    background-color: rgb(207, 204, 204);
-    padding-left: 5px;
-    padding: 1px;
-    z-index: 0;
-} */
 
 .deck-card-container {
     display: inline-flex;
@@ -91,7 +73,6 @@
 .deck-details-card {
     flex-grow: 0;
     font-size: 14px;
-    /* background-color: rgb(207, 204, 204); */
     display: block;
 }
 
@@ -132,7 +113,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: start;
-    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin-top: 30px;
     background-color: rgb(42, 41, 41);
     box-shadow: 0px 0px 3px rgb(207, 204, 204);
